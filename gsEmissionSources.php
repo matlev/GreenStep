@@ -38,6 +38,7 @@ connect();
 <br>
 
 
+<!--~~~~~~~~~~~~~~~~~~~SCOPE 1~~~~~~~~~~~~~~~~~~~-->
 
 <div id="Scope1" style="display:none;">&nbsp; 
 
@@ -73,12 +74,12 @@ connect();
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option1" data-target-value="multy1" style="margin-left:10%">
        <input class="radioBtn" type="radio" data-target-id="multy" name="option1" data-target-value="multy1" style="margin-left:30%">
-       <text id="addedit" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
+       <text id = "aa" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option2" data-target-value="multy2" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option2" data-target-value="multy2" style="margin-left:30%">
-      <text id="addedit" class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
+      <text class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
       <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option3" data-target-value="multy3" style="margin-left:10%">
@@ -242,11 +243,19 @@ connect();
           
        </div>
 
-
   </div>
 
-
 </div>
+<script>
+
+$(function () {
+  $('#aa').on('click', function () {
+    $('<p>Text</p>').appendTo('#Scope1');
+  });
+}); 
+</script>
+
+<!--~~~~~~~~~~~~~~~~~~~SCOPE 2~~~~~~~~~~~~~~~~~~~-->
 
 <div id="Scope2" style="display:none;">&nbsp; 
  <div id=" Stationary" style="float:left; width:100%">
@@ -345,11 +354,11 @@ connect();
           
        </div>
 
-
   </div>
 
-  
 </div>
+
+<!--~~~~~~~~~~~~~~~~~~~SCOPE 3~~~~~~~~~~~~~~~~~~~-->
 
 <div id="Scope3" style="display:none;">&nbsp;  <div id=" Stationary" style="float:left; width:100%">
                 <font size="4" color="green" style="float:left"><u><b> Scope 3</b></u>
