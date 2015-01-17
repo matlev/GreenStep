@@ -1,39 +1,69 @@
 <html>
 <head>
-<title></title>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet"> 
-    <link href="css/bootstrap.css" rel="stylesheet"> 
+<title>EcoBase</title>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">  
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.css" rel="stylesheet">
+    <link href="css/getStarted.css" rel="stylesheet">
+    <link href="css/reveal.css" rel="stylesheet" >
+    <link href="css/excelcss.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-select.js"></script>   
+    <script type="text/javascript" src="js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="js/excelscript.js"></script>
+      
 </head>
 <body>
 <div class="container">
 <div class="tabbable boxed parentTabs">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#welcome">Welcome</a></li>
-        <li><a href="#getstarted">Get Started</a></li>
-        <li><a href="#measure">Measure</a></li>
-        <li><a href="#report">Report</a></li>
-        <li><a href="#reduce">Reduce</a></li>
-        <li><a href="#offset">Offset</a></li>
-        <a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
+    <ul class="nav nav-tabs" style="font-size:initial; width:auto">
+        <li class="nav-tab-main active"><a href="#welcome">Welcome</a></li>
+        <li class="nav-tab-main"><a href="#getstarted">Get Started</a></li>
+        <li class="nav-tab-main"><a href="#measure">Measure</a></li>
+        <li class="nav-tab-main"><a href="#report">Report</a></li>
+        <li class="nav-tab-main"><a href="#reduce">Reduce</a></li>
+        <li class="nav-tab-main"><a href="#offset">Offset</a></li>
+        <h4 style="float:right; color:red" >Beta V 0.2</h4><a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
     </ul>
 
     <div class="tab-content">
         <div class="tab-pane active" id="welcome">
             <?php include('welcome.html');?>
         </div>
+
         <div class="tab-pane" id="getstarted">
-            Get started
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#corp">Corporate</a></li>
+                    <li><a href="#bu">Business Units</a></li>
+                    <li><a href="#es">Emission Sources</a></li>
+                    <li><a href="#access">Access</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="corp">
+                       <?php include('gsCorporate.php');?>  
+                    </div>
+                    <div class="tab-pane" id="bu">
+                        <?php include('gsBusinessUnits.php');?>
+                    </div>
+                    <div class="tab-pane" id="es">
+                        <?php include('gsEmissionSources.php');?>
+                    </div>
+                    <div class="tab-pane" id="access">
+                        <?php include('gsAccess.php');?>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="tab-pane" id="measure">
             <?php include('Measure.html');?>
         </div>
+
         <div class="tab-pane" id="report">
             <?php include('Report.html');?>      
         </div>
+
         <div class="tab-pane" id="reduce">
             <div class="tabbable">
                 <ul class="nav nav-tabs">
@@ -54,6 +84,7 @@
                 </div>
             </div>
         </div>
+
         <div class="tab-pane" id="offset">
             <div class="tabbable">
                 <ul class="nav nav-tabs">
@@ -73,12 +104,18 @@
     </div>
 </div>
 </div>
-
 <script type="text/javascript">
-    $("ul.nav-tabs a").click(function (e) {
-      e.preventDefault();  
+    $("ul.nav-tabs a").click(function (e){
+        e.preventDefault(); 
         $(this).tab('show');
     });
-    </script>
+
+    $('#welcome a').on('click', function(e){
+        e.preventDefault();
+
+        var tabID = $(this).attr('href');
+        $('ul.nav-tabs a[href = ' + tabID + ']').tab('show');
+    });
+</script>
 </body>
 </html>
