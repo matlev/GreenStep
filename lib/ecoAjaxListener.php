@@ -4,8 +4,17 @@
 	connect();
 
 	// Set up initial variables
+
+	/** Deployment code **
 	$user = $p4a_username;
 	$role = $p4a_role;
+	**********************/
+	
+	// Development Code //
+	$user = "GobiSOFT Demo";
+	$role = "original";
+	// Remove this block //
+
 	$page = $_POST['page'];
 	$action = $_POST['action'];
 
