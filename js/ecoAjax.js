@@ -37,7 +37,9 @@ function parseAction(page, action, data, caller) {
 		} else if(data instanceof Object) {
 			// An object list of key => value pairs
 			for(var key in data) {
-				info += "&" + key + "=" data.key;
+				if(data.hasOwnProperty(key)){
+					info += "&" + key + "=" + data[key];
+				}
 			}
 		} else if(typeof data === "string"){
 			// A string, assumed to only be one value
