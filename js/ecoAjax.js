@@ -15,13 +15,13 @@
 	Parses the action taken on the ecobase application and returns the result
 
 	@page The active tab calling the action
-	@action The action to take on the database (add, delete, update)
+	@action The action to take on the database (add, delete, update, pull)
 	@caller The HTML element responsible for calling the function; used for debugging purposes only.  Can be null, but it's suggested to always include $(this) when using this function
 	@data Default null, an action may or may not have data to send to the controller to be parsed.  Data can either be an array, a key => value object list or a single item
 
 	@return The success message and any data returned from the server
 */
-function parseAction(page, action, caller = null, data = null) {
+function parseAction(page, action, data, caller) {
 	var server = 'ecoAjaxListener.php';
 	var info = "page=" + page + "&action=" + action;
 	var result;
