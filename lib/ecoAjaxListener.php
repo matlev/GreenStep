@@ -19,8 +19,8 @@
 	$action = $_POST['action'];
 
 	// The response to return to the AJAX call
-	$response; 
-	$data;
+	$response = array(); 
+	$data = array();
 
 	// Switch on the tab that sent the request
 	// If forking this file, this is the part you need to add to.  
@@ -40,13 +40,13 @@
 
 			if($action == "delete") {
 				// Delete the requested corporation from the database
-
+				
 			}
 			if($action == "pull") {
 				// Pull data from the database
 				$sql = "SELECT * FROM gb_company WHERE id = (SELECT companyID FROM gb_employee WHERE username LIKE '$user')";
-				$rslt = fetch_assoc(db_query($sql));
-				$region = fetch_assoc(db_query("SELECT name, code FROM gb_region WHERE id = ".$rslt['partner2']));
+				$rslt = db_query($sql) -> fetch_assoc();
+				$region = db_query("SELECT name, code FROM gb_region WHERE id = ".$rslt['partner2']) -> fetch_assoc();
 
 				// General Information
 				$data['cName'] = $rslt['name'];
