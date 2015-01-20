@@ -22,7 +22,7 @@
 	@return The success message and any data returned from the server
 */
 function parseAction(page, action, data, caller) {
-	var server = 'ecoAjaxListener.php';
+	var server = 'lib/ecoAjaxListener.php';
 	var info = "page=" + page + "&action=" + action;
 	var result;
 	
