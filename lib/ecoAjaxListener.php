@@ -30,7 +30,7 @@
 		case "corp":
 			if($action == "update") {
 				// Update an existing row in the database
-				
+
 			}
 
 			if($action == "add") {
@@ -87,7 +87,7 @@
 		case "gsEmissionSources":
 			if($action == "update") {
 				// Pull data from the database corresponding to the current user
-				
+			
 			}
 
 			if($action == "add") {

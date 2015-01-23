@@ -117,7 +117,8 @@
                 // These do the same thing
                 case "getstarted":
                 case "corp":
-                    var response = parseAction("corp", "pull", null, tabID);
+                    //var response = 
+                    console.log(parseAction("corp", "pull", null, tabID));
                     break;
             }
         });
