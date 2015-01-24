@@ -109,7 +109,33 @@
 
 			}
 			break;
+		case "gsBusinessUnits":
+			if($action == "update") {
+				// Pull data from the database corresponding to the current user
 
+			}
+
+			if($action == "add") {
+				// Push data to the database
+
+			}
+
+			if($action == "delete") {
+				// Delete the requested corporation from the database
+
+			}
+			if($action == "pull") {
+				// Pull data from the database
+				$sql = "SELECT city FROM gb_division WHERE 'id'=4 AND 'companyId'=3";
+				$rslt = fetch_assoc(db_query($sql));
+				// General Information
+				$data['id'] = $rslt['id'];
+				$data['cid'] = $rslt['countryId'];
+				$data['address'] = $rslt['address'];
+
+				$response['data'] = $data;
+			}
+		break;
 		default:
 			$response['error'] = "Page " + $page + " currently not supported or doesn't exist";
 			break;
