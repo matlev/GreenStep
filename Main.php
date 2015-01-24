@@ -120,6 +120,10 @@
                     //var response = 
                     console.log(parseAction("corp", "pull", null, tabID));
                     break;
+                case "bu":
+                    var response = parseAction("bu", "pull", null, tabID);
+                    $('#BU-name').val() = respone.data.name;
+                    break;
             }
         });
 

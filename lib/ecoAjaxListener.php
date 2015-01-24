@@ -109,7 +109,7 @@
 
 			}
 			break;
-		case "gsBusinessUnits":
+		case "bu":
 			if($action == "update") {
 				// Pull data from the database corresponding to the current user
 
@@ -126,10 +126,11 @@
 			}
 			if($action == "pull") {
 				// Pull data from the database
-				$sql = "SELECT city FROM gb_division WHERE 'id'=4 AND 'companyId'=3";
+				$sql = "SELECT * FROM gb_division WHERE 'id'=4 AND 'companyId'=3";
 				$rslt = fetch_assoc(db_query($sql));
 				// General Information
 				$data['id'] = $rslt['id'];
+				$data['name']= $rslt['city'];
 				$data['cid'] = $rslt['countryId'];
 				$data['address'] = $rslt['address'];
 
