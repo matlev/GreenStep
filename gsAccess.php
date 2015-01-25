@@ -3,24 +3,24 @@
   <div class="text" id="Text" style="float:left; width:22%">
     <text style="color:green">Set up the authorization </text>
     <text style="color:green">levels for each business unit</text>
-    <img src="img/help.png" style="width:6%;float:right; margin-left:0.5%">
+    <img src="img/help.png" style="width:6%;float:right; margin-left:0.5%"></img>
 </div>
 
     <div id="A1" style="margin-left:2%;float:left; width:10%">
    1. <select style="width:80%"> 
-       <option>User 1</option>
-        <option>User 2</option>
+       <option>City 1</option>
+        <option>City 2</option>
     </select>
    </div>
- <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure">
+  <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure"></img>
 
    <div  id="A2" style="margin-left:5% ;float:left; width:20%">
    2. <button style="width:90%; margin-left 2%">Create a new user class</button>
    or
       <select id="scope" name="scope" style="width:80%">
-       <option value="1" selected="selected">Scope 1-Direct Emission</option>
-        <option value="2">Scope 2-Inderect Emission</option>
-        <option value="3">Scope 3-Inderect Emission</option>
+       <option value="1" selected="selected">User 1</option>
+        <option value="2">User 2</option>
+        <option value="3">User 3</option>  
     </select>
   
   </div>
@@ -42,8 +42,8 @@
    <div id=" Access Level" style="float:left; width:50%">
                 
         <div id="text1" style="width:40%; float: left">
-                <font size="4" color="green" style="float:left"><u><b> Scope 1 - Stationary</b></u></font>
-                <img src="img/help.png" style="width:7%;float:left;margin-top:2%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure">
+                <font size="4" color="green" style="float:left"><u><b> Access Level</b></u></font>
+          <img src="img/help.png" style="width:7%;float:left;margin-top:2%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure"></img>
                 <br>
                 <br>
                 <font size="3">Measure</font> 
@@ -93,3 +93,28 @@
         <a href="http://www.ecobase.net/ecobase-premium-user-limited-access-login"><text color="blue"> Click Here</text></a>
        </div>
  </div>
+ 
+<script>
+  $(document).ready( function() {
+  $('#scope').bind('change', function (e) { 
+         if($('#scope').val()=='1') {
+              $('#Scope2').hide();
+               $('#Scope3').hide();
+              $('#Scope1').show();
+          } 
+
+   else if($('#scope').val()=='2') {
+        $('#Scope1').hide();
+         $('#Scope3').hide();
+        $('#Scope2').show();
+    }
+
+    else  if($('#scope').val()=='3') {
+        $('#Scope2').hide();
+         $('#Scope1').hide();
+        $('#Scope3').show();
+    }
+}).trigger('change');
+
+});
+</script>
