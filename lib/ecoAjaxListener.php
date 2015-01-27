@@ -28,27 +28,60 @@
 	switch($page) {
 
 		case "corp":
+			$companyID;
+			$regionID;
+			$countryName;
+
 			if($action == "add") {
 				// Push new data to the database
 
 				// Find out if this user has a company yet
 				$sql = "SELECT companyID FROM gb_employee WHERE username LIKE '$user'";
 				$rslt = db_query($sql) -> fetch_assoc();
+				$companyID = $rslt['companyID'];
+
+				// Get some IDs/names like country and region
+				$info = db_query("SELECT name FROM gb_country WHERE id = ".sanitize($_POST['selCountry'])) -> fetch_assoc();
+				$countryName = $info['name'];
+
+				if($_POST['selStateProv'] == '0') {
+					$regionID = 1;
+				} else {
+					$info = db_query("SELECT id FROM gb_region WHERE code LIKE '".sanitize($_POST['selStateProv'])."'") -> fetch_assoc();
+					$regionID = $info['id'];
+				}
 
 				// This user doesn't have a company yet, so they're creating a new one
-				if($rslt['companyID'] == 0){
+				if($companyID == 0){
+					$sql = "INSERT INTO gb_company (countryId, regionId, name, trade, contact, address, email, telephone, insertDate, title, name2, title2, telephone2, email2, website, fiscalMonth, fiscalDay, id2, country2, region2, partner2, baseline, target, percentage) 
+					                        VALUES ('".sanitize($_POST['selCountry'])."', '1', '".sanitize($_POST['corpname'])."', '".sanitize($_POST['tradename'])."', '".sanitize($_POST['champname'])."', '".sanitize($_POST['addr1'])."', '".sanitize($_POST['champemail'])."', '".sanitize($_POST['champtelnum'])."', NOW(), '".sanitize($_POST['champtitle'])."', '".sanitize($_POST['accountname'])."', '".sanitize($_POST['accounttitle'])
+					                        	."', '".sanitize($_POST['accounttelnum'])."', '".sanitize($_POST['accountemail'])."', '".sanitize($_POST['weburl'])."', '".sanitize($_POST['yearEndMonth'])."', '".sanitize($_POST['yearEndDay'])."', '".sanitize($_POST['zippost'])."', '$countryName', '".sanitize($_POST['city'])."', '$regionID', '".sanitize($_POST['baseYear'])."', '".sanitize($_POST['targetYear'])."', '".sanitize($_POST['reducTar'])."')";
+					if(!db_query($sql)) {
+						$response['actionPerformed'] = "Insert was not";
+					} else {
+						// We need to update the companyID value for the employee
+						global $con;
+						db_query("UPDATE gb_employee SET companyID = ".$con -> insert_id." WHERE username LIKE '$user'");
+					}
 					
-
+					$response['actionPerformed'] = "Insert";
 				} else {
-					// The user belongs to a company, they're updating information
+					// The user belongs to a company, they're updating information, set the action flag accordingly
 					$action = "update";
 				}
 			}
 
 			if($action == "update") {
 				// Update an existing row in the database
+				$sql = "UPDATE gb_company SET countryId = '".sanitize($_POST['selCountry'])."', regionId = '1', name = '".sanitize($_POST['corpname'])."', trade = '".sanitize($_POST['tradename'])."', contact = '".sanitize($_POST['champname'])."', address = '".sanitize($_POST['addr1'])."', email = '".sanitize($_POST['champemail'])."', telephone = '".sanitize($_POST['champtelnum'])."', title = '".sanitize($_POST['champtitle'])."', 
+					name2 = '".sanitize($_POST['accountname'])."', title2 = '".sanitize($_POST['accounttitle'])."', telephone2 = '".sanitize($_POST['accounttelnum'])."', email2 = '".sanitize($_POST['accountemail'])."', website = '".sanitize($_POST['weburl'])."', fiscalMonth = '".sanitize($_POST['yearEndMonth'])."', fiscalDay = '".sanitize($_POST['yearEndDay'])."', id2 = '".sanitize($_POST['zippost'])."', country2 = '$countryName', 
+					region2 = '".sanitize($_POST['city'])."', partner2 = '$regionID', baseline = '".sanitize($_POST['baseYear'])."', target = '".sanitize($_POST['targetYear'])."', percentage = '".sanitize($_POST['reducTar'])."' WHERE id = '$companyID'";
 
-				$response['actionPerformed'] = $_POST;
+				if(!db_query($sql)) {
+					$response['actionPerformed'] = "Update was not";
+				} else {
+					$response['actionPerformed'] = "Update";
+				}
 			}
 
 			if($action == "delete") {
@@ -67,7 +100,7 @@
 				$data['address'] = $rslt['address'];
 				$data['city'] = $rslt['region2'];
 				$data['country'] = $rslt['country2'];
-				$data['rCode'] = $region['code'];
+				$data['rCode'] = ($region['code'] == "NA" ? 0 : $region['code']);
 				$data['region'] = $region['name'];
 				$data['zip'] = $rslt['id2'];
 				$data['website'] = $rslt['website'];
@@ -140,7 +173,7 @@
 			if($action == "pull") {
 				// Pull data from the database
 				$sql = "SELECT * FROM gb_division WHERE 'id'=4 AND 'companyId'=3";
-				$rslt = fetch_assoc(db_query($sql));
+				$rslt = db_query($sql) -> fetch_assoc();
 				// General Information
 				$data['id'] = $rslt['id'];
 				$data['name']= $rslt['city'];

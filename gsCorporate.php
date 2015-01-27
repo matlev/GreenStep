@@ -29,11 +29,11 @@
 			<table>
 				<tr>
 					<td><label for ="corp-name">Corporate Name</label></td>
-					<td><div class="required"><input type="text" id="corp-name" name = "corp-name"/></div></td>
+					<td><div class="required"><input type="text" id="corp-name" name = "corpname"/></div></td>
 				</tr>
 				<tr>
 					<td><label for = "trade-name">Trade Name</label></td>
-					<td><input type = "text" id = "trade-name" class = "" name = "trade-name"/></td>
+					<td><input type = "text" id = "trade-name" class = "" name = "tradename"/></td>
 				</tr>
 				<tr>
 					<td><label for = "addr1">Address 1</label></td>
@@ -71,7 +71,7 @@
 				</tr>
 				<tr>
 					<td><label for = "zip-post">Zip/Postal Code</label></td>
-					<td><input type = "text" id = "zip-post" class = "" name = "zip-post"/></td>
+					<td><input type = "text" id = "zip-post" class = "" name = "zippost"/></td>
 				</tr>
 				<tr>
 					<td><label for = "weburl">Website URL</label></td>
@@ -407,7 +407,7 @@ $(document).ready(function () {
 		var action = 'add';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data/*.actionPerformed + " successfully completed."*/);})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 	});
 
