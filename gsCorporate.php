@@ -225,15 +225,15 @@
 					<td><label for = "yearEnd">Year End</label></td>
 					<td><!-- Month dropdown -->
 						<select name="yearEndMonth" id="yearEnd" onchange="" size="1">
-							<option value="01">January</option>
-							<option value="02">February</option>
-							<option value="03">March</option>
-							<option value="04">April</option>
-							<option value="05">May</option>
-							<option value="06">June</option>
-							<option value="07">July</option>
-							<option value="08">August</option>
-							<option value="09">September</option>
+							<option value="1">January</option>
+							<option value="2">February</option>
+							<option value="3">March</option>
+							<option value="4">April</option>
+							<option value="5">May</option>
+							<option value="6">June</option>
+							<option value="7">July</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
 							<option value="10">October</option>
 							<option value="11">November</option>
 							<option value="12">December</option>
@@ -241,15 +241,15 @@
 
 						<!-- Day dropdown -->
 						<select name="yearEndDay" id="yearEndDay" onchange="" size="1">
-							<option value="01">01</option>
-							<option value="02">02</option>
-							<option value="03">03</option>
-							<option value="04">04</option>
-							<option value="05">05</option>
-							<option value="06">06</option>
-							<option value="07">07</option>
-							<option value="08">08</option>
-							<option value="09">09</option>
+							<option value="1">01</option>
+							<option value="2">02</option>
+							<option value="3">03</option>
+							<option value="4">04</option>
+							<option value="5">05</option>
+							<option value="6">06</option>
+							<option value="7">07</option>
+							<option value="8">08</option>
+							<option value="9">09</option>
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
@@ -304,70 +304,70 @@ var options = [
 {
 	"Alberta": "AB",
 	"British Columbia": "BC",
-	"Manitoba": "MN",
+	"Manitoba": "MB",
 	"New Brunswick": "NB",
-	"Newfoundland/Labrador": "NFLL",
-	"Northwest Terriroties": "NWT",
+	"Newfoundland/Labrador": "NL",
+	"Northwest Terriroties": "NT",
 	"Nova Scotia": "NS",
-	"Nunavut": "NV",
+	"Nunavut": "NU",
 	"Ontario": "ON",
-	"Prince Edward Island": "PEI",
-	"Quebec": "QB",
+	"Prince Edward Island": "PE",
+	"Quebec": "QC",
 	"Saskatchewan": "SK",
-	"Yukon": "YK"
+	"Yukon": "YT"
 },
 {
-	"Alabama": "Alabama",
-	"Alaska": "Alaska",
-	"Arizona": "Arizona",
-	"Arkansas": "Arkansas",
-	"California": "California",
-	"Colorado": "Colorado",
-	"Connecticut": "Connecticut",
-	"Delaware": "Delaware",
-	"District of Columbia": "District of Columbia",
-	"Florida": "Florida",
-	"Georgia": "Georgia",
-	"Hawaii": "Hawaii",
-	"Idaho": "Idaho",
-	"Illinois": "Illinois",
-	"Indiana": "Indiana",
-	"Iowa": "Iowa",
-	"Kansas": "Kansas",
-	"Kentucky": "Kentucky",
-	"Lousiana": "Lousiana",
-	"Maine": "Maine",
-	"Maryland": "Maryland",
-	"Massachusetts": "Massachusetts",
-	"Michigan": "Michigan",
-	"Minnesota": "Minessota",
-	"Mississippi": "Mississippi",
-	"Missouri": "Missouri",
-	"Montana": "Montana",
-	"Nebraska": "Nebraska",
-	"Nevada": "Nevada",
-	"New Hampshire": "New Hampshire",
-	"New Jersey": "New Jersey",
-	"New Mexico": "New Mexico",
-	"New York": "New York",
-	"North Carolina": "North Carolina",
-	"North Dakota": "North Dakota",
-	"Ohio": "Ohio",
-	"Oklahoma": "Oklahoma",
-	"Oregon": "Oregon",
-	"Pennsylvania": "Pennsylvania",
-	"Rhode Island": "Rhode Island",
-	"South Carolina": "South Carolina",
-	"South Dakota": "South Dakota",
-	"Tennessee": "Tennessee",
-	"Texas": "Texas",
-	"Utah": "Utah",
-	"Vermont": "Vermont",
-	"Virginia": "Virginia",
-	"Washington": "Washington",
-	"West Virgina": "West Virginia",
-	"Wisconsin": "Wisconsin",
-	"Wyoming": "Wyoming"
+	"Alabama": "AL",
+	"Alaska": "AK",
+	"Arizona": "AZ",
+	"Arkansas": "AR",
+	"California": "CA",
+	"Colorado": "CO",
+	"Connecticut": "CT",
+	"Delaware": "DE",
+	"District of Columbia": "DC",
+	"Florida": "FL",
+	"Georgia": "GA",
+	"Hawaii": "HI",
+	"Idaho": "ID",
+	"Illinois": "IL",
+	"Indiana": "IN",
+	"Iowa": "IA",
+	"Kansas": "KS",
+	"Kentucky": "KY",
+	"Lousiana": "LA",
+	"Maine": "ME",
+	"Maryland": "MD",
+	"Massachusetts": "MA",
+	"Michigan": "MI",
+	"Minnesota": "MN",
+	"Mississippi": "MS",
+	"Missouri": "MO",
+	"Montana": "MT",
+	"Nebraska": "NE",
+	"Nevada": "NV",
+	"New Hampshire": "NH",
+	"New Jersey": "NJ",
+	"New Mexico": "NM",
+	"New York": "NY",
+	"North Carolina": "NC",
+	"North Dakota": "ND",
+	"Ohio": "OH",
+	"Oklahoma": "OK",
+	"Oregon": "OR",
+	"Pennsylvania": "PA",
+	"Rhode Island": "RI",
+	"South Carolina": "SC",
+	"South Dakota": "SD",
+	"Tennessee": "TN",
+	"Texas": "TX",
+	"Utah": "UT",
+	"Vermont": "VT",
+	"Virginia": "VA",
+	"Washington": "WA",
+	"West Virgina": "WV",
+	"Wisconsin": "WI",
+	"Wyoming": "WY"
 }
 ];
 
