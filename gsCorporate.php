@@ -13,17 +13,16 @@
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (General Information-->
 
 			<div id = "wrap2" style="float: left">
-				<button type="button" id="test" class="general" data-container="#wrap2" data-toggle="popover" data-placement="top">
-				<span class="glyphicon glyphicon-question-sign"></span></button>
+				<button type="button" id="test" class="general" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="general_wrapper" style="display: none">
-			  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
-							<br>
-							<h4>General Information</h4>
-							<div style="border-top: solid 8px #5CB357"> </div>
-							<p style="color: black">Enter your organization's name, address, and website.</p>
+					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
+					<br>
+					<h4>General Information</h4>
+					<div style="border-top: solid 8px #5CB357"> </div>
+					<p style="color: black">Enter your organization's name, address, and website.</p>
 				</div>
 			</div>
-			
+
 			<!--END BS-EXAMPLE-TOOLTIPS CLASS (General Information)-->
 
 
@@ -84,10 +83,9 @@
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (Emission Reduction Target)-->
 			<div id = "wrap2" style="float: left">
-				<button type="button" id="test" class="erTarget" data-container="#wrap2" data-toggle="popover" data-placement="top">
-				<span class="glyphicon glyphicon-question-sign"></span></button>
+				<button type="button" id="test" class="erTarget" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="erTarget_wrapper" style="display: none">
-			  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
+					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
 					<br>
 					<h4>Emission Reduction Target</h4>
 					<div style="border-top: solid 8px #5CB357"> </div>
@@ -139,10 +137,9 @@
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (GHG Champion)-->
 			<div id = "wrap2" style="float: left">
-				<button type="button" id="test" class="ghgChamp" data-container="#wrap2" data-toggle="popover" data-placement="top">
-				<span class="glyphicon glyphicon-question-sign"></span></button>
+				<button type="button" id="test" class="ghgChamp" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="ghgChamp_wrapper" style="display: none">
-			  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
+					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
 					<br>
 					<h4>GHG Champion</h4>
 					<div style="border-top: solid 8px #5CB357"> </div>
@@ -174,15 +171,14 @@
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (GHG Accountant)-->
 			<div id = "wrap2" style="float: left">
-				<button type="button" id="test" class="ghgAccount" data-container="#wrap2" data-toggle="popover" data-placement="top">
-				<span class="glyphicon glyphicon-question-sign"></span></button>
+				<button type="button" id="test" class="ghgAccount" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="ghgAccount_wrapper" style="display: none">
-			  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
+					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
 					<br>
 					<h4>GHG Accountant</h4>
 					<div style="border-top: solid 8px #5CB357"></div>
-					<p>Enter the contact information for the individual who manages your GHG accounting activities. This is the person who oversees data entry and sses to it that the emissions 
-					data is of highest quality.
+						<p>Enter the contact information for the individual who manages your GHG accounting activities. This is the person who oversees data entry and sses to it that the emissions 
+						data is of highest quality.
 				</div>
 			</div>	
 			<!--END BS-EXAMPLE-TOOLTIPS CLASS (GHG Accountant)-->
@@ -211,16 +207,15 @@
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (Reporting Year)-->
 
 			<div id = "wrap2" style="float: left">
-				<button type="button" id="test" class="reportYear" data-container="#wrap2" data-toggle="popover" data-placement="top">
-				<span class="glyphicon glyphicon-question-sign"></span></button>
+				<button type="button" id="test" class="reportYear" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="reportYear_wrapper" style="display: none">
-			  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
+					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
 					<br>
 					<h4>Reporting Year</h4>
 					<div style="border-top: solid 8px #5CB357"></div>
 					<p>Enter the year-end date for the purpose of tracking your corporate greenhouse gases. For example, enter December 31 
-					if you wish to track emissions by calendar year. Or, enter your fiscal yearend date if you wish to track emissions by 
-					fiscal year.
+						if you wish to track emissions by calendar year. Or, enter your fiscal yearend date if you wish to track emissions by 
+						fiscal year.
 				</div>
 			</div>	
 			<!--END BS-EXAMPLE-TOOLTIPS CLASS (Reporting Year)-->
@@ -230,53 +225,53 @@
 					<td><label for = "yearEnd">Year End</label></td>
 					<td><!-- Month dropdown -->
 						<select name="yearEndMonth" id="yearEnd" onchange="" size="1">
-						    <option value="01">January</option>
-						    <option value="02">February</option>
-						    <option value="03">March</option>
-						    <option value="04">April</option>
-						    <option value="05">May</option>
-						    <option value="06">June</option>
-						    <option value="07">July</option>
-						    <option value="08">August</option>
-						    <option value="09">September</option>
-						    <option value="10">October</option>
-						    <option value="11">November</option>
-						    <option value="12">December</option>
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
 						</select>
 
 						<!-- Day dropdown -->
 						<select name="yearEndDay" id="yearEndDay" onchange="" size="1">
-						    <option value="01">01</option>
-						    <option value="02">02</option>
-						    <option value="03">03</option>
-						    <option value="04">04</option>
-						    <option value="05">05</option>
-						    <option value="06">06</option>
-						    <option value="07">07</option>
-						    <option value="08">08</option>
-						    <option value="09">09</option>
-						    <option value="10">10</option>
-						    <option value="11">11</option>
-						    <option value="12">12</option>
-						    <option value="13">13</option>
-						    <option value="14">14</option>
-						    <option value="15">15</option>
-						    <option value="16">16</option>
-						    <option value="17">17</option>
-						    <option value="18">18</option>
-						    <option value="19">19</option>
-						    <option value="20">20</option>
-						    <option value="21">21</option>
-						    <option value="22">22</option>
-						    <option value="23">23</option>
-						    <option value="24">24</option>
-						    <option value="25">25</option>
-						    <option value="26">26</option>
-						    <option value="27">27</option>
-						    <option value="28">28</option>
-						    <option value="29">29</option>
-						    <option value="30">30</option>
-						    <option value="31">31</option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
 						</select>
 					</td>
 				</tr>
@@ -295,175 +290,178 @@
 			<p>* Required Field</p>
 		</div>
 		<!--END REQUIRED FIELD CLASS-->	
-	
+
 	</form>
 </div>
 <!--END MIDDLE CLASS-->	
 
 
 
-	<script>
-	//
-	var options = [
-	{},
-	{
-		"Alberta": "AB",
-		"British Columbia": "BC",
-		"Manitoba": "MN",
-		"New Brunswick": "NB",
-		"Newfoundland/Labrador": "NFLL",
-		"Northwest Terriroties": "NWT",
-		"Nova Scotia": "NS",
-		"Nunavut": "NV",
-		"Ontario": "ON",
-		"Prince Edward Island": "PEI",
-		"Quebec": "QB",
-		"Saskatchewan": "SK",
-		"Yukon": "YK"
-	},
-	{
-		"Alabama": "Alabama",
-		"Alaska": "Alaska",
-		"Arizona": "Arizona",
-		"Arkansas": "Arkansas",
-		"California": "California",
-		"Colorado": "Colorado",
-		"Connecticut": "Connecticut",
-		"Delaware": "Delaware",
-		"District of Columbia": "District of Columbia",
-		"Florida": "Florida",
-		"Georgia": "Georgia",
-		"Hawaii": "Hawaii",
-		"Idaho": "Idaho",
-		"Illinois": "Illinois",
-		"Indiana": "Indiana",
-		"Iowa": "Iowa",
-		"Kansas": "Kansas",
-		"Kentucky": "Kentucky",
-		"Lousiana": "Lousiana",
-		"Maine": "Maine",
-		"Maryland": "Maryland",
-		"Massachusetts": "Massachusetts",
-		"Michigan": "Michigan",
-		"Minnesota": "Minessota",
-		"Mississippi": "Mississippi",
-		"Missouri": "Missouri",
-		"Montana": "Montana",
-		"Nebraska": "Nebraska",
-		"Nevada": "Nevada",
-		"New Hampshire": "New Hampshire",
-		"New Jersey": "New Jersey",
-		"New Mexico": "New Mexico",
-		"New York": "New York",
-		"North Carolina": "North Carolina",
-		"North Dakota": "North Dakota",
-		"Ohio": "Ohio",
-		"Oklahoma": "Oklahoma",
-		"Oregon": "Oregon",
-		"Pennsylvania": "Pennsylvania",
-		"Rhode Island": "Rhode Island",
-		"South Carolina": "South Carolina",
-		"South Dakota": "South Dakota",
-		"Tennessee": "Tennessee",
-		"Texas": "Texas",
-		"Utah": "Utah",
-		"Vermont": "Vermont",
-		"Virginia": "Virginia",
-		"Washington": "Washington",
-		"West Virgina": "West Virginia",
-		"Wisconsin": "Wisconsin",
-		"Wyoming": "Wyoming"
-	}
-	];
+<script>
+//
+var options = [
+{},
+{
+	"Alberta": "AB",
+	"British Columbia": "BC",
+	"Manitoba": "MN",
+	"New Brunswick": "NB",
+	"Newfoundland/Labrador": "NFLL",
+	"Northwest Terriroties": "NWT",
+	"Nova Scotia": "NS",
+	"Nunavut": "NV",
+	"Ontario": "ON",
+	"Prince Edward Island": "PEI",
+	"Quebec": "QB",
+	"Saskatchewan": "SK",
+	"Yukon": "YK"
+},
+{
+	"Alabama": "Alabama",
+	"Alaska": "Alaska",
+	"Arizona": "Arizona",
+	"Arkansas": "Arkansas",
+	"California": "California",
+	"Colorado": "Colorado",
+	"Connecticut": "Connecticut",
+	"Delaware": "Delaware",
+	"District of Columbia": "District of Columbia",
+	"Florida": "Florida",
+	"Georgia": "Georgia",
+	"Hawaii": "Hawaii",
+	"Idaho": "Idaho",
+	"Illinois": "Illinois",
+	"Indiana": "Indiana",
+	"Iowa": "Iowa",
+	"Kansas": "Kansas",
+	"Kentucky": "Kentucky",
+	"Lousiana": "Lousiana",
+	"Maine": "Maine",
+	"Maryland": "Maryland",
+	"Massachusetts": "Massachusetts",
+	"Michigan": "Michigan",
+	"Minnesota": "Minessota",
+	"Mississippi": "Mississippi",
+	"Missouri": "Missouri",
+	"Montana": "Montana",
+	"Nebraska": "Nebraska",
+	"Nevada": "Nevada",
+	"New Hampshire": "New Hampshire",
+	"New Jersey": "New Jersey",
+	"New Mexico": "New Mexico",
+	"New York": "New York",
+	"North Carolina": "North Carolina",
+	"North Dakota": "North Dakota",
+	"Ohio": "Ohio",
+	"Oklahoma": "Oklahoma",
+	"Oregon": "Oregon",
+	"Pennsylvania": "Pennsylvania",
+	"Rhode Island": "Rhode Island",
+	"South Carolina": "South Carolina",
+	"South Dakota": "South Dakota",
+	"Tennessee": "Tennessee",
+	"Texas": "Texas",
+	"Utah": "Utah",
+	"Vermont": "Vermont",
+	"Virginia": "Virginia",
+	"Washington": "Washington",
+	"West Virgina": "West Virginia",
+	"Wisconsin": "Wisconsin",
+	"Wyoming": "Wyoming"
+}
+];
 
-	$(document).ready(function () {
+$(document).ready(function () {
 
-		$(".selCountry").change(function () {
-			var val = $(this).val();
-			var newOptions;
+	$(".selCountry").change(function () {
+		var val = $(this).val();
+		var newOptions;
 
-			if (val == 0) {
-				$('.selStateProv option:gt(0)').remove();
-				$('.selGeoLoc option:gt(0)').remove();
-			} else {
-				newOptions = options[val];
-				$('.selStateProv option:gt(0)').remove();
-				$('.selGeoLoc option:gt(0)').remove();
+		if (val == 0) {
+			$('.selStateProv option:gt(0)').remove();
+			$('.selGeoLoc option:gt(0)').remove();
+		} else {
+			newOptions = options[val];
+			$('.selStateProv option:gt(0)').remove();
+			$('.selGeoLoc option:gt(0)').remove();
 
-				var $el = $(".selStateProv");
-				$.each(newOptions, function (key, value) {
-					$el.append($("<option></option>")
-						.attr("value", value).text(key));
-				});
-
-				$el = $(".selGeoLoc");
-				$.each(newOptions, function (key, value) {
-					$el.append($("<option></option>")
-						.attr("value", value).text(key));
-				});
-			}
+			var $el = $(".selStateProv");
+			$.each(newOptions, function (key, value) {
+				$el.append($("<option></option>")
+					.attr("value", value).text(key));
 			});
 
-			$('.general').popover({ 
-	    html : true,
-	    placement : 'right',
-	    content: function() {
-	      return $('#general_wrapper').html();
-	    	}
-	  	});
-	  	$('.erTarget').popover({ 
-	    html : true,
-	    placement : 'right',
-	    content: function() {
-	      return $('#erTarget_wrapper').html();
-	    	}
-	  	});
-		$('.ghgChamp').popover({ 
-	    html : true,
-	    placement : 'right',
-	    content: function() {
-	      return $('#ghgChamp_wrapper').html();
-	    	}
-	  	});
-		$('.ghgAccount').popover({ 
-	    html : true,
-	    placement : 'top',
-	    content: function() {
-	      return $('#ghgAccount_wrapper').html();
-	    	}
-	  	});
-
-		$('.reportYear').popover({ 
-	    html : true,
-	    placement : 'top',
-	    content: function() {
-	      return $('#reportYear_wrapper').html();
-	    	}
-	  	});
-	  	
-		$(function(){ $('#test').popover(); });
+			$el = $(".selGeoLoc");
+			$.each(newOptions, function (key, value) {
+				$el.append($("<option></option>")
+					.attr("value", value).text(key));
+			});
+		}
+	});
 
 	
+
+	// Tool tip handlers
+	$('.general').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#general_wrapper').html();
+		}
 	});
-		
-		/*
-				
-		$('[data-toggle="popover"]').popover();
+	$('.erTarget').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#erTarget_wrapper').html();
+		}
+	});
+	$('.ghgChamp').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#ghgChamp_wrapper').html();
+		}
+	});
+	$('.ghgAccount').popover({ 
+		html : true,
+		placement : 'top',
+		content: function() {
+			return $('#ghgAccount_wrapper').html();
+		}
+	});
 
-		$('body').on('click', function (e) {
-		    //only buttons
-		    if ($(e.target).data('toggle') !== 'popover'
-		        && $(e.target).parents('.popover.in').length === 0) { 
-		        $('[data-toggle="popover"]').popover('hide');
-		    }
-		    //buttons and icons within buttons
-		    /*
-		    if ($(e.target).data('toggle') !== 'popover'
-		        && $(e.target).parents('[data-toggle="popover"]').length === 0
-		        && $(e.target).parents('.popover.in').length === 0) { 
-		        $('[data-toggle="popover"]').popover('hide');
-		    }
-		    */
-			
+	$('.reportYear').popover({ 
+		html : true,
+		placement : 'top',
+		content: function() {
+			return $('#reportYear_wrapper').html();
+		}
+	});
 
-	</script>
+	$(function(){ $('#test').popover(); });
+
+
+});
+
+/*
+
+$('[data-toggle="popover"]').popover();
+
+$('body').on('click', function (e) {
+//only buttons
+if ($(e.target).data('toggle') !== 'popover'
+&& $(e.target).parents('.popover.in').length === 0) { 
+$('[data-toggle="popover"]').popover('hide');
+}
+//buttons and icons within buttons
+/*
+if ($(e.target).data('toggle') !== 'popover'
+&& $(e.target).parents('[data-toggle="popover"]').length === 0
+&& $(e.target).parents('.popover.in').length === 0) { 
+$('[data-toggle="popover"]').popover('hide');
+}
+*/
+
+
+</script>
