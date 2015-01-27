@@ -52,9 +52,9 @@
 					<td>
 						<div class="required">
 							<select id = "corpSelCountry" class = "required selCountry" name = "selCountry">
-								<option value = "0" selected = "selected">N/A</option>
-								<option value = "1">CANADA</option>
-								<option value = "2">USA</option>
+								<option value = "1" selected = "selected">N/A</option>
+								<option value = "2">CANADA</option>
+								<option value = "3">USA</option>
 							</select>
 						</div>
 					</td>
@@ -374,7 +374,7 @@ var options = [
 $(document).ready(function () {
 
 	$(".selCountry").change(function () {
-		var val = $(this).val();
+		var val = $(this).val() - 1;
 		var newOptions;
 
 		if (val == 0) {
@@ -402,12 +402,12 @@ $(document).ready(function () {
 	$('#corporate-form').on('submit', function(e){
 		e.preventDefault();
 
-		var data = $(this).serialize();
+		var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
 		var page = 'corp';
 		var action = 'add';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.success(function(data){console.log(data/*.actionPerformed + " successfully completed."*/);})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 	});
 

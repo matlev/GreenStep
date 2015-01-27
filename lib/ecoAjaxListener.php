@@ -28,14 +28,27 @@
 	switch($page) {
 
 		case "corp":
-			if($action == "update") {
-				// Update an existing row in the database
-
-			}
-
 			if($action == "add") {
 				// Push new data to the database
 
+				// Find out if this user has a company yet
+				$sql = "SELECT companyID FROM gb_employee WHERE username LIKE '$user'";
+				$rslt = db_query($sql) -> fetch_assoc();
+
+				// This user doesn't have a company yet, so they're creating a new one
+				if($rslt['companyID'] == 0){
+					
+
+				} else {
+					// The user belongs to a company, they're updating information
+					$action = "update";
+				}
+			}
+
+			if($action == "update") {
+				// Update an existing row in the database
+
+				$response['actionPerformed'] = $_POST;
 			}
 
 			if($action == "delete") {

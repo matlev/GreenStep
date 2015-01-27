@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/bootstrap-select.js"></script>
     <script type="text/javascript" src="js/excelscript.js"></script>
     <script type = "text/javascript" src = "js/ecoAjax.js"></script> 
+    <script type = "text/javascript" src = "js/jquery.serialize-object.min.js"></script> 
 </head>
 
 <body>
