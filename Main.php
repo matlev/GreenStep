@@ -117,8 +117,14 @@
                 // These do the same thing
                 case "getstarted":
                 case "corp":
-                    //var response = 
-                    console.log(parseAction("corp", "pull", null, tabID));
+                    parseAction("corp", "pull", null)
+                        .success(function(data) {
+                            console.log(data);
+                            load_gsCorp(data);
+                        })
+                        .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        }); 
                     break;
             }
         });
@@ -132,10 +138,52 @@
             // Calls a pull request for the default sub-tab that is opened when you click on an image (note: not all sub-tabs necessarily require a pull on load)
             switch (tabID) {
                 case "#getstarted":
-                    var response = parseAction("corp", "pull", null, tabID);
+                    parseAction("corp", "pull", null, tabID)
+                        .success(function(data) {
+                            console.log(data);
+                            load_gsCorp(data);
+                        })
+                        .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
                     break;
             }
         });
+
+        function load_gsCorp(result) {
+            var data = result.data;
+
+            // Set General Information
+            $('#corp-name').val(data.cName);
+            $('#trade-name').val(data.cTrade);
+            $('#addr1').val(data.address);
+            $('#city').val(data.city);
+            $('#corpSelCountry').val($('#corpSelCountry option').filter(function(){ return $(this).html() == data.country; }).val()).trigger('change');
+            $('#corpSelStateProv').val(data.rCode);
+            $('#zip-post').val(data.zip);
+            $('#weburl').val(data.website);
+
+            // Set Emission Reduction Target
+            $('#baseYear').val(data.baseline);
+            $('#reducTar').val(data.percentage);
+            $('#targetYear').val(data.target);
+
+            // Set GHG Champion
+            $('#champname').val(data.champName);
+            $('#champtitle').val(data.champTitle);
+            $('#champtelnum').val(data.champNumber);
+            $('#champemail').val(data.champEmail);
+
+            // Set GHG Accountant
+            $('#accountname').val(data.accName);
+            $('#accounttitle').val(data.accTitle);
+            $('#accounttelnum').val(data.accNumber);
+            $('#accountemail').val(data.accEmail);
+
+            // Set Reporting Year
+            $('#yearEnd').val(data.fiscMonth);
+            $('#yearEndDay').val(data.fiscDay);
+        }
     </script>
 </body>
 </html>

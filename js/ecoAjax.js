@@ -10,21 +10,18 @@
 /* on the webpage (typically an update request).                       */
 /***********************************************************************/
 
-
 /**
 	Parses the action taken on the ecobase application and returns the result
 
 	@page The active tab calling the action
 	@action The action to take on the database (add, delete, update, pull)
-	@caller The HTML element responsible for calling the function; used for debugging purposes only.  Can be null, but it's suggested to always include $(this) when using this function
 	@data Default null, an action may or may not have data to send to the controller to be parsed.  Data can either be an array, a key => value object list or a single item
 
 	@return The success message and any data returned from the server
 */
-function parseAction(page, action, data, caller) {
+function parseAction(page, action, data) {
 	var server = 'lib/ecoAjaxListener.php';
 	var info = "page=" + page + "&action=" + action;
-	var result;
 	
 	if(data != null){
 		if(Array.isArray(data)) {
@@ -47,22 +44,12 @@ function parseAction(page, action, data, caller) {
 		}
 	}
 	
-	$.ajax({
+	return $.ajax({
 		url: server,
 		type: 'POST',
 		dataType: 'JSON',
-		data: info,
-		asynchronous: false,
-		success: function(data) {
-			console.log(data); // DEBUG, remove this later
-			result = data;
-		},
-		error: function() {
-			result = "Error handling request " + action + " in tab " + page + " called by element " + caller;
-		}
+		data: info
 	});
-	
-	return result;
 }
 
 Object.size = function(obj) {
