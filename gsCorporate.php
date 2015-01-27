@@ -29,29 +29,29 @@
 			<table>
 				<tr>
 					<td><label for ="corp-name">Corporate Name</label></td>
-					<td><div class="required"><input type="text" id="corp-name"></td></div>
+					<td><div class="required"><input type="text" id="corp-name" name = "corp-name"/></div></td>
 				</tr>
 				<tr>
 					<td><label for = "trade-name">Trade Name</label></td>
-					<td><input type = "text" id = "trade-name" class = ""/></td>
+					<td><input type = "text" id = "trade-name" class = "" name = "trade-name"/></td>
 				</tr>
 				<tr>
 					<td><label for = "addr1">Address 1</label></td>
-					<td><input type = "text" id = "addr1" class = ""/></td>
+					<td><input type = "text" id = "addr1" class = "" name = "addr1"/></td>
 				</tr>
 				<tr>
 					<td><label for = "addr2">Address 2</label></td>
-					<td><input type = "text" id = "addr2" class = ""/></td>				
+					<td><input type = "text" id = "addr2" class = "" name = "addr2"/></td>				
 				</tr>
 				<tr>
 					<td><label for = "city">City</label></td>
-					<td><input type = "text" id = "city" class = ""/></td>
+					<td><input type = "text" id = "city" class = "" name = "city"/></td>
 				</tr>			
 				<tr>
 					<td><label for = "corpSelCountry">Country</label></td>
 					<td>
 						<div class="required">
-							<select id = "corpSelCountry" class = "required selCountry">
+							<select id = "corpSelCountry" class = "required selCountry" name = "selCountry">
 								<option value = "0" selected = "selected">N/A</option>
 								<option value = "1">CANADA</option>
 								<option value = "2">USA</option>
@@ -63,7 +63,7 @@
 					<td><label for = "corpSelStateProv">State/Province</label></td>
 					<td>
 						<div class="required">
-							<select id = "corpSelStateProv" class = "required selStateProv">
+							<select id = "corpSelStateProv" class = "required selStateProv" name = "selStateProv">
 								<option value = "0" selected = "selected">N/A</option>
 							</select>
 						</div>
@@ -71,11 +71,11 @@
 				</tr>
 				<tr>
 					<td><label for = "zip-post">Zip/Postal Code</label></td>
-					<td><input type = "text" id = "zip-post" class = ""/></td>
+					<td><input type = "text" id = "zip-post" class = "" name = "zip-post"/></td>
 				</tr>
 				<tr>
 					<td><label for = "weburl">Website URL</label></td>
-					<td><input type = "text" id = "weburl" class = ""/></td>
+					<td><input type = "text" id = "weburl" class = "" name = "weburl"/></td>
 				</tr>
 			</table>
 
@@ -102,7 +102,7 @@
 				<tr>
 					<td><label for = "baseYear">Base Year</label></td>
 					<td>
-						<select id = "baseYear">
+						<select id = "baseYear" name = "baseYear">
 							<?php
 							for($i = 2000; $i <= 2024; $i++){
 								echo '<option value = "'.$i.'">'.$i.'</option>';
@@ -113,12 +113,12 @@
 				</tr>
 				<tr>
 					<td><label for = "reducTar">Reduction Target (%)</label></td>
-					<td><input type = "text" id = "reducTar" class = ""/></td>
+					<td><input type = "text" id = "reducTar" class = "" name = "reducTar"/></td>
 				</tr>
 				<tr>
 					<td><label for = "targetYear">Target Year</label></td>
 					<td>
-						<select id = "targetYear">
+						<select id = "targetYear" name = "targetYear">
 							<?php
 							for($i = 2000; $i <= 2024; $i++){
 								echo '<option value = "'.$i.'">'.$i.'</option>';
@@ -151,19 +151,19 @@
 			<table>
 				<tr>
 					<td><label for = "champname">Name</label></td>
-					<td><input type = "text" id = "champname" class = ""/></td>
+					<td><input type = "text" id = "champname" class = "" name = "champname"/></td>
 				</tr>
 				<tr>
 					<td><label for = "champtitle">Title</label></td>
-					<td><input type = "text" id = "champtitle" class = ""/></td>
+					<td><input type = "text" id = "champtitle" class = "" name = "champtitle"/></td>
 				</tr>
 				<tr>
 					<td><label for = "champtelnum">Phone Number</label></td>
-					<td><input type = "tel" id = "champtelnum" class = ""/></td>
+					<td><input type = "tel" id = "champtelnum" class = "" name = "champtelnum"/></td>
 				</tr>
 				<tr>
 					<td><label for = "champemail">Email</label></td>
-					<td><input type = "email" id = "champemail" class = ""/></td>
+					<td><input type = "email" id = "champemail" class = "" name = "champemail"/></td>
 				</tr>
 			</table>
 
@@ -186,19 +186,19 @@
 			<table>
 				<tr>
 					<td><label for = "accountname">Name</label></td>
-					<td><input type = "text" id = "accountname" class = ""/></td>
+					<td><input type = "text" id = "accountname" class = "" name = "accountname"/></td>
 				</tr>
 				<tr>
 					<td><label for = "accounttitle">Title</label></td>
-					<td><input type = "text" id = "accounttitle" class = ""/></td>
+					<td><input type = "text" id = "accounttitle" class = "" name = "accounttitle"/></td>
 				</tr>
 				<tr>
 					<td><label for = "accounttelnum">Phone Number</label></td>
-					<td><input type = "tel" id = "accounttelnum" class = ""/></td>
+					<td><input type = "tel" id = "accounttelnum" class = "" name = "accounttelnum"/></td>
 				</tr>
 				<tr>
 					<td><label for = "accountemail">Email</label></td>
-					<td><input type = "email" id = "accountemail" class = ""/></td>
+					<td><input type = "email" id = "accountemail" class = "" name = "accountemail"/></td>
 				</tr>
 			</table>
 
@@ -399,7 +399,17 @@ $(document).ready(function () {
 		}
 	});
 
-	
+	$('#corporate-form').on('submit', function(e){
+		e.preventDefault();
+
+		var data = $(this).serialize();
+		var page = 'corp';
+		var action = 'add';
+
+		parseAction(page, action, data)
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
+	});
 
 	// Tool tip handlers
 	$('.general').popover({ 

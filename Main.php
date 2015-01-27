@@ -119,7 +119,7 @@
                 case "corp":
                     parseAction("corp", "pull", null)
                         .success(function(data) {
-                            console.log(data);
+                            //console.log(data);
                             load_gsCorp(data);
                         })
                         .fail(function(){
@@ -127,8 +127,10 @@
                         }); 
                     break;
                 case "bu":
+                    /*
                     var response = parseAction("bu", "pull", null, tabID);
                     $('#BU-name').val() = respone.data.name;
+                    */
                     break;
             }
         });
@@ -144,7 +146,7 @@
                 case "#getstarted":
                     parseAction("corp", "pull", null, tabID)
                         .success(function(data) {
-                            console.log(data);
+                            //console.log(data);
                             load_gsCorp(data);
                         })
                         .fail(function(){
