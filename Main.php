@@ -141,8 +141,35 @@
 
                     break;
                 case "bu":
+
                     var response = parseAction("bu", "pull", null, tabID);
                     $('#BU-name').val(respone.data.name);
+                    break;
+                case "access":
+                    parseAction("access", "pull", null);
+                        .success(fuction(result) {
+                            var data = result.data;
+                            
+                            var units = data.accUnits // an array of names of access units in the database
+                            
+                            var accUnitHTML;
+                            var length = units.length;
+                            
+                            for(i = 0; i < length; i++){
+                                if(i == 0){
+                                    accunitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                                } else {
+                                    accunitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                                }
+                            }
+                            
+                            $('#accessUnit').empty().html(accUnitHTML);
+                            
+                        })
+                        .fail(function() {
+                        
+                        });
+                
                     break;
             }
         });

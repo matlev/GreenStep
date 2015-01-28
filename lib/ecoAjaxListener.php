@@ -183,6 +183,36 @@
 				$response['data'] = $data;
 			}
 		break;
+		case "access":
+			if($action == "pull") {
+				// Pull data from the database
+				$sql = "SELECT * FROM `gb_division` WHERE companyId= (SELECT id FROM gb_company WHERE id =(SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+				$info = db_query($sql)
+				
+				$rowCounter = 0;
+				while($rslt = $info -> fetch_assoc()){
+					$data['accUnits'][$rowCounter] = $rslt['name'];
+			
+					$rowCounter++;
+				}
+			
+				$response['data'] = $data;
+			}
+			if($action == "update") {
+				// Pull data from the database corresponding to the current user
+
+			}
+
+			if($action == "add") {
+				// Push data to the database
+
+			}
+
+			if($action == "delete") {
+				// Delete the requested corporation from the database
+				
+			}
+			break;
 		default:
 			$response['error'] = "Page " + $page + " currently not supported or doesn't exist";
 			break;
