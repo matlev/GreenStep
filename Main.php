@@ -111,6 +111,7 @@
             e.preventDefault(); 
             $(this).tab('show');
 
+
             var tabID = $(this).attr('href').slice(1);
 
             // Handles nav clicks to load the correct content depending on the requested tab.  Not all tabs need a pull request.
@@ -125,13 +126,19 @@
                         })
                         .fail(function(){
                             console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
-                        }); 
+                        });
+
                     break;
                 case "bu":
-                    /*
-                    var response = parseAction("bu", "pull", null, tabID);
-                    $('#BU-name').val() = respone.data.name;
-                    */
+                    parseAction("bu", "pull", null)
+                        .success(function(data) {
+                            //console.log(data);
+                            load_gsBusiness(data);
+                        })
+                        .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
+
                     break;
             }
         });
@@ -145,7 +152,7 @@
             // Calls a pull request for the default sub-tab that is opened when you click on an image (note: not all sub-tabs necessarily require a pull on load)
             switch (tabID) {
                 case "#getstarted":
-                    parseAction("corp", "pull", null, tabID)
+                    parseAction("corp", "pull", null)
                         .success(function(data) {
                             //console.log(data);
                             load_gsCorp(data);
@@ -190,6 +197,14 @@
             // Set Reporting Year
             $('#yearEnd').val(data.fiscMonth);
             $('#yearEndDay').val(data.fiscDay);
+        }
+
+        function load_gsBusiness(result) {
+            var data = result.data;
+            $('#BU-name').val(data.bname);
+            $('#BU-addr1').val(data.address);
+            $('#BU-city').val(data.bcity);
+
         }
     </script>
 </body>
