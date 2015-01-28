@@ -74,27 +74,27 @@ connect();
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option1" data-target-value="multy1" style="margin-left:10%">
        <input class="radioBtn" type="radio" data-target-id="multy" name="option1" data-target-value="multy1" style="margin-left:30%">
-       <text id = "aa" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
+       <text id = "addedit" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option2" data-target-value="multy2" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option2" data-target-value="multy2" style="margin-left:30%">
-      <text class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit" class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
       <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option3" data-target-value="multy3" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option3" data-target-value="multy3" style="margin-left:30%">
-      <text class="my-div me_3" data-target="multy3"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit" class="my-div me_3" data-target="multy3"style="color:blue;display:none;">add/edit</text>       
       <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option4" data-target-value="multy4" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option4" data-target-value="multy4" style="margin-left:30%">
-      <text class="my-div me_4" data-target="multy4"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit" class="my-div me_4" data-target="multy4"style="color:blue;display:none;">add/edit</text>       
       <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option5" data-target-value="multy5" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option5" data-target-value="multy5" style="margin-left:30%">
-      <text class="my-div me_5" data-target="multy5"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit" class="my-div me_5" data-target="multy5"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
        <br>
@@ -180,27 +180,27 @@ connect();
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option6" data-target-value="multy6" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option6" data-target-value="multy6" style="margin-left:30%">
-      <text class="my-div me_6" data-target="multy6"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit" class="my-div me_6" data-target="multy6"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option7" data-target-value="multy7" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option7" data-target-value="multy7" style="margin-left:30%">
-      <text class="my-div me_7" data-target="multy7"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit" class="my-div me_7" data-target="multy7"style="color:blue;display:none;">add/edit</text>       
       <br>
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option8" data-target-value="multy8" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option8" data-target-value="multy8" style="margin-left:30%">
-      <text class="my-div me_8" data-target="multy8"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit" class="my-div me_8" data-target="multy8"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option9" data-target-value="multy9" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option9" data-target-value="multy9" style="margin-left:30%">
-      <text class="my-div me_9" data-target="multy5"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit" class="my-div me_9" data-target="multy5"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
        <input class="radioBtn" type="radio" data-target-id="single" name="option5" data-target-value="multy10" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option5" data-target-value="multy10" style="margin-left:30%">
-      <text class="my-div me_10" data-target="multy10"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit" class="my-div me_10" data-target="multy10"style="color:blue;display:none;">add/edit</text>
        <br>
        <br>
        <br>
@@ -245,12 +245,73 @@ connect();
 
   </div>
 
+  <div id = "scope1MultiAddEditTable"></div>
+
 </div>
 <script>
-
 $(function () {
-  $('#aa').on('click', function () {
-    $('<p>Text</p>').appendTo('#Scope1');
+  $('#addedit').on('click', function () {
+
+    /* Make an AJAX call to the server to grab the proper data and populate the add/edit table
+      data[0] = "thename";
+
+      var response = parseAction("gsEmissionSources", "pull", data, $(this).id);
+      //reponse should be an object list
+
+    */
+
+    var html = "<table id='scrolltable' class='editabletable'>" +
+    "<thead>" +
+      "<tr>" +
+        "<th><div style='width:50px'>Meter</div></th>" +
+          "<th><div style='width:300px'>Name or Description</div></th>" +
+      "</tr>" +
+    "</thead>" +
+    "<tbody>" +
+        "<tr>" +
+          "<td><div style='width:50px'>1</div></td>" +
+          "<td><div contenteditable style='width:300px'></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>2</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>3</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>4</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>5</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>6</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>7</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>8</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>9</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+        "<tr>" +
+          "<td>10</td>" +
+          "<td><div contenteditable></div></td>" +
+        "</tr>" +
+      "</tbody>" +
+  "</table>";
+
+    $('#scope1MultiAddEditTable').empty().append(html);
   });
 }); 
 </script>
