@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-
+    
     <script type="text/javascript">
         $("ul.nav-tabs a").click(function (e){
             e.preventDefault(); 
@@ -140,14 +140,13 @@
                         });
 
                     break;
-                case "bu":
-
-                    var response = parseAction("bu", "pull", null, tabID);
+                /*case "bu":
+                    var response = parseAction("bu", "pull", null)
                     $('#BU-name').val(respone.data.name);
-                    break;
-                case "access":
-                    parseAction("access", "pull", null);
-                        .success(fuction(result) {
+                    break;*/
+               case "access":
+                    parseAction("access", "pull", null)
+                        .success(function(result) {
                             var data = result.data;
                             
                             var units = data.accUnits // an array of names of access units in the database
@@ -157,13 +156,27 @@
                             
                             for(i = 0; i < length; i++){
                                 if(i == 0){
-                                    accunitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                                    accUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
                                 } else {
-                                    accunitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                                    accUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                                }
+                            }
+                            
+                            var users = data.accUsers // an array of names of access units in the database
+                            
+                            var accUserHTML;
+                            var length = users.length;
+                            
+                            for(i = 0; i < length; i++){
+                                if(i == 0){
+                                    accUserHTML += "<option value = " + users[i] + " selected = 'selected'>" + users[i] + "</option>";
+                                } else {
+                                    accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
                                 }
                             }
                             
                             $('#accessUnit').empty().html(accUnitHTML);
+                            $('#accessUser').empty().html(accUserHTML);
                             
                         })
                         .fail(function() {

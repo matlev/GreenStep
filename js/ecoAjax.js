@@ -40,7 +40,7 @@ function parseAction(page, action, data) {
 			}
 		} else if(typeof data === "string"){
 			// A string, assumed to only be one value
-			info += "&0=" + data;
+			info += "&" + data;
 		}
 	}
 	

@@ -12,9 +12,8 @@ connect();
 </div>
 
     <div id="A1" style="margin-left:2%;float:left">
-   1. <select>
-       <option>Project 1</option>
-        <option>Project 2</option>
+   1. <select id="emissionDiv" class="required emissionDiv" name="emissionDiv">
+       <option value="0" selected="selected">N/A</option>
     </select>
    </div>
  <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure">
@@ -27,9 +26,27 @@ connect();
     </select>
   </div>
   <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure">
-
-
 </div>
+<script>
+
+$(document).ready(function(){
+  $('#emissionDiv').on('change', function(){
+    var page = "gsEmissionSources";
+    var action = "pull";
+    var data = "changeDiv=" + $(this).val();
+
+    parseAction(page, action, data)
+    .success(function(result){
+      var users = result.data.scopes;
+      var sourcesHTML;
+      var length = ;
+
+    })
+  })
+
+})
+
+</script>
 
 <br>
 
@@ -108,7 +125,7 @@ connect();
        <br>
        <br>
        <select id="Unit1" name="Unit1">
-               <option value="1" selected="selected">GJs</option>
+                <option value="1" selected="selected">GJs</option>
                 <option value="2">Cubic Meters</option>
                 <option value="3">Cubic Feet</option>
                 <option value="4">MMBTUs</option>
@@ -251,6 +268,8 @@ connect();
 <script>
 $(function () {
   $('#addedit').on('click', function () {
+
+    var data = 
 
     /* Make an AJAX call to the server to grab the proper data and populate the add/edit table
       data[0] = "thename";

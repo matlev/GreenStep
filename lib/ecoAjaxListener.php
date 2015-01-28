@@ -186,16 +186,39 @@
 		case "access":
 			if($action == "pull") {
 				// Pull data from the database
-				$sql = "SELECT * FROM `gb_division` WHERE companyId= (SELECT id FROM gb_company WHERE id =(SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
-				$info = db_query($sql)
+				$divisionID;
+				$sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+				$info = db_query($sql);
 				
 				$rowCounter = 0;
 				while($rslt = $info -> fetch_assoc()){
+					if($rowCounter == 0){
+						$divisionID = $rslt['id'];
+					}
 					$data['accUnits'][$rowCounter] = $rslt['name'];
 			
 					$rowCounter++;
 				}
 			
+				if(isset($_POST['changeUnit'])){
+					$unitName = $_POST['changeUnit'];
+					
+					$sql = "SELECT id FROM gb_division WHERE name LIKE '$unitName' AND companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+					$info = db_query($sql) -> fetch_assoc();
+					
+					$divisionID = $info['id'];
+				}
+			
+				$sql = "SELECT * FROM gb_employee WHERE divisionId = '$divisionID'";
+				$info = db_query($sql);
+				
+				$rowCounter = 0;
+				while($rslt = $info -> fetch_assoc()){
+					$data['accUsers'][$rowCounter] = $rslt['username'];
+			
+					$rowCounter++;
+				}
+
 				$response['data'] = $data;
 			}
 			if($action == "update") {
@@ -212,9 +235,6 @@
 				// Delete the requested corporation from the database
 				
 			}
-			break;
-		default:
-			$response['error'] = "Page " + $page + " currently not supported or doesn't exist";
 			break;
 	}
 
