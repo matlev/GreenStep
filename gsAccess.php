@@ -3,8 +3,8 @@
 <div class = "middle">
 	<form method = "POST" id = "access-form" class = "clearfix">
 
-		<!--START 1st HALF LEFT CLASS-->		
-		<div class = "half left">
+			
+		<div class = "half left"><!-- open first row-->	
 			<div class = "top-tooltip">
 				<p>Set up the authorization levels \n for each business unit</p>
 			</div>
@@ -43,7 +43,7 @@
 			</table>
 
 			
-		<h4 style="float:left">Access Level </h4>
+			<h4 style="float:left">Access Level </h4>
 		
 			<table >
 			
@@ -90,20 +90,20 @@
 				it will allow them to log in and use GobiSoft at the selected authorization level. </p>
 			</div>			
 
-		<!--END 2nd HALF LEFT CLASS-->	
+				<!--END 2nd HALF LEFT CLASS-->	
 
-		<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
-		<div class = "form-controls left clearfix">
-			<button type = "submit">Save</button>
+				<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
+				<div class = "form-controls left clearfix">
+					<button type = "submit">Save</button>
+				</div>
+				<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
+
+				<!--START REQUIRED FIELD CLASS-->
+				<div class = "requiredfield">
+					<p>* Required Field</p>
+				</div>
+				<!--END REQUIRED FIELD CLASS-->	
 		</div>
-		<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
-
-		<!--START REQUIRED FIELD CLASS-->
-		<div class = "requiredfield">
-			<p>* Required Field</p>
-		</div>
-		<!--END REQUIRED FIELD CLASS-->	
-
 	</form>
 </div>
 <!--END MIDDLE CLASS-->	
@@ -117,46 +117,46 @@ $(document).ready(function () {
 
 
 
-	$('#access-form').on('submit', function(e){
-		e.preventDefault();
+				$('#access-form').on('submit', function(e){
+					e.preventDefault();
 
-		var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
-		var page = 'access';
-		var action = 'add';
+					var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
+					var page = 'access';
+					var action = 'add';
 
-		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
-			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
-	});
+					parseAction(page, action, data)
+						.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+						.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
+															});
 
-	
-	$('#accessUnit').on('change', function(){
+					
+					$('#accessUnit').on('change', function(){
 
-		var data = "changeUnit=" + $(this).val();
-		var page = "access";
-		var action = "pull";
-		
-		parseAction(page, action, data)
-			.success(function(result){
-				var users = result.data.accUsers;
-				
-				var accUserHTML;
-				var length = users.length;
-				
-				for(i = 0; i < length; i++){
-					if(i == 0){
-						accUserHTML += "<option value = " + users[i] + " selected = 'selected'>" + users[i] + "</option>";
-					} else {
-						accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
-					}
-				}
-				
-				$('#accessUser').empty().html(accUserHTML);
-			})
-			.fail(function(){});
-	});
+						var data = "changeUnit=" + $(this).val();
+						var page = "access";
+						var action = "pull";
+						
+						parseAction(page, action, data)
+														.success(function(result){
+															var users = result.data.accUsers;
+															
+															var accUserHTML;
+															var length = users.length;
+															
+															for(i = 0; i < length; i++){
+																if(i == 0){
+																	accUserHTML += "<option value = " + users[i] + " selected = 'selected'>" + users[i] + "</option>";
+																} else {
+														 				accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
+																		}
+																						}
+															
+															$('#accessUser').empty().html(accUserHTML);
+																				})
+										.fail(function(){});
+															});
 
-});	
+							});	
 
 
 

@@ -110,10 +110,16 @@
         $("ul.nav-tabs a").click(function (e){
             e.preventDefault(); 
             $(this).tab('show');
+        $('#welcome a').on('click', function(e){
+            e.preventDefault();
 
+            var tabID = $(this).attr('href');
+            $('ul.nav-tabs a[href = ' + tabID + ']').tab('show');
 
             var tabID = $(this).attr('href').slice(1);
+            
 
+            /*********API STARTS HERE***********/
             // Handles nav clicks to load the correct content depending on the requested tab.  Not all tabs need a pull request.
             switch (tabID) {
                 // These do the same thing
@@ -187,11 +193,11 @@
             }
         });
 
-        $('#welcome a').on('click', function(e){
+        /*$('#welcome a').on('click', function(e){
             e.preventDefault();
 
             var tabID = $(this).attr('href');
-            $('ul.nav-tabs a[href = ' + tabID + ']').tab('show');
+            $('ul.nav-tabs a[href = ' + tabID + ']').tab('show');*/
 
             // Calls a pull request for the default sub-tab that is opened when you click on an image (note: not all sub-tabs necessarily require a pull on load)
             switch (tabID) {
