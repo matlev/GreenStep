@@ -43,27 +43,27 @@
 
 			<table >
 				<tr>
-					<td><label for = "measure">Measure</label></td>
+					<td><label for = "access-measure">Measure</label></td>
 					<td>
-						<input type="checkbox" id = "measure" name = "measure"></input>
+						<input type="checkbox" id = "access-measure" name = "measure"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "report">Report</label></td>
+					<td><label for = "access-report">Report</label></td>
 					<td>
-						<input type="checkbox" id = "report" name = "report"></input>
+						<input type="checkbox" id = "access-report" name = "report"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "reduce">Reduce</label></td>
+					<td><label for = "access-reduce">Reduce</label></td>
 					<td>
-						<input type="checkbox" id = "reduce" name = "reduce"></input>
+						<input type="checkbox" id = "access-reduce" name = "reduce"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "reduce">Measure</label></td>
+					<td><label for = "access-offset">Offset</label></td>
 					<td>
-						<input type="checkbox" id = "reduce" name = "reduce"></input>
+						<input type="checkbox" id = "access-offset" name = "offset"></input>
 					</td>
 				</tr>
 				<tr>
