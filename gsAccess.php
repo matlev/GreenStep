@@ -22,8 +22,8 @@
 				<tr>
 					<td><label for = "createUser">Create a User</label></td>
 					<td>
-						<div>
-							<button class="btn btn-danger"  onclick = "triggerClick()">Create User</button>
+						<div class="required">
+							<button type="button" class="btn btn-default">Create User</button>
 						</div>
 					</td>
 				</tr>
@@ -32,8 +32,7 @@
 					<td>
 						<div class="required">
 							<select id = "accessUser" class = "required accessUser" name = "accessUser">
-								<option value = "0" selected = "selected" id="0">N/A</option>
-
+								<option value = "0" selected = "selected">N/A</option>
 							</select>
 						</div>
 					</td>
@@ -46,34 +45,34 @@
 				<tr>
 					<td><label for = "access-measure">Measure</label></td>
 					<td>
-						<input type="checkbox" id = "access-measure" name = "measure" value"measureOn" checked></input>
+						<input type="checkbox" id = "access-measure" name = "measure"></input>
 					</td>
 				</tr>
 				<tr>
 					<td><label for = "access-report">Report</label></td>
 					<td>
-						<input type="checkbox" id = "access-report" value"reportOn" name = "report"></input>
+						<input type="checkbox" id = "access-report" name = "report"></input>
 					</td>
 				</tr>
 				<tr>
 					<td><label for = "access-reduce">Reduce</label></td>
 					<td>
-						<input type="checkbox" id = "access-reduce" value"reduceOn" name = "reduce"></input>
+						<input type="checkbox" id = "access-reduce" name = "reduce"></input>
 					</td>
 				</tr>
 				<tr>
 					<td><label for = "access-offset">Offset</label></td>
 					<td>
-						<input type="checkbox" id = "access-offset" value"offsetOn"name = "offset"></input>
+						<input type="checkbox" id = "access-offset" name = "offset"></input>
 					</td>
 				</tr>
 				<tr>
 					<td><label for ="username">Username</label></td>
-					<td><input type="text" id="username" name = "username"/></td>
+					<td><div class="required"><input type="text" id="username" name = "username"/></div></td>
 				</tr>
 				<tr>
 					<td><label for ="password">Password</label></td>
-					<td><input type="text" id="password" name = "password"/></td>
+					<td><div class="required"><input type="text" id="password" name = "password"/></div></td>
 				</tr>
 			</table>
 
@@ -105,10 +104,6 @@
 
 $(document).ready(function () {
 
-	function triggerClick() {
-		$('#accessUnit').trigger('change');
-	}
-
 	$('#access-form').on('submit', function(e){
 		e.preventDefault();
 
@@ -131,46 +126,24 @@ $(document).ready(function () {
 		parseAction(page, action, data)
 		.success(function(result){
 			var users = result.data.accUsers;
-			 pass = result.data.userPassword;
+
 			var accUserHTML;
-			
 			var length = users.length;
 
 			for(i = 0; i < length; i++){
 				if(i == 0){
 					accUserHTML += "<option value = " + users[i] + " selected = 'selected'>" + users[i] + "</option>";
-					
-		  	
 				} else {
 					accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
-					
-				 
-				 
-
 				}
 			}
-			
- 			
+
 			$('#accessUser').empty().html(accUserHTML);
-			$('#username').val($('#accessUser option:selected').text());
-			 var  userIndex=$('#accessUser option:selected').index();
-                           
-            $('#password').val(pass[userIndex]);                       
 		})
 		.fail(function(){});
 	});
 
-	$('#accessUser').on('change', function(){
-		
-			$('#username').val($('#accessUser option:selected').text());
-			var  userIndex=$('#accessUser option:selected').index();
-			$('#password').val(pass[userIndex]);                         
-			});
 });	
-
-
-
-
 
 
 

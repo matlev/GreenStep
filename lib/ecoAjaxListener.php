@@ -215,7 +215,6 @@
 				$rowCounter = 0;
 				while($rslt = $info -> fetch_assoc()){
 					$data['accUsers'][$rowCounter] = $rslt['username'];
-					$data['userPassword'][$rowCounter] = $rslt['password'];
 			
 					$rowCounter++;
 				}
