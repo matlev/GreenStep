@@ -10,21 +10,18 @@
 /* on the webpage (typically an update request).                       */
 /***********************************************************************/
 
-
 /**
 	Parses the action taken on the ecobase application and returns the result
 
 	@page The active tab calling the action
-	@action The action to take on the database (add, delete, update)
-	@caller The HTML element responsible for calling the function; used for debugging purposes only.  Can be null, but it's suggested to always include $(this) when using this function
+	@action The action to take on the database (add, delete, update, pull)
 	@data Default null, an action may or may not have data to send to the controller to be parsed.  Data can either be an array, a key => value object list or a single item
 
 	@return The success message and any data returned from the server
 */
-function parseAction(page, action, caller = null, data = null) {
-	var server = 'ecoAjaxListener.php';
+function parseAction(page, action, data) {
+	var server = 'lib/ecoAjaxListener.php';
 	var info = "page=" + page + "&action=" + action;
-	var result;
 	
 	if(data != null){
 		if(Array.isArray(data)) {
@@ -37,30 +34,22 @@ function parseAction(page, action, caller = null, data = null) {
 		} else if(data instanceof Object) {
 			// An object list of key => value pairs
 			for(var key in data) {
-				info += "&" + key + "=" data[key];
+				if(data.hasOwnProperty(key)){
+					info += "&" + key + "=" + data[key];
+				}
 			}
 		} else if(typeof data === "string"){
 			// A string, assumed to only be one value
-			info += "&0=" + data;
+			info += "&" + data;
 		}
 	}
 	
-	$.ajax({
+	return $.ajax({
 		url: server,
 		type: 'POST',
 		dataType: 'JSON',
-		data: info,
-		asynchronous: false,
-		success: function(data) {
-			console.log(data); // DEBUG, remove this later
-			result = data;
-		},
-		error: function() {
-			result = "Error handling request " + action + " in tab " + page + " called by element " + caller;
-		}
+		data: info
 	});
-	
-	return result;
 }
 
 Object.size = function(obj) {
