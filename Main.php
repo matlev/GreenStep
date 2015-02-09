@@ -25,7 +25,7 @@
                 <li class="nav-tab-main"><a href="#report">Report</a></li>
                 <li class="nav-tab-main"><a href="#reduce">Reduce</a></li>
                 <li class="nav-tab-main"><a href="#offset">Offset</a></li>
-                <h4 style="float:right; color:red" >Beta V 0.2</h4><a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
+                <h4 style="float:right; color:red" >Beta V 0.5</h4><a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
             </ul>
 
             <div class="tab-content">
@@ -145,9 +145,10 @@
                         .success(function(result) {
                             var data = result.data;
                             
-                            var units = data.accUnits // an array of names of access units in the database
+                            var units = data.accUnits; // an array of names of access units in the database
                             
                             var accUnitHTML;
+
                             var length = units.length;
                             
                             for(i = 0; i < length; i++){
@@ -159,22 +160,33 @@
                             }
                             
                             var users = data.accUsers // an array of names of access units in the database
-                            
+                            var pass = data.userPassword;
                             var accUserHTML;
                             var length = users.length;
                             
                             for(i = 0; i < length; i++){
                                 if(i == 0){
-                                    accUserHTML += "<option value = " + users[i] + " selected = 'selected'>" + users[i] + "</option>";
+                    accUserHTML += "<option value = " + users[i] + " selected = 'selected' >" + users[i] + "</option>";
+                                 
+
+                               
                                 } else {
-                                    accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
+                                accUserHTML += "<option value = " + users[i] +">" + users[i] + "</option>";
+                                   
+
                                 }
                             }
-                            
+                            var pass=data.userPassword;
+
                             $('#accessUnit').empty().html(accUnitHTML);
                             $('#accessUser').empty().html(accUserHTML);
+                            $('#username').val($('#accessUser option:selected').text());
+
+                          var  userIndex=$('#accessUser option:selected').index();
+                           
                             
-                        })
+                          $('#password').val(pass[userIndex]);                       
+    })
                         .fail(function() {
                         
                         });
