@@ -28,8 +28,8 @@
 		</div>
 	</div>
 
-	<div class = "third left" style="float:left; width:18%">
-		<button type = "submit" id = "createBU">Create a new business unit</button>
+	<div class = "third left" style="float:left; width:23%">
+		<button type="submit" id="createBU" class="btn btn-primary"> Create a new business unit </button> 
 	</div>
 
 	<div id = "wrap3" style="float:left">
@@ -105,16 +105,16 @@
 					<tr>
 						<td><label for = "buSelCountry">Country</label></td>
 						<td><select id = "buSelCountry" class = "required selCountry">
-								<option value = "0" selected = "selected">N/A</option>
-								<option value = "1">CANADA</option>
-								<option value = "2">USA</option>
+								<option value = "1" selected = "selected">N/A</option>
+								<option value = "2">Canada</option>
+								<option value = "3">USA</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td><label for = "buSelStateProv">State/Province</label></td>
 						<td>
-							<select id = "buSelStateProv" class = "required selStateProv">
+							<select id = "buSelStateProv" class = "required selStateProv" name = "selStateProv">
 								<option value = "0" selected = "selected">N/A</option>
 							</select>
 						</td>
@@ -277,8 +277,8 @@
 			</div>
 
 			<div class = "form-controls left clearfix">
-					<button type = "submit" value = "save">Save</button>
-					<button type = "submit" value = "delete">Delete</button>
+					<button style=" margin-top: 10%;float:right;" type="button" id="buSave" class="btn btn-primary"> Save </button> 
+					<button style=" margin-top: 10%;float:right;" type="button" id="buDelete" class="btn btn-primary"> Delete </button> 
 			</div>
 		</form>
 	</div>

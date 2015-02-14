@@ -132,25 +132,11 @@
                 case "bu":
                     parseAction("bu", "pull", null)
                         .success(function(data) {
-                            //console.log(data);
-                            load_gsBusiness(data);
-                        })
-                        .fail(function(){
-                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
-                        });
-
-                    break;
-               case "access":
-                    parseAction("access", "pull", null)
-                        .success(function(result) {
-                            var data = result.data;
-                            
+                            console.log(data);
+                            var data = data.data;
                             var units = data.accUnits; // an array of names of access units in the database
-                            
                             var accUnitHTML;
-
                             var length = units.length;
-                            
                             for(i = 0; i < length; i++){
                                 if(i == 0){
                                     accUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
@@ -158,39 +144,64 @@
                                     accUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
                                 }
                             }
-                            
-                            var users = data.accUsers // an array of names of access units in the database
-                            var pass = data.userPassword;
-                            var accUserHTML;
-                            var length = users.length;
-                            
-                            for(i = 0; i < length; i++){
-                                if(i == 0){
-                    accUserHTML += "<option value = " + users[i] + " selected = 'selected' >" + users[i] + "</option>";
-                                 
-
-                               
-                                } else {
-                                accUserHTML += "<option value = " + users[i] +">" + users[i] + "</option>";
-                                   
-
-                                }
-                            }
-                            var pass=data.userPassword;
-
-                            $('#accessUnit').empty().html(accUnitHTML);
-                            $('#accessUser').empty().html(accUserHTML);
-                            $('#username').val($('#accessUser option:selected').text());
-
-                          var  userIndex=$('#accessUser option:selected').index();
-                           
-                            
-                          $('#password').val(pass[userIndex]);                       
-    })
-                        .fail(function() {
-                        
+                            $('#selBU').empty().html(accUnitHTML);
+                            load_gsBusiness(data);
+                        })
+                        .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
                         });
-                
+
+                    break;
+                case "access":
+                    parseAction("access", "pull", null)
+                    .success(function(result) {
+                        var data = result.data;
+
+                        var units = data.accUnits; // an array of names of access units in the database
+                        
+                        var accUnitHTML;
+
+                        var length = units.length;
+                        
+                        for(i = 0; i < length; i++){
+                            if(i == 0){
+                                accUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else {
+                                accUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        
+                        var users = data.accUsers // an array of names of access units in the database
+                        var pass = data.userPassword;
+                        var accUserHTML;
+                        var length = users.length;
+                        
+                        for(i = 0; i < length; i++){
+                            if(i == 0){
+                                accUserHTML += "<option value = " + users[i] + " selected = 'selected' >" + users[i] + "</option>";
+
+
+
+                            } else {
+                                accUserHTML += "<option value = " + users[i] +">" + users[i] + "</option>";
+
+
+                            }
+                        }
+                        var pass=data.userPassword;
+
+                        $('#accessUnit').empty().html(accUnitHTML);
+                        $('#accessUser').empty().html(accUserHTML);
+                        $('#username').val($('#accessUser option:selected').text());
+
+                        var  userIndex=$('#accessUser option:selected').index();
+                        
+                        $('#password').val(pass[userIndex]);                       
+                    })
+                    .fail(function() {
+
+                    });
+
                     break;
             }
         });
@@ -252,10 +263,11 @@
         }
 
         function load_gsBusiness(result) {
-            var data = result.data;
-            $('#BU-name').val(data.bname);
+            var data = result;
+            $('#BU-name').val(data.name);
             $('#BU-addr1').val(data.address);
-            $('#BU-city').val(data.bcity);
+            $('#BU-city').val(data.city);
+            $('#buSelCountry').val(data.cid).trigger('change');
 
         }
     </script>
