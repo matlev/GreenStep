@@ -223,13 +223,27 @@
 				$response['data'] = $data;
 			}
 			if($action == "update") {
-				// Pull data from the database corresponding to the current user
+				// Update an existing row in the database
 
+				$userN=$_POST['username'];
+				$userP=$_POST['password'];
+				$sql = "UPDATE bg_employee SET username ='$userN', password =  '$userP' WHERE divisionId = '$divisionID'  ";
+				if(!db_query($sql)) {
+					$response['actionPerformed'] = "Update was not";
+				} else {
+					$response['actionPerformed'] = "Update";
+				}
 			}
 
 			if($action == "add") {
-				// Push data to the database
-
+				$userN=$_POST['username'];
+				$userP=$_POST['password'];
+				$sql = "INSERT INTO bg_employee VALUES username ='$userN', password = '$userP' , divisionId = '$divisionID'";
+				if(!db_query($sql)) {
+					$response['actionPerformed'] = "Update was not";
+				} else {
+					$response['actionPerformed'] = "Update";
+				}
 			}
 
 			if($action == "delete") {

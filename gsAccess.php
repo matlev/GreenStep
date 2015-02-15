@@ -23,7 +23,7 @@
 					<td><label for = "createUser">Create a User</label></td>
 					<td>
 						<div>
-							<button class="btn btn-danger"  onclick = "triggerClick()">Create User</button>
+							<input type="button" id="clearUser" value="new User">
 						</div>
 					</td>
 				</tr>
@@ -103,24 +103,10 @@
 <script>
 //
 
+
 $(document).ready(function () {
 
-	function triggerClick() {
-		$('#accessUnit').trigger('change');
-	}
-
-	$('#access-form').on('submit', function(e){
-		e.preventDefault();
-
-					var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
-					var page = 'access';
-					var action = 'add';
-
-					parseAction(page, action, data)
-					.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
-					.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
-				});
-
+var newUser="false";	
 
 	$('#accessUnit').on('change', function(){
 
@@ -166,6 +152,42 @@ $(document).ready(function () {
 			var  userIndex=$('#accessUser option:selected').index();
 			$('#password').val(pass[userIndex]);                         
 			});
+
+	$('#access-form').on('submit', function(e){
+		e.preventDefault();
+		if(newUser=="true")
+		{
+		var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
+		var page = 'access';
+		var action = 'add';
+
+		parseAction(page, action, data)
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
+		}else
+		{
+		var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
+		var page = 'access';
+		var action = 'update';
+
+		parseAction(page, action, data)
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
+		}
+	});
+
+	$('#clearUser').click( function(){
+
+		newUser="true";
+ 		$('#username').val(' ');
+ 		
+
+                           
+       $('#password').val('  ');
+
+      
+	});
+
 });	
 
 
