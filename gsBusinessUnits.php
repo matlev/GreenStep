@@ -286,6 +286,27 @@
 <script>
 
 $(document).ready(function(){
+	// Edited fields listeners
+	function addEditedFlagTo(el) {
+		el.addClass('edited');
+	}
+
+	var oldVal;
+	$('select').on('change', function() {
+		if($(this).attr('id') != "selBU") {
+			addEditedFlagTo($(this));
+		}
+	});
+	$('input[type = "text"]')
+		.on('focus', function() {
+			oldVal = $(this).val();
+		})
+		.on('blur', function() {
+			if($(this).val() != oldVal) {
+				addEditedFlagTo($(this));
+			}
+		});
+
   $('.danger').popover({ 
     html : true,
     placement : 'right',
