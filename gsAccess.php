@@ -84,7 +84,9 @@
 			<!--END 2nd HALF LEFT CLASS-->	
 
 			<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
+			
 			<div class = "form-controls left clearfix">
+				<input type="button" id="delete" value="Delete" >
 				<button type = "submit">Save</button>
 			</div>
 			<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
@@ -106,7 +108,7 @@
 
 $(document).ready(function () {
 
-var newUser="false";	
+var newUser="false";
 
 	$('#accessUnit').on('change', function(){
 
@@ -130,13 +132,8 @@ var newUser="false";
 				} else {
 					accUserHTML += "<option value = " + users[i] + ">" + users[i] + "</option>";
 					
-				 
-				 
-
 				}
 			}
-			
- 			
 			$('#accessUser').empty().html(accUserHTML);
 			$('#username').val($('#accessUser option:selected').text());
 			 var  userIndex=$('#accessUser option:selected').index();
@@ -147,11 +144,23 @@ var newUser="false";
 	});
 
 	$('#accessUser').on('change', function(){
+
+		var data = "changeUnit=" +$('#accessUnit').val();
+		var page = "access";
+		var action = "pull";
+
+		parseAction(page, action, data)
+		.success(function(result){
+			var users = result.data.accUsers;
+			 pass = result.data.userPassword;
+			var accUserHTML;
+
 		
 			$('#username').val($('#accessUser option:selected').text());
 			var  userIndex=$('#accessUser option:selected').index();
 			$('#password').val(pass[userIndex]);                         
 			});
+	});
 
 	$('#access-form').on('submit', function(e){
 		e.preventDefault();
@@ -162,7 +171,7 @@ var newUser="false";
 		var action = 'add';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed."); newUser = "false";})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}else
 		{
@@ -174,6 +183,19 @@ var newUser="false";
 			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}
+	});
+	
+	$('#delete').click( function(){
+		
+		var data = "accessUser="+$('#username').val(); // Sets data as a key: value object list of all the form elements
+		var page = 'access';
+		var action = 'delete';
+
+		parseAction(page, action, data)
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");$('#username').val(' ');$('#password').val('  ');})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
+		
+		
 	});
 
 	$('#clearUser').click( function(){

@@ -222,32 +222,49 @@
 
 				$response['data'] = $data;
 			}
+			
 			if($action == "update") {
 				// Update an existing row in the database
-
-				$userN=$_POST['username'];
-				$userP=$_POST['password'];
-				$sql = "UPDATE bg_employee SET username ='$userN', password =  '$userP' WHERE divisionId = '$divisionID'  ";
+				$userID = $_POST['accessUser']; // The name of the user we're updating
+				$userN=$_POST['username']; // The possibly new username
+				$userP=$_POST['password']; // The possibly new password
+				$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP' WHERE username = '$userID'  ";
 				if(!db_query($sql)) {
 					$response['actionPerformed'] = "Update was not";
 				} else {
 					$response['actionPerformed'] = "Update";
 				}
-			}
+			} 
 
 			if($action == "add") {
-				$userN=$_POST['username'];
-				$userP=$_POST['password'];
-				$sql = "INSERT INTO bg_employee VALUES username ='$userN', password = '$userP' , divisionId = '$divisionID'";
+				// Get the ID for the currently selected division (AKA the business unit) that we are adding a user to
+				$divisionID = $_POST['accessUnit'];
+				$dvID = db_query("SELECT id FROM gb_division WHERE name LIKE '$divisionID'") -> fetch_assoc();
+				$divisionID = $dvID['id'];
+
+				// Get the company ID
+				$cID = db_query("SELECT id FROM gb_company WHERE name LIKE '$user'") -> fetch_assoc();
+				$companyID = $cID['id'];
+
+				$userN=sanitize($_POST['username']);
+				$userP=sanitize($_POST['password']);
+				$sql = "INSERT INTO gb_employee (username, password, divisionId, companyId, insertDate) VALUES ('$userN', '$userP', '$divisionID', '$companyID', NOW())";
 				if(!db_query($sql)) {
-					$response['actionPerformed'] = "Update was not";
+					$response['actionPerformed'] = "ADD was not";
 				} else {
-					$response['actionPerformed'] = "Update";
+					$response['actionPerformed'] = "ADD";
 				}
 			}
 
 			if($action == "delete") {
-				// Delete the requested corporation from the database
+				$userID = $_POST['accessUser']; // The name of the user we're deleting
+				$sql = "DELETE FROM gb_employee WHERE username = '$userID' ";
+
+				if(!db_query($sql)) {
+					$response['actionPerformed'] = "delete was not";
+				} else {
+					$response['actionPerformed'] = "delete";
+				}
 				
 			}
 			break;
