@@ -171,7 +171,7 @@ var newUser="false";
 		var action = 'add';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed."); newUser = "false";})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed."); newUser = "false";$("#accessUnit").triggerHandler("change");})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}else
 		{
@@ -192,7 +192,7 @@ var newUser="false";
 		var action = 'delete';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed.");$('#username').val(' ');$('#password').val('  ');})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.");$("#accessUnit").triggerHandler("change");$("#clearUser").triggerHandler("click");})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		
 		
@@ -201,11 +201,11 @@ var newUser="false";
 	$('#clearUser').click( function(){
 
 		newUser="true";
- 		$('#username').val(' ');
+ 		$('#username').val('');
  		
 
                            
-       $('#password').val('  ');
+       $('#password').val('');
 
       
 	});
