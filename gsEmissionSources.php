@@ -1,4 +1,3 @@
-
 <div id= "line1" style="width:100%; margin-top: 2%">
 
   <div class="text" id="Text" style="float:left; width:22%">
@@ -61,6 +60,22 @@
       <br>
       <br>
       <br size="3">User Defined</font>
+      <div name="showthis" style="min-width:600px">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Units</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+
+          <label style="float:left; margin-right:15px; margin-left:15px; font-weight:normal">GJ Conversion Factor</label>
+          <input id="userdefined" type="text" name="conv" style="float:left"/>
+        </div>
+      </div>
     </div>
     <div id="box"  style="width:25%; float:left">
       <br>
@@ -94,7 +109,7 @@
       <br>
       <br>
       <br>
-      <input type="checkbox" id="option61" value="option61" style="margin-left:10%">
+      <input type="checkbox" id="option61" value="option61" style="margin-left:10%" name="userchecked">
       <br>
       <br>         
     </div>
@@ -165,6 +180,22 @@
       <br>
       <br>
       <br size="3">User Defined 2</font>
+      <div name="showthis2" style="min-width:600px">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Units</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+
+          <label style="float:left; margin-right:15px; margin-left:15px; font-weight:normal">GJ Conversion Factor</label>
+          <input id="userdefined" type="text" name="conv" style="float:left"/>
+        </div>
+      </div>
     </div>
     <div id="box"  style="width:25%; float:left">
       <br>
@@ -197,7 +228,7 @@
       <br>
       <br>
       <br>
-      <input type="checkbox" id="option63" value="option61" style="margin-left:10%">
+      <input type="checkbox" id="option63" value="option61" style="margin-left:10%" name="userchecked2">
       <br>
       <br>        
     </div>
@@ -334,7 +365,24 @@
       <br>
       <br>
       <br>
-      <font size="3">User Defined</font><input type="checkbox" id="Defined" value="Defined" style="margin-left:10%">
+      <font size="3">User Defined</font>
+      <input type="checkbox" id="Defined" value="Defined" style="margin-left:10%" name="userchecked3">
+       <div name="showthis3" style="min-width:600px">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Units</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+
+          <label style="float:left; margin-right:15px; margin-left:15px; font-weight:normal">GJ Conversion Factor</label>
+          <input id="userdefined" type="text" name="conv" style="float:left"/>
+        </div>
+      </div>
     </div>
 
     <div id="box"  style="width:25%; float:left">
@@ -424,7 +472,20 @@
       </select>
 
       <font size="3"style="margin-left:5%">User Defined #1</font>
-      <input type="checkbox" name="option24" value="option11"style="margin-left:5%">
+      <input type="checkbox" value="option11"style="margin-left:5%" name="userchecked4">
+       <div name="showthis4" style="min-width:500px; float:right;">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Unit</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+        </div>
+      </div>
       <br>
 
       <font size="3">Garbage</font>
@@ -454,8 +515,21 @@
         <option value="2">GJs</option>
       </select>
 
-      <font size="3"style="margin-left:5%">User Defined #1</font>
-      <input type="checkbox" name="option24" value="option11"style="margin-left:5%">
+      <font size="3"style="margin-left:5%">User Defined #2</font>
+      <input type="checkbox" value="option11"style="margin-left:5%" name="userchecked5">
+      <div name="showthis5" style="min-width:500px; float:right;">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Unit</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+        </div>
+      </div>
       <br>
 
       <font size="3" style="margin-left:1%">Ground</font>
@@ -477,8 +551,21 @@
         <option value="2">GJs</option>
       </select>
 
-      <font size="3"style="margin-left:5%">User Defined #1</font>
-      <input type="checkbox" name="option24" value="option11"style="margin-left:5%">
+      <font size="3"style="margin-left:5%">User Defined #3</font>
+      <input type="checkbox" value="option11"style="margin-left:5%" name="userchecked6">
+      <div name="showthis6" style="min-width:500px; float:right;">
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:15px; font-weight:normal">Name</label>
+          <input id="userdefined" type="text" name="name" style="float:left"/>
+          
+          <label style="float:left; margin-right:52px; margin-left:16px; font-weight:normal">CO2 Coefficient</label>
+          <input id="userdefined" type="text" name="units" style="float:left"/>
+        </div>
+        <div style="clear:both; width:100%">
+          <label style="float:left; margin-right:20px; font-weight:normal">Unit</label>
+          <input id="userdefined" type="text" name="coef" style="float:left"/>
+        </div>
+      </div>
       <br>
 
       <font size="3" style="margin-left:1%">Contractor</font>
@@ -555,6 +642,65 @@ var allRadios = document.getElementsByName('option');
                 }
             };
         }
+//~~~~~~~~~~user defined checkbox
+$(function () {
+        $('div[name="showthis"]').hide();
+        $('div[name="showthis2"]').hide();
+        $('div[name="showthis3"]').hide();
+        $('div[name="showthis4"]').hide();
+        $('div[name="showthis5"]').hide();
+        $('div[name="showthis6"]').hide();
+
+
+        //show fields when the user defined is clicked
+        $('input[name="userchecked"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis"]').fadeIn();
+            } else {
+                $('div[name="showthis"]').hide();
+            }
+        });
+        //show fields when the user defined 2 is clicked
+        $('input[name="userchecked2"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis2"]').fadeIn();
+            } else {
+                $('div[name="showthis2"]').hide();
+            }
+        });
+        //show fields when user defined scope 2 is clicked
+        $('input[name="userchecked3"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis3"]').fadeIn();
+            } else {
+                $('div[name="showthis3"]').hide();
+            }
+        });
+        //show fields when user defined #1 scope 3 is clicked
+        $('input[name="userchecked4"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis4"]').fadeIn();
+            } else {
+                $('div[name="showthis4"]').hide();
+            }
+        });
+        //show fields when user defined #2 scope 3 is clicked
+        $('input[name="userchecked5"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis5"]').fadeIn();
+            } else {
+                $('div[name="showthis5"]').hide();
+            }
+        });
+        //show fields when user defined #3 scope 3 is clicked
+        $('input[name="userchecked6"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('div[name="showthis6"]').fadeIn();
+            } else {
+                $('div[name="showthis6"]').hide();
+            }
+        });
+    });
 
 </script>
 
