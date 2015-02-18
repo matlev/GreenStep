@@ -66,7 +66,7 @@
 
 
 	<div class = "middle" style="float:left">
-		<form method = "POST" id = "BU-form" class = "clearfix">
+		<form method = "POST" autocomplete = "off" id = "BU-form" class = "clearfix">
 			<div class = "half left">
 				<h4 style="float: left">General Information</h4>
 
