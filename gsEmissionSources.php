@@ -7,9 +7,8 @@
   </div>
 
   <div id="A1" style="margin-left:2%;float:left">
-    1.<select>
-      <option>Project 1</option>
-      <option>Project 2</option>
+    1.<select id="esBusUnits" class="required busUnits" name="esBusUnits">
+      <option value="0" selected="selected">N/A</option>
     </select>
   </div>
   <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%;margin-left:1%; cursor: pointer;" title = "Select a unit you wish to measure">
@@ -82,29 +81,29 @@
 
       <text>Single</text><text style="margin-left:7%">Multiple</text>
       <br>
-      <input class="radioBtn" type="radio" data-target-id="single" name="option" data-target-value="multy1" style="margin-left:10%">
+      <input class="radioBtn" type="radio" data-target-id="single" name="option1" data-target-value="multy1" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option1" data-target-value="multy1" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit1" class="my-div me_1" data-target="multy1"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
-      <input class="radioBtn" type="radio" data-target-id="single" name="option" data-target-value="multy2" style="margin-left:10%">
+      <input class="radioBtn" type="radio" data-target-id="single" name="option2" data-target-value="multy2" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option2" data-target-value="multy2" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit2" class="my-div me_2" data-target="multy2"style="color:blue;display:none;">add/edit</text>       
       <br>
       <br>
-      <input class="radioBtn" type="radio" data-target-id="single" name="option" data-target-value="multy3" style="margin-left:10%">
+      <input class="radioBtn" type="radio" data-target-id="single" name="option3" data-target-value="multy3" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option3" data-target-value="multy3" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_3" data-target="multy3"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit3" class="my-div me_3" data-target="multy3"style="color:blue;display:none;">add/edit</text>       
       <br>
       <br>
-      <input class="radioBtn" type="radio" data-target-id="single" name="option" data-target-value="multy4" style="margin-left:10%">
+      <input class="radioBtn" type="radio" data-target-id="single" name="option4" data-target-value="multy4" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option4" data-target-value="multy4" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_4" data-target="multy4"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit4" class="my-div me_4" data-target="multy4"style="color:blue;display:none;">add/edit</text>       
       <br>
       <br>
-      <input class="radioBtn" type="radio" data-target-id="single" name="option" data-target-value="multy5" style="margin-left:10%">
+      <input class="radioBtn" type="radio" data-target-id="single" name="option5" data-target-value="multy5" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option5" data-target-value="multy5" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_5" data-target="multy5"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit5" class="my-div me_5" data-target="multy5"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <br>
@@ -204,27 +203,27 @@
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option6" data-target-value="multy6" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option6" data-target-value="multy6" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_6" data-target="multy6"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit6" class="my-div me_6" data-target="multy6"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option7" data-target-value="multy7" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option7" data-target-value="multy7" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_7" data-target="multy7"style="color:blue;display:none;">add/edit</text>       
+      <text id = "addedit7" class="my-div me_7" data-target="multy7"style="color:blue;display:none;">add/edit</text>       
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option8" data-target-value="multy8" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option8" data-target-value="multy8" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_8" data-target="multy8"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit8" class="my-div me_8" data-target="multy8"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option9" data-target-value="multy9" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option9" data-target-value="multy9" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_9" data-target="multy5"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit9" class="my-div me_9" data-target="multy5"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option5" data-target-value="multy10" style="margin-left:10%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option5" data-target-value="multy10" style="margin-left:30%">
-      <text id = "addedit" class="my-div me_10" data-target="multy10"style="color:blue;display:none;">add/edit</text>
+      <text id = "addedit10" class="my-div me_10" data-target="multy10"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <br>
@@ -271,73 +270,6 @@
   <div id = "scope1MultiAddEditTable"></div>
 
 </div>
-<script>
-  $(function () {
-    $('#addedit').on('click', function () {
-
-    /* Make an AJAX call to the server to grab the proper data and populate the add/edit table
-      data[0] = "thename";
-
-      var response = parseAction("gsEmissionSources", "pull", data, $(this).id);
-      //reponse should be an object list
-
-      */
-
-      var html = "<table id='scrolltable' class='editabletable'>" +
-      "<thead>" +
-      "<tr>" +
-      "<th><div style='width:50px'>Meter</div></th>" +
-      "<th><div style='width:300px'>Name or Description</div></th>" +
-      "</tr>" +
-      "</thead>" +
-      "<tbody>" +
-      "<tr>" +
-      "<td><div style='width:50px'>1</div></td>" +
-      "<td><div contenteditable style='width:300px'></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>2</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>3</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>4</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>5</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>6</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>7</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>8</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>9</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td>10</td>" +
-      "<td><div contenteditable></div></td>" +
-      "</tr>" +
-      "</tbody>" +
-      "</table>";
-
-      $('#scope1MultiAddEditTable').empty().append(html);
-    });
-}); 
-</script>
 
 <!--~~~~~~~~~~~~~~~~~~~SCOPE 2~~~~~~~~~~~~~~~~~~~-->
 
@@ -391,27 +323,27 @@
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option11" data-target-value="multy11" style="margin-left:20%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option11" data-target-value="multy11" style="margin-left:37%">
-      <text class="my-div me_11" data-target="multy11"style="color:blue;display:none;">add/edit</text>
+      <text id="addedit11" class="my-div me_11" data-target="multy11"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option12" data-target-value="multy12" style="margin-left:20%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option12" data-target-value="multy12" style="margin-left:37%">
-      <text class="my-div me_12" data-target="multy12"style="color:blue;display:none;">add/edit</text>
+      <text id="addedit12" class="my-div me_12" data-target="multy12"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option13" data-target-value="multy13" style="margin-left:20%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option13" data-target-value="multy13" style="margin-left:37%">
-      <text class="my-div me_13" data-target="multy13"style="color:blue;display:none;">add/edit</text>
+      <text id="addedit13" class="my-div me_13" data-target="multy13"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option14" data-target-value="multy14" style="margin-left:20%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option14" data-target-value="multy14" style="margin-left:37%">
-      <text class="my-div me_14" data-target="multy14"style="color:blue;display:none;">add/edit</text>
+      <text id="addedit14" class="my-div me_14" data-target="multy14"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <input class="radioBtn" type="radio" data-target-id="single" name="option15" data-target-value="multy15" style="margin-left:20%">
       <input class="radioBtn" type="radio" data-target-id="multy" name="option15" data-target-value="multy15" style="margin-left:37%">
-      <text class="my-div me_15" data-target="multy15"style="color:blue;display:none;">add/edit</text>
+      <text id="addedit15" class="my-div me_15" data-target="multy15"style="color:blue;display:none;">add/edit</text>
       <br>
       <br>
       <br>
@@ -450,8 +382,8 @@
         <option value="2">GJs</option>
       </select>   
     </div>
-
   </div>
+  <div id = "scope2MultiAddEditTable"></div>
 </div>
 
 <!--~~~~~~~~~~~~~~~~~~~SCOPE 3~~~~~~~~~~~~~~~~~~~-->
@@ -615,33 +547,85 @@
 
 });
 
+//~~~~~~~~~~~appearing add/edit text
 $(document).ready(function(){
-     $('.radioBtn').click(function(){
-         
-         var target = $(this).data('target-value');
-        if($(this).data('target-id')=='multy')
-          $('.my-div[data-target="'+target+'"]').show();
-        else  $('.my-div[data-target="'+target+'"]').hide();
-          
-     }); 
+  $(".radioBtn:checked").data("chk",true);
+  $('.radioBtn').click(function(){
+    var target = $(this).data('target-value');
+    if($(this).data('target-id')=='multy'){
+      $('.my-div[data-target="'+target+'"]').show();
+    }
+    else{
+      $('.my-div[data-target="'+target+'"]').hide();
+    }
 
-}); 
+    //~~~~~~~~~~unselect radio button
+    $("input[name='"+$(this).attr("name")+"']:radio").not(this).removeData("chk");
+    $(this).data("chk",!$(this).data("chk"));
+    $(this).prop("checked",$(this).data("chk"));
+  }); 
+});
 
-//~~~~~~~~~~uncheck radio button
-var allRadios = document.getElementsByName('option');
-        var booRadio;
-        var x = 0;
-        for(x = 0; x < allRadios.length; x++){
+//~~~~~~~~~~~~editable table
+$(document).ready(function(){
+  $("text[id^='addedit']").click(function(){
+    var html = "<table id='scrolltable' class='editabletable'>" +
+      "<thead>" +
+      "<tr>" +
+      "<th><div style='width:50px'>Meter</div></th>" +
+      "<th><div style='width:300px'>Name or Description</div></th>" +
+      "</tr>" +
+      "</thead>" +
+      "<tbody>" +
+      "<tr>" +
+      "<td><div style='width:50px'>1</div></td>" +
+      "<td><div contenteditable style='width:300px'></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>2</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>3</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>4</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>5</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>6</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>7</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>8</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>9</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>10</td>" +
+      "<td><div contenteditable></div></td>" +
+      "</tr>" +
+      "</tbody>" +
+      "</table>";
 
-            allRadios[x].onclick = function(){
-                if(booRadio == this){
-                    this.checked = false;
-                    booRadio = null;
-                }else{
-                    booRadio = this;
-                }
-            };
-        }
+      $('#scope1MultiAddEditTable').empty().append(html);
+      $('#scope2MultiAddEditTable').empty().append(html);
+
+  });
+});
+
 //~~~~~~~~~~user defined checkbox
 $(function () {
         $('div[name="showthis"]').hide();

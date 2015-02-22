@@ -203,6 +203,27 @@
                     });
 
                     break;
+                    case "es":
+                    parseAction("es", "pull", null)
+                    .success(function(result){
+                        //console.log(data);
+                        var data = result.data;
+                        var units = data.loadUnits;
+                        var loadUnitHTML;
+                        for(i=0; i < units.length; i++){
+                            if(i == 0){
+                                loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else{
+                                loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        $('#esBusUnits').empty().html(loadUnitHTML);
+                        //load_gsEmissionSources(data);
+                    })
+                    .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
+                    break;
             }
         });
 

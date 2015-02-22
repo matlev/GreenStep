@@ -131,7 +131,7 @@ switch($page) {
 		}
 	break;
 
-	case "gsEmissionSources":
+	case "es":
 		if($action == "update") {
 		// Pull data from the database corresponding to the current user
 
@@ -149,10 +149,7 @@ switch($page) {
 		if($action == "pull") {
 		// Pull data from the database
 
-			if(isset($_POST[0]) && $_POST[0] == "thename") {
-		// grab stuff from the database related to "thename"
-		// set the data to the var $response
-			}
+			
 
 		}
 	break;
@@ -170,6 +167,19 @@ switch($page) {
 
 		if($action == "delete") {
 		// Delete the requested corporation from the database
+			$esBU;
+			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql);
+
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$esBU = $rslt['id'];
+				$data['loadUnits'][$rows] = $rslt['name'];
+
+				$rows++;
+			}
+
+			$response['data'] = $data;
 
 		}
 
