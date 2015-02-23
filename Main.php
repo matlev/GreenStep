@@ -203,27 +203,6 @@
                     });
 
                     break;
-                    case "es":
-                    parseAction("es", "pull", null)
-                    .success(function(result){
-                        //console.log(data);
-                        var data = result.data;
-                        var units = data.loadUnits;
-                        var loadUnitHTML;
-                        for(i=0; i < units.length; i++){
-                            if(i == 0){
-                                loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
-                            } else{
-                                loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
-                            }
-                        }
-                        $('#esBusUnits').empty().html(loadUnitHTML);
-                        //load_gsEmissionSources(data);
-                    })
-                    .fail(function(){
-                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
-                        });
-                    break;
             }
         });
 
@@ -289,6 +268,15 @@
             $('#BU-addr1').val(data.address);
             $('#BU-city').val(data.city);
             $('#buSelCountry').val(data.cid).trigger('change');
+            $('#BU-zip-post').val(data.zip);
+            $('#buSelStateProv').val(data.province);
+            $('#BU-addr2').val(data.address2);
+            $('#BU-baseYear').val(data.baseline);
+            $('#BU-targetYear').val(data.target);
+            $('#redTarget').val(data.percentage);
+            $('#metric1').val(data.custom1Name);
+            $('#metric2').val(data.custom2Name);
+            $('#metric3').val(data.custom3Name);
 
         }
     </script>
