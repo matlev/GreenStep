@@ -148,9 +148,19 @@ switch($page) {
 		}
 		if($action == "pull") {
 		// Pull data from the database
+			$esBU;
+			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql);
 
-			
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$esBU = $rslt['id'];
+				$data['loadUnits'][$rows] = $rslt['name'];
 
+				$rows++;
+			}
+
+			$response['data'] = $data;
 		}
 	break;
 

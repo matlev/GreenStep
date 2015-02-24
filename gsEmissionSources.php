@@ -545,6 +545,10 @@ $(document).ready(function(){
             $("input[name='"+$(this).attr("name")+"']:radio").not(this).removeData("chk");
             $(this).data("chk",!$(this).data("chk"));
             $(this).prop("checked",$(this).data("chk"));
+
+            /*if($('input[data-target-value = ' + $(this).attr('data-target-value') + ']').attr('checked') != "checked"){
+                  $('.my-div[data-target="'+target+'"]').hide();*/
+            }
       }); 
 });
 
