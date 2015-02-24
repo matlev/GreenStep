@@ -14,11 +14,18 @@
 	width: 33%;	
 }
 
+<<<<<<< HEAD
 /*
 .left{
 	float: left;
 }
 */
+=======
+.left{
+	float: left;
+}
+
+>>>>>>> master
 .clearfix:after{
 	clear: both;
 	display: block;
@@ -65,12 +72,29 @@ input.required:after{
 	margin-right: 4px;
 }
 */
+<<<<<<< HEAD
 .form-controls button{
 	float: right;
 	margin: 1% 13% 0 0;
 }
 
 .required:after { 
+=======
+
+.form-controls {
+	background: #e6e6e6;
+	width: 100%;
+	margin: 5px;
+}
+
+.form-controls button{
+	float: right;
+	margin: 5px;
+	margin-right: 13%;
+}
+
+.required::after { 
+>>>>>>> master
 	content:" *"; 
 	font-size: 20px;
 	margin-right: 4px;
@@ -78,6 +102,13 @@ input.required:after{
 
 .requiredfield {
 	float: right;
+<<<<<<< HEAD
+=======
+	margin-right: 40px;
+	margin-top: 20px;
+	margin-bottom: -10px;
+	font-size: 12px;
+>>>>>>> master
 }
 
 #wrap .popover {

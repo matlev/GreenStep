@@ -1,0 +1,23 @@
+#scrolltable{
+	overflow: auto;
+}
+#scrolltable thead, #scrolltable tbody{
+	display: block;
+}
+#scrolltable tbody{
+	height: 100px;
+	overflow:auto;
+}
+#scrolltable table{
+    border-collapse: collapse;
+    width: 100%;
+}
+#scrolltable table, #scrolltable td{
+    border: 1px solid black;
+}
+#scrolltable table, #scrolltable th{
+	border: 0px;
+}
+#scrolltable contenteditable{
+	width: 20px;
+}
