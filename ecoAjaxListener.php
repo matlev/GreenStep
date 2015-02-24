@@ -160,17 +160,6 @@ switch($page) {
 				$rows++;
 			}
 
-			$esUnits;
-			$sql2 = "SELECT * FROM gb_conversion WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";"
-			$info2 = db_query($sql2);
-
-			$rows = 0;
-			while($rslt = $info -> fetch_assoc()){
-				$esUnits = $rslt['id'];
-				$data['loadCoefficients'][$rows] = $rslt['name'];
-
-				$rows++;
-			}
 			$response['data'] = $data;
 		}
 	break;

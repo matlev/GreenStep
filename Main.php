@@ -7,6 +7,7 @@
     <link href="css/getStarted.css" rel="stylesheet">
     <link href="css/reveal.css" rel="stylesheet" >
     <link href="css/excelcss.css" rel="stylesheet">
+    <link href="css/pamcss.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-select.js"></script>
@@ -202,6 +203,45 @@
 
                     });
 
+                    break;
+                    case "es":
+                    
+                    var data;
+                    var bu;
+                    var selBusUnit = $('#esBusUnits').val(); //Grab the value of the business unit if one is avialable (will be 0 if the page is unloaded or no BU's exist)
+
+                    if (selfBusunit == 0 ){
+                        bu = null;
+                    } else {
+                        bu = selBusUnit;
+                    }
+                    // If a business unit exists and is selected, we want to get the selected scope too
+                    if(bu != null) {
+                        var scope = $('#scope').val();
+                        data = "bu=" + bu + "&scope=" + scope;
+                    } else {
+                        data = null;
+                    }
+
+                    parseAction("es", "pull", null)
+                    .success(function(result){
+                        //console.log(data);
+                        var data = result.data;
+                        var units = data.loadUnits;
+                        var loadUnitHTML;
+                        for(i=0; i < units.length; i++){
+                            if(i == 0){
+                                loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else{
+                                loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        $('#esBusUnits').empty().html(loadUnitHTML);
+                        //load_gsEmissionSources(data);
+                    })
+                    .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
                     break;
             }
         });

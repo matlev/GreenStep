@@ -1,0 +1,26 @@
+var esInitCheck = false;
+
+if(esInitcheck){ 
+    parseAction("es", "pull", data)
+        .success(function(result) {
+             esInitCheck = true;
+}  )
+.fail (function(){});
+
+});
+}
+
+  $('#esBusUnits').on('change', function() {
+        var page = "es";
+        var action = "pull";
+        var data = "busUnits=" + $(this).val();
+
+        parseAction(page, action, data)
+            .success(function(result) {
+            //load the page with data stuff (unique to the selected business unit 
+            })
+            .fail(function() {
+            });
+        });
+
+
