@@ -10,8 +10,8 @@ h4 {
 h4.result {
     margin-left: 5%;
     color: #AFD464;
-
 }
+
 p {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -19,6 +19,9 @@ p {
 }
 table{
   margin-left: 1em;
+}
+tr.spaceUnder > td{
+  padding-bottom: 0.5em;
 }
 hr {
   border-top: 3px solid #eee;
