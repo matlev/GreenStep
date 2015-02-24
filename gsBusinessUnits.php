@@ -281,7 +281,7 @@
 				</div>
 				<!--end of tooltip 7-->
 
-				<table class = "table table-bordered table-striped table-condensed" style= "height= 400px;">
+				<table class = "table table-bordered table-striped table-condensed" style= "height: 400px; overflow-y: auto">
 					<thead>
 						<th style="font-weight:normal">Year</th>
 						<th style="font-weight:normal">Revenue or Sales ($)</th>
@@ -403,17 +403,44 @@ $(document).ready(function(){
 	});
 
 	// Table cell click handlers to edit the table contents
-	$('td.editable').on('blur', 'input', function() {
-		var cellData = $(this).val();
-		addEditedFlagTo($(this).parent().parent()); // input -> td -> tr
-		$(this).parent().empty().html(cellData);
-	});
-	$('td.editable').on('click', function() {
-		var cellData = $(this).html();
-		var textInput = "<input type = \"text\" class = \"comparitiveCellEditor\" value = \"" + cellData + "\" style = \"width: 100%;\"/>";
-		$(this).empty().html(textInput);
-		$(this).children().focus();
-	});
+	$('td.editable')
+		.on('blur', 'input', function() {
+			var cellData = $(this).val();
+			addEditedFlagTo($(this).parent().parent()); // input -> td -> tr
+			$(this).parent().empty().html(cellData);
+		})
+		.on('click', function() {
+			// Do the default action if an input already exists in the cell
+			if($(this).children('input').length) {
+				return;
+			}
+
+			var cellData = $(this).html();
+			var textInput = "<input type = \"text\" class = \"comparitiveCellEditor\" value = \"" + cellData + "\" style = \"width: 100%;\"/>";
+			$(this).empty().html(textInput);
+			$(this).children().focus();
+		})
+		.on('keydown', 'input', function(e) {
+			if(e.keyCode == 13) {
+				$(this).trigger('blur');
+			}
+
+			if(e.keyCode == 9) {
+				e.preventDefault();
+				var next = $(this).parent().next();
+
+				// If we're not at the last cell in a row, focus it.  Otherwise, go to the next row - if there is one - and focus the first cell of that row
+				if(next.length) {
+					next.trigger('click');
+				} else {
+					var nextRow = $(this).parent().parent().next();
+
+					if(nextRow.length) {
+						nextRow.children().first().next().trigger('click');
+					}
+				}
+			}
+		});
 
 	$('.danger').popover({ 
 		html : true,
