@@ -260,11 +260,29 @@
 					</div>
 				</div>
 
-				<table class = "table table-bordered table-striped table-condensed">
+				<table class = "table table-bordered table-striped table-condensed" style= "height= 400px;">
 					<thead>
 						<th>Year</th><th>Revenue or Sales ($)</th><th>Customers or Guests</th><th>Employees (FTEs)</th><th>Floor Area (Sq Ft)</th><th><input type = "text" id = "metric1" /></th><th><input type = "text" id = "metric2" /></th><th><input type = "text" id = "metric3" /></th>
 					</thead>
-					<tr>
+					
+					<!-- Set rows for the table-->
+				<!-- 	<?php
+					//$rowCounter=0;
+
+					//get GB_comparative fetch row
+					//$sql = "SELECT * FROM gb_comparative WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user') AND divisionId= 7 ORDER BY year ASC";
+					//$info = db_query($sql);
+
+					//for every year list into a table
+					//while($row= $info -> fetch_assoc())
+					//	{
+					//		$row[$rowCounter];
+							//hard code division ID= 7
+	
+								//Echo table
+					//	}
+					?> -->
+						<tr>
 						<td>2012</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
 					</tr>
 					<tr>
@@ -277,19 +295,79 @@
 			</div>
 
 			<div class = "form-controls left clearfix">
-					<button style=" margin-top: 10%;float:right;" type="button" id="buSave" class="btn btn-primary"> Save </button> 
-					<button style=" margin-top: 10%;float:right;" type="button" id="buDelete" class="btn btn-primary"> Delete </button> 
+					<button style=" margin-top: 5%;float:right; margin-bottom: 5%;" type="button" id="buSave" class="btn btn-primary"> Save </button> 
+					<button style=" margin-top: 5%;float:right; margin-bottom: 5%;" type="button" id="buDelete" class="btn btn-primary"> Delete </button> 
 			</div>
+			<br>
+			<br>
+			<br>
 		</form>
 	</div>
 </div>
 <script>
 
 $(document).ready(function(){
+
+var newUser="false";
 	// Edited fields listeners
 	function addEditedFlagTo(el) {
 		el.addClass('edited');
 	}
+
+	$('#selBU').on('change', function(){
+
+		var data = "changeUnit=" + $(this).val();
+		var page = "bu";
+		var action = "pull";
+
+		parseAction(page, action, data)
+		.success(function(result){
+			var users = result.data.name2;
+			var name= result.data.name2;
+			 city= result.data.city2;
+			 addr= result.data.address3;
+			 addr2= result.data.address4;
+			 zip= result.data.zip2;
+			 baseYear= result.data.baseYear;
+			 targetYear= result.data.targetYear;
+			 redTarget= result.data.redTarget;
+			 prov= result.data.province2;
+			 cid2= result.data.cid2;
+
+			var accUserHTML;
+			
+			var length = users.length;
+
+			for(i = 0; i < length; i++){
+				if(i == 0){
+					accUserHTML += "<option value = " + i + " selected = 'selected'>" + users[i] + "</option>";
+		  	
+				} else {
+					accUserHTML += "<option value = " + i + ">" + users[i] + "</option>";
+					
+				}
+			}
+
+						var e= document.getElementById("selBU");
+						var index= e.options[e.selectedIndex].index;
+
+						$('#BU-name').val(name[index]);
+						$('#BU-city').val(city[index]);
+						$('#BU-addr1').val(addr[index]);
+						$('#BU-addr2').val(addr2[index]);
+						$('#buSelStateProv').val(prov[index]);
+						$('#buSelCountry').val(cid2[index]).trigger('change');
+						$('#BU-zip-post').val(zip[index]);
+						$('#BU-baseYear').val(baseYear[index]);
+						$('#BU-targetYear').val(targetYear[index]);
+						$('#redTarget').val(redTarget[index]);
+						$('#metric2').val(index);
+						$('#metric3').val(index);
+                  
+		})
+		.fail(function(){});
+	});
+
 
 	var oldVal;
 	$('select').on('change', function() {
@@ -358,7 +436,25 @@ $(document).ready(function(){
       return $('#compMetric_wrapper').html();
     	}
   	});
+  $('#createBU').click( function(){
+
+		//Adding new user
+		newUser="true";
+ 		$('#BU-name').val('');
+ 		$('#BU-addr1').val('');
+ 		$('#BU-city').val('');
+ 		$('#BU-zip-post').val('');
+ 		$('#BU-addr2').val('');
+ 		$('#BU-baseYear').val('');
+ 		$('#BU-targetYear').val('');
+ 		$('#redTarget').val('');
+ 		$('#buSelCountry').val('1');
+ 		$('buSelStateProv').val('1');
+ 	});
+
   $(function(){ $('#BU').popover(); });
+
+
 
 });
 </script>

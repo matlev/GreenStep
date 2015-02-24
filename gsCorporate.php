@@ -8,11 +8,11 @@
 
 		<!--START 1st HALF LEFT CLASS-->		
 		<div class = "half left">
-			<h4 style="float: left">General Information</h4>
+			<h4 style="float: left"><u>General Information</u></h4>
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (General Information-->
 
-			<div id = "wrap2" style="float: left">
+			<div id = "wrap2" style="float: left; margin-top:23px">
 				<button type="button" id="test" class="general" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="general_wrapper" style="display: none">
 					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -28,27 +28,27 @@
 
 			<table>
 				<tr>
-					<td><label for ="corp-name">Corporate Name</label></td>
+					<td><label for ="corp-name" style="font-weight:normal">Corporate Name</label></td>
 					<td><div class="required"><input type="text" id="corp-name" name = "corpname"/></div></td>
 				</tr>
 				<tr>
-					<td><label for = "trade-name">Trade Name</label></td>
+					<td><label for = "trade-name" style="font-weight:normal">Trade Name</label></td>
 					<td><input type = "text" id = "trade-name" class = "" name = "tradename"/></td>
 				</tr>
 				<tr>
-					<td><label for = "addr1">Address 1</label></td>
+					<td><label for = "addr1" style="font-weight:normal">Address 1</label></td>
 					<td><input type = "text" id = "addr1" class = "" name = "addr1"/></td>
 				</tr>
 				<tr>
-					<td><label for = "addr2">Address 2</label></td>
+					<td><label for = "addr2" style="font-weight:normal">Address 2</label></td>
 					<td><input type = "text" id = "addr2" class = "" name = "addr2"/></td>				
 				</tr>
 				<tr>
-					<td><label for = "city">City</label></td>
+					<td><label for = "city" style="font-weight:normal">City</label></td>
 					<td><input type = "text" id = "city" class = "" name = "city"/></td>
 				</tr>			
 				<tr>
-					<td><label for = "corpSelCountry">Country</label></td>
+					<td><label for = "corpSelCountry" style="font-weight:normal">Country</label></td>
 					<td>
 						<div class="required">
 							<select id = "corpSelCountry" class = "required selCountry" name = "selCountry">
@@ -60,7 +60,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "corpSelStateProv">State/Province</label></td>
+					<td><label for = "corpSelStateProv" style="font-weight:normal">State/Province</label></td>
 					<td>
 						<div class="required">
 							<select id = "corpSelStateProv" class = "required selStateProv" name = "selStateProv">
@@ -70,19 +70,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "zip-post">Zip/Postal Code</label></td>
+					<td><label for = "zip-post" style="font-weight:normal">Zip/Postal Code</label></td>
 					<td><input type = "text" id = "zip-post" class = "" name = "zippost"/></td>
 				</tr>
 				<tr>
-					<td><label for = "weburl">Website URL</label></td>
+					<td><label for = "weburl" style="font-weight:normal">Website URL</label></td>
 					<td><input type = "text" id = "weburl" class = "" name = "weburl"/></td>
 				</tr>
 			</table>
 
-			<h4 style="float:left">Emission Reduction Target </h4>
+			<h4 style="float:left"><u>Emission Reduction Target</u></h4>
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (Emission Reduction Target)-->
-			<div id = "wrap2" style="float: left">
+			<div id = "wrap2" style="float: left; margin-top:23px">
 				<button type="button" id="test" class="erTarget" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="erTarget_wrapper" style="display: none">
 					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
@@ -100,7 +100,7 @@
 
 			<table>
 				<tr>
-					<td><label for = "baseYear">Base Year</label></td>
+					<td><label for = "baseYear" style="font-weight:normal">Base Year</label></td>
 					<td>
 						<select id = "baseYear" name = "baseYear">
 							<?php
@@ -112,11 +112,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "reducTar">Reduction Target (%)</label></td>
+					<td><label for = "reducTar" style="font-weight:normal">Reduction Target (%)</label></td>
 					<td><input type = "text" id = "reducTar" class = "" name = "reducTar"/></td>
 				</tr>
 				<tr>
-					<td><label for = "targetYear">Target Year</label></td>
+					<td><label for = "targetYear" style="font-weight:normal">Target Year</label></td>
 					<td>
 						<select id = "targetYear" name = "targetYear">
 							<?php
@@ -133,10 +133,10 @@
 
 		<!--START HALF LEFT CLASS-->
 		<div class = "half left">
-			<h4 style="float:left">GHG Champion</h4>
+			<h4 style="float:left"><u>GHG Champion</u></h4>
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (GHG Champion)-->
-			<div id = "wrap2" style="float: left">
+			<div id = "wrap2" style="float: left; margin-top:23px">
 				<button type="button" id="test" class="ghgChamp" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="ghgChamp_wrapper" style="display: none">
 					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
@@ -150,27 +150,27 @@
 
 			<table>
 				<tr>
-					<td><label for = "champname">Name</label></td>
+					<td><label for = "champname" style="font-weight:normal">Name</label></td>
 					<td><input type = "text" id = "champname" class = "" name = "champname"/></td>
 				</tr>
 				<tr>
-					<td><label for = "champtitle">Title</label></td>
+					<td><label for = "champtitle" style="font-weight:normal">Title</label></td>
 					<td><input type = "text" id = "champtitle" class = "" name = "champtitle"/></td>
 				</tr>
 				<tr>
-					<td><label for = "champtelnum">Phone Number</label></td>
+					<td><label for = "champtelnum" style="font-weight:normal">Phone Number</label></td>
 					<td><input type = "tel" id = "champtelnum" class = "" name = "champtelnum"/></td>
 				</tr>
 				<tr>
-					<td><label for = "champemail">Email</label></td>
+					<td><label for = "champemail" style="font-weight:normal">Email</label></td>
 					<td><input type = "email" id = "champemail" class = "" name = "champemail"/></td>
 				</tr>
 			</table>
 
-			<h4 style="float:left">GHG Accountant</h4>
+			<h4 style="float:left"><u>GHG Accountant</u></h4>
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (GHG Accountant)-->
-			<div id = "wrap2" style="float: left">
+			<div id = "wrap2" style="float: left; margin-top:23px">
 				<button type="button" id="test" class="ghgAccount" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="ghgAccount_wrapper" style="display: none">
 					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
@@ -185,28 +185,28 @@
 
 			<table>
 				<tr>
-					<td><label for = "accountname">Name</label></td>
+					<td><label for = "accountname" style="font-weight:normal">Name</label></td>
 					<td><input type = "text" id = "accountname" class = "" name = "accountname"/></td>
 				</tr>
 				<tr>
-					<td><label for = "accounttitle">Title</label></td>
+					<td><label for = "accounttitle" style="font-weight:normal">Title</label></td>
 					<td><input type = "text" id = "accounttitle" class = "" name = "accounttitle"/></td>
 				</tr>
 				<tr>
-					<td><label for = "accounttelnum">Phone Number</label></td>
+					<td><label for = "accounttelnum" style="font-weight:normal">Phone Number</label></td>
 					<td><input type = "tel" id = "accounttelnum" class = "" name = "accounttelnum"/></td>
 				</tr>
 				<tr>
-					<td><label for = "accountemail">Email</label></td>
+					<td><label for = "accountemail" style="font-weight:normal">Email</label></td>
 					<td><input type = "email" id = "accountemail" class = "" name = "accountemail"/></td>
 				</tr>
 			</table>
 
-			<h4 style="float:left">Reporting Year</h4>
+			<h4 style="float:left"><u>Reporting Year</u></h4>
 
 			<!--START BS-EXAMPLE-TOOLTIPS CLASS (Reporting Year)-->
 
-			<div id = "wrap2" style="float: left">
+			<div id = "wrap2" style="float: left; margin-top:23px">
 				<button type="button" id="test" class="reportYear" data-container="#wrap2" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 				<div id="reportYear_wrapper" style="display: none">
 					<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 27%">
@@ -222,7 +222,7 @@
 
 			<table>
 				<tr>
-					<td><label for = "yearEnd">Year End</label></td>
+					<td><label for = "yearEnd" style="font-weight:normal">Year End</label></td>
 					<td><!-- Month dropdown -->
 						<select name="yearEndMonth" id="yearEnd" onchange="" size="1">
 							<option value="1">January</option>
@@ -279,17 +279,23 @@
 		</div>
 		<!--END 2nd HALF LEFT CLASS-->	
 
-		<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
-		<div class = "form-controls left clearfix">
-			<button type = "submit">Save</button>
-		</div>
-		<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
-
 		<!--START REQUIRED FIELD CLASS-->
 		<div class = "requiredfield">
 			<p>* Required Field</p>
 		</div>
-		<!--END REQUIRED FIELD CLASS-->	
+		<!--END REQUIRED FIELD CLASS-->
+
+		<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
+		<!--button box-->
+	
+		<div class = "form-controls left clearfix">
+			<button type = "submit" id="myButton" class="btn btn-primary">Save</button>
+		</div>
+		
+		
+		<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
+
+			
 
 	</form>
 </div>

@@ -151,6 +151,7 @@ switch($page) {
 			$esBU;
 			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
 			$info = db_query($sql);
+<<<<<<< HEAD
 
 			$rows = 0;
 			while($rslt = $info -> fetch_assoc()){
@@ -171,6 +172,17 @@ switch($page) {
 
 				$rows++;
 			}
+=======
+
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$esBU = $rslt['id'];
+				$data['loadUnits'][$rows] = $rslt['name'];
+
+				$rows++;
+			}
+
+>>>>>>> origin/master
 			$response['data'] = $data;
 		}
 	break;
@@ -222,6 +234,12 @@ switch($page) {
 			$rslt = db_query($sql);
 			$num_row1 = $rslt -> num_rows;
 
+			$sql1 = "SELECT * FROM gb_comparative WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$rslt1 = db_query($sql1);
+
+			$sql2 = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql2);
+
 			// if business units have no data
 			if($num_row1 == 0)
 			{
@@ -268,6 +286,7 @@ switch($page) {
 			else
 			{
 				$rslt = $rslt -> fetch_assoc();
+				$rslt1= $rslt1 -> fetch_assoc();
 
 				// General Information
 				$data['id'] = $rslt['id'];
@@ -275,6 +294,34 @@ switch($page) {
 				$data['name'] = $rslt['name'];
 				$data['cid'] = $rslt['countryId'];
 				$data['address'] = $rslt['address'];
+				$data['address2'] = $rslt['address2'];
+				$data['zip']= $rslt['postal'];
+				$data['province']= $rslt['province'];
+				$data['baseline'] = $rslt['baseline'];
+				$data['percentage'] = $rslt['percentage'];
+				$data['target'] = $rslt['target'];
+				
+
+				//Table data from Comparative
+				$data['custom1Name']= $rslt1['custom1Name'];
+				$data['custom2Name']= $rslt1['custom2Name'];
+				$data['custom3Name']= $rslt1['custom3Name'];
+				$data['year']=$rslt1['year'];
+
+			$rowCounter = 0;
+			while($rslt2 = $info -> fetch_assoc()){
+				$data['name2'][$rowCounter] = $rslt2['name'];
+				$data['city2'][$rowCounter] = $rslt2['city'];
+				$data['address3'][$rowCounter] = $rslt2['address'];
+				$data['address4'][$rowCounter] = $rslt2['address2'];
+				$data['cid2'][$rowCounter] = $rslt2['countryId'];
+				$data['zip2'][$rowCounter] = $rslt2['postal'];
+				$data['province2'][$rowCounter] = $rslt2['province'];
+				$data['baseYear'][$rowCounter] = $rslt2['baseline'];
+				$data['redTarget'][$rowCounter] = $rslt2['percentage'];
+				$data['targetYear'][$rowCounter] = $rslt2['target'];
+				$rowCounter++;
+			}
 
 				$response['data'] = $data;
 			}
@@ -288,6 +335,7 @@ switch($page) {
 			$sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
 			$info = db_query($sql);
 
+
 			$rowCounter = 0;
 			while($rslt = $info -> fetch_assoc()){
 				if($rowCounter == 0){
@@ -298,6 +346,7 @@ switch($page) {
 				$rowCounter++;
 			}
 
+
 			if(isset($_POST['changeUnit'])){
 				$unitName = $_POST['changeUnit'];
 
@@ -306,6 +355,7 @@ switch($page) {
 
 				$divisionID = $info['id'];
 			}
+
 
 			$sql = "SELECT * FROM gb_employee WHERE divisionId = '$divisionID'";
 			$info = db_query($sql);

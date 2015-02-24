@@ -205,6 +205,7 @@
 
                     break;
                     case "es":
+<<<<<<< HEAD
                     
                     var data;
                     var bu;
@@ -223,6 +224,8 @@
                         data = null;
                     }
 
+=======
+>>>>>>> origin/master
                     parseAction("es", "pull", null)
                     .success(function(result){
                         //console.log(data);
@@ -308,6 +311,15 @@
             $('#BU-addr1').val(data.address);
             $('#BU-city').val(data.city);
             $('#buSelCountry').val(data.cid).trigger('change');
+            $('#BU-zip-post').val(data.zip);
+            $('#buSelStateProv').val(data.province);
+            $('#BU-addr2').val(data.address2);
+            $('#BU-baseYear').val(data.baseline);
+            $('#BU-targetYear').val(data.target);
+            $('#redTarget').val(data.percentage);
+            $('#metric1').val(data.custom1Name);
+            $('#metric2').val(data.custom2Name);
+            $('#metric3').val(data.custom3Name);
 
         }
     </script>
