@@ -292,33 +292,13 @@
 						<th style="font-weight:normal"><input type = "text" id = "metric2" /></th>
 						<th style="font-weight:normal"><input type = "text" id = "metric3" /></th>
 					</thead>
-					
-					<!-- Set rows for the table-->
-				<!-- 	<?php
-					//$rowCounter=0;
-
-					//get GB_comparative fetch row
-					//$sql = "SELECT * FROM gb_comparative WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user') AND divisionId= 7 ORDER BY year ASC";
-					//$info = db_query($sql);
-
-					//for every year list into a table
-					//while($row= $info -> fetch_assoc())
-					//	{
-					//		$row[$rowCounter];
-							//hard code division ID= 7
-	
-								//Echo table
-					//	}
-					?> -->
-						<tr>
-						<td>2012</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-					</tr>
-					<tr>
-						<td>2013</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-					</tr>
-					<tr>
-						<td>2014</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-					</tr>
+					<?php
+						$html;
+						for($i = 2000; $i < 2026; $i++) {
+							echo "<tr class = \"$i\"><td>$i</td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td></tr>";
+						}
+						//echo $html;
+					?>
 				</table>
 			</div>
 
@@ -345,7 +325,8 @@
 
 $(document).ready(function(){
 
-var newUser="false";
+	var newUser="false";
+
 	// Edited fields listeners
 	function addEditedFlagTo(el) {
 		el.addClass('edited');
@@ -358,53 +339,52 @@ var newUser="false";
 		var action = "pull";
 
 		parseAction(page, action, data)
-		.success(function(result){
-			var users = result.data.name2;
-			var name= result.data.name2;
-			 city= result.data.city2;
-			 addr= result.data.address3;
-			 addr2= result.data.address4;
-			 zip= result.data.zip2;
-			 baseYear= result.data.baseYear;
-			 targetYear= result.data.targetYear;
-			 redTarget= result.data.redTarget;
-			 prov= result.data.province2;
-			 cid2= result.data.cid2;
+			.success(function(result){
+				var users = result.data.name2;
+				var name= result.data.name2;
+				city= result.data.city2;
+				addr= result.data.address3;
+				addr2= result.data.address4;
+				zip= result.data.zip2;
+				baseYear= result.data.baseYear;
+				targetYear= result.data.targetYear;
+				redTarget= result.data.redTarget;
+				prov= result.data.province2;
+				cid2= result.data.cid2;
 
-			var accUserHTML;
-			
-			var length = users.length;
+				var accUserHTML;
 
-			for(i = 0; i < length; i++){
-				if(i == 0){
-					accUserHTML += "<option value = " + i + " selected = 'selected'>" + users[i] + "</option>";
-		  	
-				} else {
-					accUserHTML += "<option value = " + i + ">" + users[i] + "</option>";
-					
+				var length = users.length;
+
+				for(i = 0; i < length; i++){
+					if(i == 0){
+						accUserHTML += "<option value = " + i + " selected = 'selected'>" + users[i] + "</option>";
+
+					} else {
+						accUserHTML += "<option value = " + i + ">" + users[i] + "</option>";
+
+					}
 				}
-			}
 
-						var e= document.getElementById("selBU");
-						var index= e.options[e.selectedIndex].index;
+				var e= document.getElementById("selBU");
+				var index= e.options[e.selectedIndex].index;
 
-						$('#BU-name').val(name[index]);
-						$('#BU-city').val(city[index]);
-						$('#BU-addr1').val(addr[index]);
-						$('#BU-addr2').val(addr2[index]);
-						$('#buSelStateProv').val(prov[index]);
-						$('#buSelCountry').val(cid2[index]).trigger('change');
-						$('#BU-zip-post').val(zip[index]);
-						$('#BU-baseYear').val(baseYear[index]);
-						$('#BU-targetYear').val(targetYear[index]);
-						$('#redTarget').val(redTarget[index]);
-						$('#metric2').val(index);
-						$('#metric3').val(index);
-                  
-		})
-		.fail(function(){});
+				$('#BU-name').val(name[index]);
+				$('#BU-city').val(city[index]);
+				$('#BU-addr1').val(addr[index]);
+				$('#BU-addr2').val(addr2[index]);
+				$('#buSelStateProv').val(prov[index]);
+				$('#buSelCountry').val(cid2[index]).trigger('change');
+				$('#BU-zip-post').val(zip[index]);
+				$('#BU-baseYear').val(baseYear[index]);
+				$('#BU-targetYear').val(targetYear[index]);
+				$('#redTarget').val(redTarget[index]);
+				$('#metric2').val(index);
+				$('#metric3').val(index);
+
+			})
+			.fail(function(){});
 	});
-
 
 	var oldVal;
 	$('select').on('change', function() {
@@ -413,85 +393,97 @@ var newUser="false";
 		}
 	});
 	$('input[type = "text"]')
-		.on('focus', function() {
-			oldVal = $(this).val();
-		})
-		.on('blur', function() {
-			if($(this).val() != oldVal) {
-				addEditedFlagTo($(this));
-			}
-		});
+	.on('focus', function() {
+		oldVal = $(this).val();
+	})
+	.on('blur', function() {
+		if($(this).val() != oldVal) {
+			addEditedFlagTo($(this));
+		}
+	});
 
-  $('.danger').popover({ 
-    html : true,
-    placement : 'right',
-    content: function() {
-      return $('#popover_content_wrapper').html();
-    }
-  });
-  $('.createBU').popover({ 
-    html : true,
-    placement : 'right',
-    content: function() {
-      return $('#createBU_wrapper').html();
-    }
-  });
-  $('.editBU').popover({ 
-    html : true,
-    placement : 'right',
-    content: function() {
-      return $('#editBU_wrapper').html();
-    }
-  });
-  $('.industryGroup').popover({ 
-    html : true,
-    placement : 'top',
-    content: function() {
-      return $('#industryGroup_wrapper').html();
-    }
-  });
+	// Table cell click handlers to edit the table contents
+	$('td.editable').on('blur', 'input', function() {
+		var cellData = $(this).val();
+		addEditedFlagTo($(this).parent().parent()); // input -> td -> tr
+		$(this).parent().empty().html(cellData);
+	});
+	$('td.editable').on('click', function() {
+		var cellData = $(this).html();
+		var textInput = "<input type = \"text\" class = \"comparitiveCellEditor\" value = \"" + cellData + "\" style = \"width: 100%;\"/>";
+		$(this).empty().html(textInput);
+		$(this).children().focus();
+	});
 
-  $('.genBU').popover({ 
-    html : true,
-    placement : 'right',
-    content: function() {
-      return $('#genBU_wrapper').html();
-    	}
-  	});
+	$('.danger').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#popover_content_wrapper').html();
+		}
+	});
+	$('.createBU').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#createBU_wrapper').html();
+		}
+	});
+	$('.editBU').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#editBU_wrapper').html();
+		}
+	});
+	$('.industryGroup').popover({ 
+		html : true,
+		placement : 'top',
+		content: function() {
+			return $('#industryGroup_wrapper').html();
+		}
+	});
 
-  $('.ert').popover({ 
-    html : true,
-    placement : 'top',
-    content: function() {
-      return $('#ert_wrapper').html();
-    	}
-  	});
-  $('.compMetric').popover({ 
-    html : true,
-    placement : 'top',
-    content: function() {
-      return $('#compMetric_wrapper').html();
-    	}
-  	});
-  $('#createBU').click( function(){
+	$('.genBU').popover({ 
+		html : true,
+		placement : 'right',
+		content: function() {
+			return $('#genBU_wrapper').html();
+		}
+	});
 
+	$('.ert').popover({ 
+		html : true,
+		placement : 'top',
+		content: function() {
+			return $('#ert_wrapper').html();
+		}
+	});
+	$('.compMetric').popover({ 
+		html : true,
+		placement : 'top',
+		content: function() {
+			return $('#compMetric_wrapper').html();
+		}
+	});
+
+	$('#createBU').click(function() {
 		//Adding new user
 		newUser="true";
- 		$('#BU-name').val('');
- 		$('#BU-addr1').val('');
- 		$('#BU-city').val('');
- 		$('#BU-zip-post').val('');
- 		$('#BU-addr2').val('');
- 		$('#BU-baseYear').val('');
- 		$('#BU-targetYear').val('');
- 		$('#redTarget').val('');
- 		$('#buSelCountry').val('1');
- 		$('buSelStateProv').val('1');
- 	});
 
-  $(function(){ $('#BU').popover(); });
+		$('#BU-name').val('');
+		$('#BU-addr1').val('');
+		$('#BU-city').val('');
+		$('#BU-zip-post').val('');
+		$('#BU-addr2').val('');
+		$('#BU-baseYear').val('');
+		$('#BU-targetYear').val('');
+		$('#redTarget').val('');
+		$('#buSelCountry').val('1');
+		$('buSelStateProv').val('1');
+	});
 
-
+	$(function(){ $('#BU').popover(); });
 
 });
 </script>
