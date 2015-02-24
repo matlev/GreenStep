@@ -1,27 +1,24 @@
+<div class = "top-tooltip" style="margin-top:20px; padding-bottom:16px">    
+      	<div id="esBu" style="margin-left:1%;float:left; width: 45.5%">
+      		<font color="#AFD464">Set up the emision sources you wish to</font>
+      		<img src="img/help.png" style="width:2.8%">
+      		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		1.<select id="esBusUnits" class="required busUnits" name="esBusUnits">
+            	<option value="0" selected="selected">N/A</option>
+            </select>
+            <img src="img/help.png" style="width:2.7%">
+      	</div>
 
-<p>
-	<div id="esBu" style="margin-left:1%;float:left; width: 45.5%">
-		<font color="#AFD464">Set up the emision sources you wish to</font>
-		<img src="img/help.png" style="width:2.8%">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		1.<select id="esBusUnits" class="required busUnits" name="esBusUnits">
-      	<option value="0" selected="selected">N/A</option>
-      </select>
-      <img src="img/help.png" style="width:2.7%">
-	</div>
-
-	<div id ="esScope" style="float:left; width: 25%">
-		2.<select id ="scope" name="scope" style="margin-left:0.5%">
-		<option value="1">Scope 1 Stationary - Direct Emission</option>
-		<option value="2">Scope 2 Mobile - Indirect Emission</option>
-		<option value="3">Scope 3 Mobile - Indirect Emission</option>
-		</select>
-		<img src="img/help.png" style="width:5.3%">
-	</div><br>
-      <font color="#AFD464" style="margin-left:11px"> track for each business unit</font>
-</p>
-
-<hr style="margin-top:0%">
+      	<div id ="esScope" style="float:left; width: 25%">
+      		2.<select id ="scope" name="scope" style="margin-left:0.5%">
+      		<option value="1">Scope 1 Stationary - Direct Emission</option>
+      		<option value="2">Scope 2 Mobile - Indirect Emission</option>
+      		<option value="3">Scope 3 Mobile - Indirect Emission</option>
+      		</select>
+      		<img src="img/help.png" style="width:5.3%">
+      	</div><br>
+            <font color="#AFD464" style="margin-left:11px"> track for each business unit</font>
+</div>
 
 <form method="POST" id="es-form1" class="clearfix">
       <!--~~~~~~~~~~~~~~~~~~SCOPE 1~~~~~~~~~~~~~~~~~~-->
@@ -508,7 +505,9 @@
 
             </div>
       </div>
-      <button style=" margin-top: 10%;float:right;" type="button" id="myButton" class="btn btn-primary"> Save </button>
+      <div class = "form-controls left" style="margin-top:20px">
+            <button type="button" id="myButton" class="btn btn-primary" style="width:100px"> Save </button>
+      </div>
 </form>
 
 <script>

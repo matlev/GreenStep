@@ -1,105 +1,92 @@
+<!--START TOP CLASS-->
+<div class = "top-tooltip clearfix">
+	<div class = "third left" style="width:25%">
+		<p>Set up the authorization levels for each business unit</p>
+	</div>
 
-<!--START MIDDLE CLASS-->
-<div class = "middle">
+	<div style="float:left; width:19.5%; margin-left:20px; padding-top:25px">
+		1.&nbsp;&nbsp;&nbsp;<select id = "accessUnit" class = "required accessUnit" name = "accessUnit">
+			<option value = "0" selected = "selected">N/A</option>
+		</select>
+	</div>
+
+	<div style="float:left; width:19.5%; padding-top:25px">
+		2.&nbsp;&nbsp;&nbsp;<input type="button" id="clearUser" value="Create a new user class" style="width:180px">
+	</div>
+	<br>
+	<div style="margin-right:40%;float:right; width: 13.8%">
+		or&nbsp;&nbsp;&nbsp;<select id = "accessUser" class = "required accessUser" name = "accessUser">
+			<option value = "0" selected = "selected" id="0">N/A</option>
+		</select>
+	</div>
+</div>
 
 	<form method = "POST" id = "access-form" class = "clearfix">
-		<div class = "half left"><!-- open first row-->	
-			<div class = "top-tooltip">
-				<p>Set up the authorization levels \n for each business unit</p>
-			</div>
-			<!--START 1st Line-->
-			<table>
-				<tr>
-					<td><label for = "accessUnit">Select Unit</label></td>
-					<td>
-						<div class="required">
-							<select id = "accessUnit" class = "required accessUnit" name = "accessUnit">
-								<option value = "0" selected = "selected">N/A</option>
-							</select>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><label for = "createUser">Create a User</label></td>
-					<td>
-						<div>
-							<input type="button" id="clearUser" value="new User">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><label for = "accessUser">Select User</label></td>
-					<td>
-						<div class="required">
-							<select id = "accessUser" class = "required accessUser" name = "accessUser">
-								<option value = "0" selected = "selected" id="0">N/A</option>
-
-							</select>
-						</div>
-					</td>
-				</tr>
-			</table>
-
-			<h4 style="float:left">Access Level </h4>
+		<div><!-- open first row-->	
+			
+			<h4 style="float:left"><u>Access Level</u></h4>
 
 			<table >
 				<tr>
-					<td><label for = "access-measure">Measure</label></td>
+					<td><label for = "access-measure" style="font-weight:normal">Measure</label></td>
 					<td>
 						<input type="checkbox" id = "access-measure" name = "measure" value"measureOn" checked></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-report">Report</label></td>
+					<td><label for = "access-report" style="font-weight:normal">Report</label></td>
 					<td>
 						<input type="checkbox" id = "access-report" value"reportOn" name = "report"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-reduce">Reduce</label></td>
+					<td><label for = "access-reduce" style="font-weight:normal">Reduce</label></td>
 					<td>
 						<input type="checkbox" id = "access-reduce" value"reduceOn" name = "reduce"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-offset">Offset</label></td>
+					<td><label for = "access-offset" style="font-weight:normal">Offset</label></td>
 					<td>
 						<input type="checkbox" id = "access-offset" value"offsetOn"name = "offset"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for ="username">Username</label></td>
+					<td><label for ="username" style="font-weight:normal">Username</label></td>
 					<td><input type="text" id="username" name = "username"/></td>
 				</tr>
 				<tr>
-					<td><label for ="password">Password</label></td>
+					<td><label for ="password" style="font-weight:normal">Password</label></td>
 					<td><input type="text" id="password" name = "password"/></td>
 				</tr>
 			</table>
 
-			<div class = "top-tooltip">
-				<p>Provide the URL below to users who have been set up for limited access. it will allow them to log in and use GobiSoft at the selected authorization level. </p>
-			</div>			
+			<br>
+
+			<div style="margin-left:15px">
+				<text style="font-size:16px">Provide the URL below to users who have been set up for limited access. 
+					<br>It will allow them to log in and use GobiSoft at the selected authorization level.
+					<br><a href="http://www.ecobase.net/ecobase-user-limited-access-login">http://www.ecobase.net/ecobase-user-limited-access-login</a>
+				</text>
+			</div>
+			<br>		
 
 			<!--END 2nd HALF LEFT CLASS-->	
 
 			<!--START FORM-CONTROLS LEFT CLEARFIX CLASS-->
 			
 			<div class = "form-controls left clearfix">
-				<input type="button" id="delete" value="Delete" >
-				<button type = "submit">Save</button>
+				<div style="float:right; margin-right:20%">
+					<button type = "submit" class="btn btn-primary" style="width:100px">Save</button>
+				</div>
+				<div style="float:left; margin-left:57%">
+					<button type="delete" id="delete" class="btn btn-primary" style="width:100px">Delete</button>
+				</div>
 			</div>
-			<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->	
-
-			<!--START REQUIRED FIELD CLASS-->
-			<div class = "requiredfield">
-				<p>* Required Field</p>
-			</div>
-			<!--END REQUIRED FIELD CLASS-->	
+			<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->		
 		</div>
 	</form>
 
-</div>
 <!--END MIDDLE CLASS-->	
 
 <script>

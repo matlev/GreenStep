@@ -289,7 +289,7 @@
 		<!--button box-->
 	
 		<div class = "form-controls left clearfix">
-			<button type = "submit" id="myButton" class="btn btn-primary">Save</button>
+			<button type = "submit" id="myButton" class="btn btn-primary" style="width:100px">Save</button>
 		</div>
 		
 		

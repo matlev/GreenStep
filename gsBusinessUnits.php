@@ -1,8 +1,9 @@
-<div class = "top-tooltip clearfix" style="float: left">
-    <div class = "third left" style="float: left; width:25%">
+<div class = "top-tooltip clearfix">    
+    <div class = "third left" style="width:25%">
         <p> Set up the business units that will be part of your inventory</p>
     </div>  
 
+    <!--tooltip 1-->
 	<div id = "wrap" style="float: left; margin-top:30px">
 		<button type="button" id="BU" class="danger" data-container="#wrap" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 		<div id="popover_content_wrapper" style="display: none">
@@ -27,12 +28,14 @@
                 You can upgrade your version anytime.  
 		</div>
 	</div>
+	<!--end of tooltip 1-->
 
-	<div class = "third left" style="float:left; width:23%; padding-left:5px; padding-top:25px">
-		<button type="submit" id="createBU" class="btn btn-primary"> Create a new business unit </button> 
+	<div class = "third left" style="float:left; width:20%; padding-left:20px; padding-top:30px">
+		<button type="submit" id="createBU" style="width:200px"> Create a new business unit </button> 
 	</div>
 
-	<div id = "wrap3" style="float:left; margin-top:30px">
+	<!--tooltip 2-->
+	<div id = "wrap3" style="float:left; margin-top:32px">
 		<button type="button" id="BU" class="createBU" data-container="#wrap3" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 		<div id="createBU_wrapper" style="display: none">
 	  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -43,15 +46,16 @@
 			<p style="color: black"> Use &quot;Edit an existing business unit&quot; to edit a businesss unit you've already set up.</p>
 		</div>
 	</div>
+	<!--end of tooltip 2-->
 
-			
-	<div class = "third left" style="float:left; width:18%; padding-top:25px">
+	<div class = "third left" style="float:left; width:10%; padding-top:31px; padding-left:20px">
 		<select id = "selBU">
 			<option value = "0">Edit an existing business unit</option>
 		</select>
 	</div>
 
-	<div id = "wrap3" style="float:left">
+	<!--tooltip 3-->
+	<div id = "wrap3" style="float:left; margin-top:32px">
 		<button type="button" id="BU" class="editBU" data-container="#wrap3" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 		<div id="editBU_wrapper" style="display: none">
 		  	<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -63,16 +67,18 @@
 			<p style="color: black">Use "Create a New Business Unit" to add a new business unit.</p>
 		</div>
 	</div>
-
-<hr style="margin-top:0%">
+	<!--end of tooltip 3-->
+</div>
 <!--end of top class-->
 
+<!--BODY-->
 	<div class = "middle" style="float:left">
 		<form method = "POST" autocomplete = "off" id = "BU-form" class = "clearfix">
 			<div class = "half left">
-				<h4 style="float: left">General Information</h4>
+				<h4 style="float: left"><u>General Information</u></h4>
 
-				<div id = "wrap3" style="float:left">
+				<!--tooltip 4-->
+				<div id = "wrap3" style="float:left; margin-top:23px">
 					<button type="button" id="BU" class="genBU" data-container="#wrap3" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 					<div id="genBU_wrapper" style="display: none">
 					  	<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -86,60 +92,68 @@
 						</p>
 					</div>
 				</div>
+				<!--end of tooltip 4-->
 
 				<table>
 					<tr>
-						<td><label for = "BU-name">Business Unit Name</label></td>
-						<td><input type = "text" id = "BU-name" class = ""/></td>
+						<td><label for = "BU-name" style="font-weight:normal">Business Unit Name</label></td>
+						<td><div class="required"><input type = "text" id = "BU-name" class = ""/></div></td>
 					</tr>
 					<tr>
-						<td><label for = "BU-addr1">Address 1</label></td>
+						<td><label for = "BU-addr1" style="font-weight:normal">Address 1</label></td>
 						<td><input type = "text" id = "BU-addr1" class = ""/></td>
 					</tr>
 					<tr>
-						<td><label for = "BU-addr2">Address 2</label></td>
+						<td><label for = "BU-addr2" style="font-weight:normal">Address 2</label></td>
 						<td><input type = "text" id = "BU-addr2" class = ""/></td>
 					</tr>
 					<tr>
-						<td><label for = "BU-city">City</label></td>
+						<td><label for = "BU-city" style="font-weight:normal">City</label></td>
 						<td><input type = "text" id = "BU-city" class = ""/></td>
 					</tr>
 					<tr>
-						<td><label for = "buSelCountry">Country</label></td>
-						<td><select id = "buSelCountry" class = "required selCountry">
-								<option value = "1" selected = "selected">N/A</option>
-								<option value = "2">Canada</option>
-								<option value = "3">USA</option>
-							</select>
+						<td><label for = "buSelCountry" style="font-weight:normal">Country</label></td>
+						<td><div class="required">
+								<select id = "buSelCountry" class = "required selCountry">
+									<option value = "1" selected = "selected">N/A</option>
+									<option value = "2">Canada</option>
+									<option value = "3">USA</option>
+								</select>
+							</div>
 						</td>
 					</tr>
 					<tr>
-						<td><label for = "buSelStateProv">State/Province</label></td>
+						<td><label for = "buSelStateProv" style="font-weight:normal">State/Province</label></td>
 						<td>
-							<select id = "buSelStateProv" class = "required selStateProv" name = "selStateProv">
-								<option value = "0" selected = "selected">N/A</option>
-							</select>
+							<div class="required">
+								<select id = "buSelStateProv" class = "required selStateProv" name = "selStateProv">
+									<option value = "0" selected = "selected">N/A</option>
+								</select>
+							</div>
 						</td>
 					</tr>
 					<tr>
-						<td><label for = "BU-zip-post">Zip/Postal Code</label></td>
+						<td><label for = "BU-zip-post" style="font-weight:normal">Zip/Postal Code</label></td>
 						<td><input type = "text" id = "BU-zip-post" class = ""/></td>
 					</tr>
 					<tr>
-						<td><label for = "geoLoc">Geographic Location</label></td>
+						<td><label for = "geoLoc" style="font-weight:normal">Geographic Location</label></td>
 						<td>
-							<select id = "geoloc" class = "required selGeoLoc">
-								<option value = "0" selected = "selected">N/A</option>
-							</select>
+							<div class="required">
+								<select id = "geoloc" class = "required selGeoLoc">
+									<option value = "0" selected = "selected">N/A</option>
+								</select>
+							</div>
 						</td>
 					</tr>
 				</table>
 			</div>
 
 			<div class = "half left">
-				<h4 style="float: left">Industry Group</h4>
+				<h4 style="float: left"><u>Industry Group</u></h4>
 
-				<div id = "wrap3" style="float: left">
+				<!--tooltip 5-->
+				<div id = "wrap3" style="float: left; margin-top:23px">
 					<button type="button" id="BU" class="industryGroup" data-container="#wrap3" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 					<div id="industryGroup_wrapper" style="display: none; max-width: 100%; width:10%">
 					  	<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -153,10 +167,11 @@
 							 your main business activity.
 					</div>
 				</div>
+				<!--end of tooltip 5-->
 
 				<table>
 					<tr>
-						<td><label for = "indCode">Industry Code</label></td>
+						<td><label for = "indCode" style="font-weight:normal">Industry Code</label></td>
 						<td>
 							<select id = "indCode" class = "required indCode">
 								<option value = "0" selected="selected">11 - Agriculture, Forestry, Fishing, and Hunting</option>
@@ -172,7 +187,7 @@
 								<option value = "10">53 - Real Estate and Rental and Leasing</option>
 								<option value = "11">54 - Professional, Scientific and Technical Services</option>
 								<option value = "12">55 - Management of Companies and Enterprises</option>
-								<option value = "13">56 - Administrative and Support, and Waste Management and Remediation Services</option>
+								<option value = "13">56 - Administrative and Support, and Waste Management <br> and Remediation Services</option>
 								<option value = "14">61 - Educational Services</option>
 								<option value = "15">62 - Health Care and Social Assistance</option>
 								<option value = "16">71 - Arts, Entertainment and Recreation</option>
@@ -184,9 +199,10 @@
 					</tr>
 				</table>
 
-				<h4 style="float: left">Emission Reduction Target </h4>
+				<h4 style="float: left"><u>Emission Reduction Target</u></h4>
 
-				<div id = "wrap" style="float: left">
+				<!--tooltip 6-->
+				<div id = "wrap" style="float: left; margin-top:23px">
 					<button type="button" id="BU" class="ert" data-container="#wrap" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 					<div id="ert_wrapper" style="display: none; max-width: 100%; width:10%">
 				  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -205,10 +221,11 @@
 							<b>Target Year</b> - the year that the reduction target will be achieved. 
 					</div>
 				</div>
+				<!--end of tooltip 6-->
 
 				<table>
 					<tr>
-						<td><label for = "BU-baseYear">Base Year</label></td>
+						<td><label for = "BU-baseYear" style="font-weight:normal">Base Year</label></td>
 						<td>
 							<select id = "BU-baseYear">
 								<?php
@@ -221,11 +238,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td><label for = "redTarget">Reduction Target (%)</label></td>
+						<td><label for = "redTarget" style="font-weight:normal">Reduction Target (%)</label></td>
 						<td><input type = "text" id = "redTarget" class = ""/></td>
 					</tr>
 					<tr>
-						<td><label for = "BU-targetYear">Target Year</label></td>
+						<td><label for = "BU-targetYear" style="font-weight:normal">Target Year</label></td>
 						<td>
 							<select id = "BU-targetYear">
 								<?php
@@ -241,9 +258,10 @@
 			</div>
 
 			<div class = "full left" style="float: left">
-				<h4 style="float: left">Comparative Metrics </h4>
+				<h4 style="float: left"><u>Comparative Metrics</u></h4>
 
-				<div id = "wrap" style="float: left">
+				<!--tooltip 7-->
+				<div id = "wrap" style="float: left; margin-top:23px">
 					<button type="button" id="BU" class="compMetric" data-container="#wrap" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 					<div id="compMetric_wrapper" style="display: none; max-width: 100%; width:10%">
 						<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -261,10 +279,18 @@
 							<b>Floor Area</b> - the total floor area of all building space operated or owned by the business unit.
 					</div>
 				</div>
+				<!--end of tooltip 7-->
 
 				<table class = "table table-bordered table-striped table-condensed" style= "height= 400px;">
 					<thead>
-						<th>Year</th><th>Revenue or Sales ($)</th><th>Customers or Guests</th><th>Employees (FTEs)</th><th>Floor Area (Sq Ft)</th><th><input type = "text" id = "metric1" /></th><th><input type = "text" id = "metric2" /></th><th><input type = "text" id = "metric3" /></th>
+						<th style="font-weight:normal">Year</th>
+						<th style="font-weight:normal">Revenue or Sales ($)</th>
+						<th style="font-weight:normal">Customers or Guests</th>
+						<th style="font-weight:normal">Employees (FTEs)</th>
+						<th style="font-weight:normal">Floor Area (Sq Ft)</th>
+						<th style="font-weight:normal"><input type = "text" id = "metric1" /></th>
+						<th style="font-weight:normal"><input type = "text" id = "metric2" /></th>
+						<th style="font-weight:normal"><input type = "text" id = "metric3" /></th>
 					</thead>
 					
 					<!-- Set rows for the table-->
@@ -296,16 +322,25 @@
 				</table>
 			</div>
 
+			<!--required fields-->
+			<div class = "requiredfield">
+				<p>* Required Field</p>
+			</div>
+			<!--end of req fields-->
+
+			<!--save, delete button-->
 			<div class = "form-controls left clearfix">
-					<button style=" margin-top: 5%;float:right; margin-bottom: 5%;" type="button" id="buSave" class="btn btn-primary"> Save </button> 
-					<button style=" margin-top: 5%;float:right; margin-bottom: 5%;" type="button" id="buDelete" class="btn btn-primary"> Delete </button> 
+					<button type="button" id="buSave" class="btn btn-primary" style="width:100px"> Save </button> 
+					<div style="float:right; width:30%">
+						<button type="button" id="buDelete" class="btn btn-primary" style="width:100px"> Delete </button> 
+					</div>
 			</div>
 			<br>
 			<br>
 			<br>
 		</form>
 	</div>
-</div>
+
 <script>
 
 $(document).ready(function(){
