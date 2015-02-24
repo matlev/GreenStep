@@ -3,7 +3,7 @@
         <p> Set up the business units that will be part of your inventory</p>
     </div>  
 
-	<div id = "wrap" style="float: left">
+	<div id = "wrap" style="float: left; margin-top:30px">
 		<button type="button" id="BU" class="danger" data-container="#wrap" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 		<div id="popover_content_wrapper" style="display: none">
 	  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -28,11 +28,11 @@
 		</div>
 	</div>
 
-	<div class = "third left" style="float:left; width:23%">
+	<div class = "third left" style="float:left; width:23%; padding-left:5px; padding-top:25px">
 		<button type="submit" id="createBU" class="btn btn-primary"> Create a new business unit </button> 
 	</div>
 
-	<div id = "wrap3" style="float:left">
+	<div id = "wrap3" style="float:left; margin-top:30px">
 		<button type="button" id="BU" class="createBU" data-container="#wrap3" data-toggle="popover" data-placement="top"><span class="glyphicon glyphicon-question-sign"></span></button>
 		<div id="createBU_wrapper" style="display: none">
 	  		<img src="img/logo.gif" style="margin-top: 1.2%; float:right; width: 15%">
@@ -45,7 +45,7 @@
 	</div>
 
 			
-	<div class = "third left" style="float:left; width:18%">
+	<div class = "third left" style="float:left; width:18%; padding-top:25px">
 		<select id = "selBU">
 			<option value = "0">Edit an existing business unit</option>
 		</select>
@@ -64,6 +64,8 @@
 		</div>
 	</div>
 
+<hr style="margin-top:0%">
+<!--end of top class-->
 
 	<div class = "middle" style="float:left">
 		<form method = "POST" autocomplete = "off" id = "BU-form" class = "clearfix">
