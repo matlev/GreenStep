@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/pamcss.css" rel="stylesheet">
-</head>
-<body>
-    <p>
+ <p>
         <div id ="calc1" style="margin-left:1%;float:left; width:33.7%">
             <font color="#AFD464" style="margin-right:31px">Calculate the cost of
             <img src="img/help.png" style="width:3.8%"></font>
-            1. <select style="margin-left:0.5%" id="sol">
+            1. <select style="margin-left:0.5%" id="offsetorg">
             <option>Select organization level</option>
             <option>All</option>
             <option>Seattle</option>
@@ -20,13 +11,14 @@
             <img src="img/help.png" style="width:3.8%">
         </div>
 
-        <div id ="calc2" style="margin-left:2%;float:left; width: 10%">
+        <div id ="calc2" style="margin-left:6.3%;float:left; width: 10%">
+            <select id= "getYear" onchange="changeYr()">
+                <option>Year</option>
             3. <?php
-            echo "<select><option>Year</option>";
-            for($i=2000; $i<=2024; $i=$i+1)
-                echo "<option value=". $i .">" . $i . "</option>";
-            echo "</select>"; 
+            for($i=2000; $i<=2015; $i=$i+1)
+                echo "<option value=". $i .">" . $i . "</option>"; 
             ?>
+            </select>
             <img src="img/help.png" class="image" style="width:13%">
         </div>
 
@@ -42,31 +34,68 @@
         </table>
         </div>
 <br>
-        <div id ="calc2" style="margin-left:1%;float:left; width:33.8%">
+<br>
+        <div id ="calc3" style="margin-left:1%;float:left; width:40%">
         <font color="#AFD464" style="margin-right:15px">purchasing carbon offsets</font>
-            2. <select style="margin-left:0.5%" class="dd3" id="source">
-            <option>Select emissions sources</option>
-            <option>Vancouver</option>
-            <option>Seattle</option>
+            2. <select style="margin-left:0.5%" class="dd3" id="offsource" onchange="getScope()">
+            <option value="0">All Sources</option>
+            <option value="1">Scope 1 Mobile - Gasoline</option>
+            <option value="2">Scope 1 Mobile - Propane</option>
+            <option value="3">Scope 1 Mobile - Ethanol</option>
+            <option value="4">Scope 1 Mobile - Jet Fuel</option>
+            <option value="5">Scope 2 - Purchased Electricity</option>
+            <option value="6">Scope 3 - Paper</option>
+            <option value="7">Scope 3 - Garbage</option>
+            <option value="8">Scope 3 - Air Business Trips</option>
+            <option value="9">Scope 3 - Ground Business Trips</option>
+            <option value="10">Scope 3 - Employee commuting</option>
+            <option value="11">Scope 3 - Contractor Commuting</option>
+
             </select>
             <img src="img/help.png" class="image" style="width:3.8%">    
         </div>
 
-        <div id ="calc2" style="margin-left:2%;float:left; width: 20%">
+        <div id ="calc4" style="float:left; width: 20%">
+            <select id= "getCost" onchange="changeCost()">
+            <option>Select a carbon cost</option>
             4. <?php
-            echo "<select><option>Select a carbon cost</option>";
             for($i=5; $i<=50; $i=$i+1)
                 echo "<option value=". $i .">" . "$" . $i . "</option>";
-            echo "</select>"; 
             ?>
+            </select>
             <img src="img/help.png" class="image" style="width:8%">
         </div>
-
+        <input type = "text" id = "offtest" class = ""/>
 
 </p>
     <hr style="margin-top:3%">
     <p>A carbon offset is an emissions reduction credit you can purchase to compensate for greenhouse gas emissions. One tonne of carbon offset equals one tonne of greenhouse gases reduced from high-quality projects like energy efficiency programs or fuel switching systems. For example, an energy efficiency carbon reduction project can be used to balance your emissions from another source, such as a plane trip. The bottom line is that your organization can buy offsets to counteract greenhouse gases that it cannot avoid emitting.</p>
     <p>Once you've calculated the cost to offset your organization's greennhouse gas emissions, <a href="mailto:info@ecobase.net"> contact us</a> to find out more about purchasing carbon offsets.</p>
     
-</body>
-</html>
+<script>
+    //change selected value on dropdown
+    var getYr;
+    var getCt;
+    var getSp;
+//Get year to match database year
+    function changeYr(){
+            getYr= document.getElementById("getYear").value;
+        document.getElementById("getYear").selectedIndex= getYr;
+        $('#getYear').val(getYr);
+        // var index= selObj.options[selObj.selectedIndex].value;
+        $('#offtest').val(getYr); 
+    }
+
+//Get cost estimatin from dropdown
+    function changeCost(){
+        getCt= document.getElementById("getCost").value;
+        document.getElementById("getCost").selectedIndex= getCt;
+        $('#getCost').val(getCt);
+        $('#offtest').val(getCt); 
+    }
+
+//Get scope 
+    function getScope(){
+
+    }
+</script>

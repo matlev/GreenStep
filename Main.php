@@ -231,6 +231,34 @@
                                 });
                         };
                     break;
+                    
+                    case "offset":
+                       parseAction("offset", "pull", null)
+                                
+                            .success(function(data) {
+                                console.log(data);
+                            var data = data.data;
+                            var units = data.units; // an array of names of access units in the database
+                            var accUnitHTML;
+
+                            var length = units.length;
+                            for(i = 0; i < length; i++){
+                                if(i == 0){
+                                    accUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                                } else {
+                                    accUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                                }
+                            }
+
+                            $('#offsetorg').empty().html(accUnitHTML);
+                            $('#offsetneu').empty().html(accUnitHTML);
+                                load_offset(data);
+                            })
+
+                            .fail(function(){
+                                      console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                            });
+                    break;
             }
         });
 
@@ -306,6 +334,11 @@
             $('#metric2').val(data.custom2Name);
             $('#metric3').val(data.custom3Name);
 
+        }
+        function load_offset(result)
+        {
+            var data= result;
+            $('#offtest').val(data.units[0]);
         }
         /*
         function load_gsEmissionSources(result) {

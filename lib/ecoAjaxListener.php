@@ -393,7 +393,24 @@ switch($page) {
 			}
 		}
 	break;
+	
+	case "offset":
+			// Only need to pull information here
+		if($action == "pull") {
+			$offID;
+			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql);
 
+			$rowCounter = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$offID = $rslt['id'];
+				$data['units'][$rowCounter] = $rslt['name'];
+				$data['year'][$rowCounter]= $rslt['year'];
+				$rowCounter++;
+			}
+			$response['data'] = $data;
+		}
+	break;
 }
 
 // Send response and exit gracefully
