@@ -251,7 +251,7 @@
                             }
 
                             $('#offsetorg').empty().html(accUnitHTML);
-                            $('#offsetneu').empty().html(accUnitHTML);
+                            $('#offsetorg2').empty().html(accUnitHTML);
                                 load_offset(data);
                             })
 

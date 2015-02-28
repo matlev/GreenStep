@@ -1,3 +1,4 @@
+
  <p>
         <div id ="calc1" style="margin-left:1%;float:left; width:33.7%">
             <font color="#AFD464" style="margin-right:31px">Calculate the cost of
@@ -11,10 +12,10 @@
             <img src="img/help.png" style="width:3.8%">
         </div>
 
-        <div id ="calc2" style="margin-left:6.3%;float:left; width: 10%">
-            <select id= "getYear" onchange="changeYr()">
+        <div id ="calc2" style="margin-left:9.3%;float:left; width: 10%">
+           3.  <select id= "getYear" onchange="changeYr()">
                 <option>Year</option>
-            3. <?php
+            <?php
             for($i=2000; $i<=2015; $i=$i+1)
                 echo "<option value=". $i .">" . $i . "</option>"; 
             ?>
@@ -35,7 +36,7 @@
         </div>
 <br>
 <br>
-        <div id ="calc3" style="margin-left:1%;float:left; width:40%">
+        <div id ="calc3" style="margin-left:1%;float:left; width:43%">
         <font color="#AFD464" style="margin-right:15px">purchasing carbon offsets</font>
             2. <select style="margin-left:0.5%" class="dd3" id="offsource" onchange="getScope()">
             <option value="0">All Sources</option>
@@ -56,7 +57,7 @@
         </div>
 
         <div id ="calc4" style="float:left; width: 20%">
-            <select id= "getCost" onchange="changeCost()">
+            4. <select id= "getCost" onchange="changeCost()">
             <option>Select a carbon cost</option>
             4. <?php
             for($i=5; $i<=50; $i=$i+1)
@@ -72,17 +73,18 @@
     <p>A carbon offset is an emissions reduction credit you can purchase to compensate for greenhouse gas emissions. One tonne of carbon offset equals one tonne of greenhouse gases reduced from high-quality projects like energy efficiency programs or fuel switching systems. For example, an energy efficiency carbon reduction project can be used to balance your emissions from another source, such as a plane trip. The bottom line is that your organization can buy offsets to counteract greenhouse gases that it cannot avoid emitting.</p>
     <p>Once you've calculated the cost to offset your organization's greennhouse gas emissions, <a href="mailto:info@ecobase.net"> contact us</a> to find out more about purchasing carbon offsets.</p>
     
-<script>
+ <script>
     //change selected value on dropdown
     var getYr;
     var getCt;
     var getSp;
+    var getNme;
 //Get year to match database year
     function changeYr(){
             getYr= document.getElementById("getYear").value;
         document.getElementById("getYear").selectedIndex= getYr;
         $('#getYear').val(getYr);
-        // var index= selObj.options[selObj.selectedIndex].value;
+        $('#getYear2').val(getYr);
         $('#offtest').val(getYr); 
     }
 
@@ -91,11 +93,21 @@
         getCt= document.getElementById("getCost").value;
         document.getElementById("getCost").selectedIndex= getCt;
         $('#getCost').val(getCt);
+        $('#getCost2').val(getCt);
         $('#offtest').val(getCt); 
     }
 
 //Get scope 
     function getScope(){
 
+    }
+
+    //get name
+    function getName(){
+        getNme= document.getElementById("offsetorg").value;
+        document.getElementById("offsetorg").selectedIndex= getNme;
+        $('#offsetorg').val(getNme);
+        $('#offsetorg2').val(getNme);
+        $('#offtest').val(getNme);
     }
 </script>
