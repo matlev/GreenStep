@@ -310,7 +310,9 @@ switch($page) {
 		if($action == "pull") {
 			// Pull data from the database
 			$divisionID;
-			$sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+			// $sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+			$sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE name = '$user')";
+
 			$info = db_query($sql);
 
 
