@@ -1,15 +1,4 @@
-<html>
-<head>
-	<title>
-		EcoBase
-	</title>
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">  
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/pamcss.css" rel="stylesheet">
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-select.js"></script>
-</head>
+
 <body>
 	<p><font color="#AFD464">Report your emission data <a href="#">
 		<img src="img/help.png" class="image" style="width:1.2%"></a></font></p>
@@ -49,45 +38,39 @@
 
 		<div id="form" style="width:50%; float:left">
 			<h4><u>Custom Reports</u></h4>
-			1. <select>
-			<option disabled="disabled" selected="selected">Select Organization Level</option>
-			<option>Vancouver</option>
-			<option>Vancouver</option>
-			<option>Vancouver</option>
+			1.<select id = "selectOrg" class = "selectOrg" name = "selectOrg">
+			<option value = "0" selected = "selected" id="0">Select Organization Level</option>
 		</select>
 		<a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 		<br>
 		<br>
 
-		2. <select>
-		<option disabled="disabled" selected="selected"> Select emissions sources</option>
-		<option> All sources </option>
-		<option> Scope one </option>
-		<option> Scope two </option>
-		<option> Scope three </option>
+		2.<select id = "selectEmission" class = "selectEmission" name = "selectEmission">
+		<option value = "0" selected = "selected" id="0">Select Emission Source</option>
 	</select>
 	<a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 	<br>
 	<br>
 
-	3. <select>
-	<option disabled="disabled" selected="selected">Select units</option>
-	<option> . </option>
+	3.<select id = "selectUnit" class = "selectUnit" name = "selectUnit">
+		<option value = "0" selected = "selected" id="0">Select units</option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
 <br>
 
-4. From <select>
+4. From <select id = "selectFrom" class = "selectFrom" name = "selectFrom">
 <option> 2014</option>
 <option> 2013 </option>
 <option> 2012 </option>
+<option> 2011 </option>
+<option> 2010 </option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
 <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;To <select style="margin-left:16px"> 
+&nbsp;&nbsp;&nbsp;&nbsp;To <select id = "selectTo" class = "selectTo" name = "selectTo" style="margin-left:16px"> 
 <option> 2014 </option>
 <option> 2013 </option>
 <option> 2012 </option>
@@ -95,7 +78,7 @@
 <br>
 <br>
 
-5. <select>
+5. <select id = "selectReportType" class = "selectReportType" name = "selectReportType">
 <option disabled="disabled" selected= "selected">Select report type</option>
 <option> Column Chart </option>
 <option> Table </option>
@@ -104,9 +87,8 @@
 <br>
 <br>
 
-6. <select> 
-<option disabled= "disabled" selected= "selected">Select Level of Detail</option>
-<option> . </option>
+6. <select id = "selectDetail" class = "selectDetail" name = "selectDetail">
+<<option value = "0" selected = "selected" id="0">Select Level of Detail</option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
@@ -114,7 +96,7 @@
 
 <b>Optional</b>
 <br>
-<select>
+<select id = "selectEmission" class = "selectEmission" name = "selectEmission">
 	<option disabled= "disabled" selected= "selected">Select a comparative</option>
 	<option> . </option> 
 </select>
@@ -134,4 +116,10 @@
 	<a href="#" class="btn btn-primary" role="button" style="margin-left:17.5%">Display</a>
 </div>
 </body>
-</html>
+<script>
+//
+
+
+$(document).ready(function () {
+}
+</script>

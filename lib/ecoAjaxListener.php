@@ -307,7 +307,8 @@ switch($page) {
 	break;
 
 	case "access":
-		if($action == "pull") {
+		if($action == "pull") 
+		{
 			// Pull data from the database
 			$divisionID;
 			// $sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
@@ -317,8 +318,10 @@ switch($page) {
 
 
 			$rowCounter = 0;
-			while($rslt = $info -> fetch_assoc()){
-				if($rowCounter == 0){
+			while($rslt = $info -> fetch_assoc())
+			{
+				if($rowCounter == 0)
+				{
 					$divisionID = $rslt['id'];
 				}
 				$data['accUnits'][$rowCounter] = $rslt['name'];
@@ -327,7 +330,8 @@ switch($page) {
 			}
 
 
-			if(isset($_POST['changeUnit'])){
+			if(isset($_POST['changeUnit']))
+			{
 				$unitName = $_POST['changeUnit'];
 
 				$sql = "SELECT id FROM gb_division WHERE name LIKE '$unitName' AND companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
@@ -341,9 +345,12 @@ switch($page) {
 			$info = db_query($sql);
 
 			$rowCounter = 0;
-			while($rslt = $info -> fetch_assoc()){
+			while($rslt = $info -> fetch_assoc())
+			{
 				$data['accUsers'][$rowCounter] = $rslt['username'];
 				$data['userPassword'][$rowCounter] = $rslt['password'];
+				$data['userRole'][$rowCounter] = $rslt['role'];
+
 
 				$rowCounter++;
 			}
@@ -356,7 +363,9 @@ switch($page) {
 			$userID = $_POST['accessUser']; // The name of the user we're updating
 			$userN=$_POST['username']; // The possibly new username
 			$userP=$_POST['password']; // The possibly new password
-			$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP' WHERE username = '$userID'  ";
+			$newRole= $_POST['access-admin']+$_POST['access-measure']+$_POST['access-report']+$_POST['access-reduce']+$_POST['access-offset'];
+
+			$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP', role ='$newRole' WHERE username = '$userID'  ";
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "Update was not";
 			} else {
@@ -374,9 +383,12 @@ switch($page) {
 			$cID = db_query("SELECT id FROM gb_company WHERE name LIKE '$user'") -> fetch_assoc();
 			$companyID = $cID['id'];
 
+			$newRole= $_POST['access-admin']+$_POST['access-measure']+$_POST['access-report']+$_POST['access-reduce']+$_POST['access-offset'];
+
+
 			$userN=sanitize($_POST['username']);
 			$userP=sanitize($_POST['password']);
-			$sql = "INSERT INTO gb_employee (username, password, divisionId, companyId, insertDate) VALUES ('$userN', '$userP', '$divisionID', '$companyID', NOW())";
+			$sql = "INSERT INTO gb_employee (username, password, divisionId, companyId, insertDate,role) VALUES ('$userN', '$userP', '$divisionID', '$companyID', NOW()),'$newRole'";
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "ADD was not";
 			} else {
@@ -398,13 +410,15 @@ switch($page) {
 	
 	case "offset":
 			// Only need to pull information here
-		if($action == "pull") {
+		if($action == "pull") 
+		{
 			$offID;
 			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
 			$info = db_query($sql);
 
 			$rowCounter = 0;
-			while($rslt = $info -> fetch_assoc()){
+			while($rslt = $info -> fetch_assoc())
+			{
 				$offID = $rslt['id'];
 				$data['units'][$rowCounter] = $rslt['name'];
 				$data['year'][$rowCounter]= $rslt['year'];
@@ -412,6 +426,15 @@ switch($page) {
 			}
 			$response['data'] = $data;
 		}
+	break;
+
+	case "report":
+
+	if($action == "pull") 
+	{
+
+	}
+
 	break;
 }
 

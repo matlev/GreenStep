@@ -176,6 +176,7 @@
                         
                         var users = data.accUsers // an array of names of access units in the database
                         var pass = data.userPassword;
+                        var role = data.userRole;
                         var accUserHTML;
                         var length = users.length;
                         
@@ -192,12 +193,76 @@
                             }
                         }
                         var pass=data.userPassword;
+                        var role = data.userRole;
 
                         $('#accessUnit').empty().html(accUnitHTML);
                         $('#accessUser').empty().html(accUserHTML);
                         $('#username').val($('#accessUser option:selected').text());
 
                         var  userIndex=$('#accessUser option:selected').index();
+
+
+             //admin
+             if(role[userIndex].charAt(0)=='1')
+           {
+            $('#access-admin').prop('checked',true);
+            $('#access-admin').val('1');
+           }
+
+           else if(role[userIndex].charAt(0)=='0')
+           {
+            $('#access-admin').prop('checked',false);
+            $('#access-admin').val('0');
+           }
+            //measure
+             if(role[userIndex].charAt(1)=='1')
+           {
+            $('#access-measure').prop('checked',true);
+            $('#access-measure').val('1');
+           }
+
+           else if(role[userIndex].charAt(1)=='0')
+           {
+            $('#access-measure').prop('checked',false);
+            $('#access-measure').val('0');
+           }
+            //report
+             if(role[userIndex].charAt(2)=='1')
+           {
+            $('#access-report').prop('checked',true);
+            $('#access-report').val('1');
+           }
+
+           else if(role[userIndex].charAt(2)=='0')
+           {
+            $('#access-report').prop('checked',false);
+            $('#access-report').val('0');
+           }
+            //reduce
+             if(role[userIndex].charAt(3)=='1')
+           {
+            $('#access-reduce').prop('checked',true);
+            $('#access-reduce').val('1');
+           }
+
+           else if(role[userIndex].charAt(3)=='0')
+           {
+            $('#access-reduce').prop('checked',false);
+            $('#access-reduce').val('0');
+           }
+            //offset
+             if(role[userIndex].charAt(4)=='1')
+           {
+            $('#access-offset').prop('checked',true);
+            $('#access-offset').val('1');
+           }
+
+           else if(role[userIndex].charAt(4)=='0')
+           {
+            $('#access-offset').prop('checked',false);
+            $('#access-offset').val('0');
+           }
+
                         
                         $('#password').val(pass[userIndex]);                       
                     })
@@ -259,7 +324,19 @@
                                       console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
                             });
                     break;
+           		case "report":
+           		 parseAction("report", "pull", null)
+                        .success(function(data) {
+                            //console.log(data);
+                            load_gsCorp(data);
+                        })
+                        .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
+
+           		break;
             }
+
         });
 
         $('#welcome a').on('click', function(e){

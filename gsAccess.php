@@ -25,41 +25,47 @@
 		<div><!-- open first row-->	
 			
 			<h4 style="float:left"><u>Access Level</u></h4>
-
 			<table >
 				<tr>
-					<td><label for = "access-measure" style="font-weight:normal">Measure</label></td>
+					<td><label for = "access-admin" style="visibility:hidden" >Admin</label></td>
 					<td>
-						<input type="checkbox" id = "access-measure" name = "measure" value"measureOn" checked></input>
+						<input type="checkbox" id = "access-admin" name = "access-admin" value="0" style="visibility:hidden" ></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-report" style="font-weight:normal">Report</label></td>
+					<td><label for = "access-measure">Measure</label></td>
 					<td>
-						<input type="checkbox" id = "access-report" value"reportOn" name = "report"></input>
+						<input type="checkbox" id = "access-measure" name = "access-measure" value="0"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-reduce" style="font-weight:normal">Reduce</label></td>
+					<td><label for = "access-report">Report</label></td>
 					<td>
-						<input type="checkbox" id = "access-reduce" value"reduceOn" name = "reduce"></input>
+						<input type="checkbox" id = "access-report" value="0" name = "access-report"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-offset" style="font-weight:normal">Offset</label></td>
+					<td><label for = "access-reduce">Reduce</label></td>
 					<td>
-						<input type="checkbox" id = "access-offset" value"offsetOn"name = "offset"></input>
+						<input type="checkbox" id = "access-reduce" value="0" name = "access-reduce"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for ="username" style="font-weight:normal">Username</label></td>
+					<td><label for = "access-offset">Offset</label></td>
+					<td>
+						<input type="checkbox" id = "access-offset" value="0"name = "access-offset"></input>
+					</td>
+				</tr>
+				<tr>
+					<td><label for ="username">Username</label></td>
 					<td><input type="text" id="username" name = "username"/></td>
 				</tr>
 				<tr>
-					<td><label for ="password" style="font-weight:normal">Password</label></td>
+					<td><label for ="password">Password</label></td>
 					<td><input type="text" id="password" name = "password"/></td>
 				</tr>
 			</table>
+
 
 			<br>
 
@@ -107,6 +113,7 @@ var newUser="false";
 		.success(function(result){
 			var users = result.data.accUsers;
 			 pass = result.data.userPassword;
+			 role = result.data.userRole;
 			var accUserHTML;
 			
 			var length = users.length;
@@ -125,6 +132,70 @@ var newUser="false";
 			$('#username').val($('#accessUser option:selected').text());
 			 var  userIndex=$('#accessUser option:selected').index();
                            
+		
+             //admin
+             if(role[userIndex].charAt(0)=='1')
+           {
+            $('#access-admin').prop('checked',true);
+            $('#access-admin').val('1');
+           }
+
+           else if(role[userIndex].charAt(0)=='0')
+           {
+            $('#access-admin').prop('checked',false);
+            $('#access-admin').val('0');
+           }
+            //measure
+             if(role[userIndex].charAt(1)=='1')
+           {
+            $('#access-measure').prop('checked',true);
+            $('#access-measure').val('1');
+           }
+
+           else if(role[userIndex].charAt(1)=='0')
+           {
+            $('#access-measure').prop('checked',false);
+            $('#access-measure').val('0');
+           }
+            //report
+             if(role[userIndex].charAt(2)=='1')
+           {
+            $('#access-report').prop('checked',true);
+            $('#access-report').val('1');
+           }
+
+           else if(role[userIndex].charAt(2)=='0')
+           {
+            $('#access-report').prop('checked',false);
+            $('#access-report').val('0');
+           }
+            //reduce
+             if(role[userIndex].charAt(3)=='1')
+           {
+            $('#access-reduce').prop('checked',true);
+            $('#access-reduce').val('1');
+           }
+
+           else if(role[userIndex].charAt(3)=='0')
+           {
+            $('#access-reduce').prop('checked',false);
+            $('#access-reduce').val('0');
+           }
+            //offset
+             if(role[userIndex].charAt(4)=='1')
+           {
+            $('#access-offset').prop('checked',true);
+            $('#access-offset').val('1');
+           }
+
+           else if(role[userIndex].charAt(4)=='0')
+           {
+            $('#access-offset').prop('checked',false);
+            $('#access-offset').val('0');
+           }
+
+
+           
             $('#password').val(pass[userIndex]);                       
 		})
 		.fail(function(){});
@@ -145,6 +216,69 @@ var newUser="false";
 		
 			$('#username').val($('#accessUser option:selected').text());
 			var  userIndex=$('#accessUser option:selected').index();
+
+
+           //admin
+             if(role[userIndex].charAt(0)=='1')
+           {
+            $('#access-admin').prop('checked',true);
+            $('#access-admin').val('1');
+           }
+
+           else if(role[userIndex].charAt(0)=='0')
+           {
+            $('#access-admin').prop('checked',false);
+            $('#access-admin').val('0');
+           }
+            //measure
+             if(role[userIndex].charAt(1)=='1')
+           {
+            $('#access-measure').prop('checked',true);
+            $('#access-measure').val('1');
+           }
+
+           else if(role[userIndex].charAt(1)=='0')
+           {
+            $('#access-measure').prop('checked',false);
+            $('#access-measure').val('0');
+           }
+            //report
+             if(role[userIndex].charAt(2)=='1')
+           {
+            $('#access-report').prop('checked',true);
+            $('#access-report').val('1');
+           }
+
+           else if(role[userIndex].charAt(2)=='0')
+           {
+            $('#access-report').prop('checked',false);
+            $('#access-report').val('0');
+           }
+            //reduce
+             if(role[userIndex].charAt(3)=='1')
+           {
+            $('#access-reduce').prop('checked',true);
+            $('#access-reduce').val('1');
+           }
+
+           else if(role[userIndex].charAt(3)=='0')
+           {
+            $('#access-reduce').prop('checked',false);
+            $('#access-reduce').val('0');
+           }
+            //offset
+             if(role[userIndex].charAt(4)=='1')
+           {
+            $('#access-offset').prop('checked',true);
+            $('#access-offset').val('1');
+           }
+
+           else if(role[userIndex].charAt(4)=='0')
+           {
+            $('#access-offset').prop('checked',false);
+            $('#access-offset').val('0');
+           }
+
 			$('#password').val(pass[userIndex]);                         
 			});
 	});
@@ -196,6 +330,29 @@ var newUser="false";
 
       
 	});
+
+	$('#access-measure').change(function()
+	{
+   
+   		 $(this).val(this.checked ? 1 : 0);
+    	 console.log($(this).val());
+	});
+	$('#access-report').change(function()
+	{
+    $(this).val(this.checked ? 1 : 0);
+    	 console.log($(this).val());
+	});
+	$('#access-reduce').change(function()
+	{
+    $(this).val(this.checked ? 1 : 0);
+    	 console.log($(this).val());
+	});
+	$('#access-offset').change(function()
+	{
+   $(this).val(this.checked ? 1 : 0);
+    	 console.log($(this).val());
+	});
+
 
 });	
 
