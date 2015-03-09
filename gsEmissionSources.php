@@ -23,7 +23,7 @@
 <form method="POST" id="es-form1" class="clearfix">
       <!--~~~~~~~~~~~~~~~~~~SCOPE 1~~~~~~~~~~~~~~~~~~-->
       <div id="Scope1" style="width:100%">
-            <div style="width:50%; float:left">
+            <div id="half" style="width:50%; float:left">
                   <h4><u>Scope 1 - Stationary</u>
                   <img src="img/help.png" style="width:3%"></h4>
                   <table style="width:95%; float:left">
@@ -134,7 +134,7 @@
                   <div id="scope1MultiAddEditTable"></div>
             </div>
 
-            <div style="width:50%; float:left">
+            <div id="half" style="width:50%; float:left">
                   <h4 style="float:left"><u>Scope 1 - Mobile</u>
                   <img src="img/help.png" style="width:3%"></h4>
                   <table style="width:95%; float:left">
@@ -359,6 +359,7 @@
             </div>
       </div>
 </form>
+
       <!--~~~~~~~~~~~~~~~~~~SCOPE 3~~~~~~~~~~~~~~~~~~-->
 <form method="POST" id="es-form2" class="clearfix">
       <div id="Scope3" style="width:100%">
@@ -535,7 +536,9 @@ $(document).ready(function(){
       $('.radioBtn').click(function(){
             var target = $(this).data('target-value');
             if($(this).data('target-id')=='multy'){
-                  $('.my-div[data-target="'+target+'"]').show();
+                  $('.my-div[data-target="'+target+'"]').toggle();
+                  $("div[id$='MultiAddEditTable']").hide();
+
             } else {
                   $('.my-div[data-target="'+target+'"]').hide();
             }
@@ -602,8 +605,8 @@ $(document).ready(function(){
             "</tr>" +
             "</tbody>" +
             "</table>";
-            $('#scope1MultiAddEditTable').empty().append(html);
-            $('#scope2MultiAddEditTable').empty().append(html);
+            $(this).closest("div[id='half']").find("div[id$='MultiAddEditTable']").empty().append(html).show();
+            $(this).closest("div[id='Scope2']").find("div[id$='MultiAddEditTable']").empty().append(html).show();
       });
 });
 
