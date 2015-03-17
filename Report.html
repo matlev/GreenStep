@@ -1,16 +1,4 @@
-<html>
-<head>
-	<title>
-		EcoBase
-	</title>
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">  
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/pamcss.css" rel="stylesheet">
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-select.js"></script>
-</head>
-<body>
+
 	<p><font color="#AFD464">Report your emission data <a href="#">
 		<img src="img/help.png" class="image" style="width:1.2%"></a></font></p>
 
@@ -34,15 +22,15 @@
 			<table style="width:66%;margin-top:-15px">
 				<tr>
 					<td>Your organization's emissions tabulated by business unit and year.</td>
-					<td>&nbsp;&nbsp;</td><td><div style="margin-bottom:20px"><a href="#" class="btn btn-primary" role="button">Display</a></div></td>
+					<td>&nbsp;&nbsp;</td><td><div style="margin-bottom:20px"><a href="#BU" class="btn btn-primary tableReport" role="button">Display</a></div></td>
 				</tr>
 				<tr>
 					<td>Your organization's emissions tabulated by source and year.</td>
-					<td>&nbsp;&nbsp;</td><td><div style="margin-bottom:20px"><a href="#" class="btn btn-primary" role="button">Display</a></div></td>
+					<td>&nbsp;&nbsp;</td><td><div style="margin-bottom:20px"><a href="#ES" class="btn btn-primary tableReport" role="button">Display</a></div></td>
 				</tr>
 				<tr>
 					<td>Your organization's emissions tabulated by source and business unit, per year.</td>
-					<td>&nbsp;&nbsp;</td><td><a href="#" class="btn btn-primary" role="button">Display</a></td>
+					<td>&nbsp;&nbsp;</td><td><a href="#BUES" class="btn btn-primary tableReport" role="button">Display</a></td>
 				</tr>
 			</table>
 		</div>
@@ -133,5 +121,24 @@
 	</select>
 	<a href="#" class="btn btn-primary" role="button" style="margin-left:17.5%">Display</a>
 </div>
-</body>
-</html>
+<script>
+$(document).ready(function(){
+	$('a.tableReport').on('click', function(e){
+		e.preventDefault();
+		var r_d = $(this).attr('href').slice(1);
+		var chart = "table";
+		$.ajax({ 
+			url: "lib/displayChart.php",
+			type: "POST", 
+			data: "chart=" + chart + "&rd=" + r_d,
+			success: function(response){
+				//console.log(response);
+				window.open('https://studentweb.ins.ok.ubc.ca/74044090/COSC499/lib/TableDataReports.php?' + response);
+			},
+			error: function(){
+				console.log("Soemthing bad happened.");
+			}
+		});	
+	});
+});
+</script>
