@@ -39,56 +39,71 @@
 		<div id="form" style="width:50%; float:left">
 			<h4><u>Custom Reports</u></h4>
 			1.<select id = "selectOrg" class = "selectOrg" name = "selectOrg">
-			<option value = "0" selected = "selected" id="0">Select Organization Level</option>
+			<option value = "0" selected = "selected" id="0" disabled>Select Organization Level</option>
 		</select>
 		<a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 		<br>
 		<br>
 
 		2.<select id = "selectEmission" class = "selectEmission" name = "selectEmission">
-		<option value = "0" selected = "selected" id="0">Select Emission Source</option>
+			<option value = "0" selected = "selected" id="0" disabled>Select Emission Sources</option>
+			<option value = "all" id="all">All</option>
+			<option value = "scope1" id="scope1">Scope 1 only</option>
+			<option value = "scope2" id="scope2">Scope 2 only</option>
+			<option value = "scope3" id="scope3">Scope 3 only</option>
 	</select>
 	<a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 	<br>
 	<br>
 
 	3.<select id = "selectUnit" class = "selectUnit" name = "selectUnit">
-		<option value = "0" selected = "selected" id="0">Select units</option>
+			<option value = "0" selected = "selected" id="0"disabled>Select units</option>
+			<option value = "GHGTonnes" id="GHGTonnes">GHG Tonnes</option>
+			<option value = ">GHGKgrans" id=">GHGKgrans">GHG Kgrans</option>
+			<option value = "GJoules" id="GJoules">GJoules</option>
+			<option value = "dollars" id="dollars">$$</option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
 <br>
 
 4. From <select id = "selectFrom" class = "selectFrom" name = "selectFrom">
-<option> 2014</option>
-<option> 2013 </option>
-<option> 2012 </option>
-<option> 2011 </option>
-<option> 2010 </option>
+<option value = "2015" id="from2015"> 2015</option>
+<option value = "2014" id="from2014"> 2014 </option>
+<option value = "2013" id="from2013"> 2013 </option>
+<option value = "2012" id="from2012"> 2012 </option>
+<option value = "2011" id="from2011"> 2011 </option>
+<option value = "2010" id="from2010"> 2010 </option>
+<option value = "2009" id="from2009"> 2009 </option>
+<option value = "2008" id="from2008"> 2008 </option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
 <br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;To <select id = "selectTo" class = "selectTo" name = "selectTo" style="margin-left:16px"> 
-<option> 2014 </option>
-<option> 2013 </option>
-<option> 2012 </option>
+<option value = "2015" id="to2015"> 2015</option>
+<option value = "2014" id="to2014"> 2014 </option>
+<option value = "2013" id="to2013"> 2013 </option>
+<option value = "2012" id="to2012"> 2012 </option>
+<option value = "2011" id="to2011"> 2011 </option>
+</select>
 </select>
 <br>
 <br>
 
 5. <select id = "selectReportType" class = "selectReportType" name = "selectReportType">
-<option disabled="disabled" selected= "selected">Select report type</option>
-<option> Column Chart </option>
-<option> Table </option>
+<option disabled="disabled" selected= "selected" disabled="">Select report type</option>
+<option value = "ColumChart" id="ColumChart"> Column Chart </option>
+<option value = "Table" id="Table"> Table </option>
+<option value = "PieChart" id="PieChart"> Pie Chart</option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
 <br>
 
 6. <select id = "selectDetail" class = "selectDetail" name = "selectDetail">
-<<option value = "0" selected = "selected" id="0">Select Level of Detail</option>
+<option value = "0" selected = "selected" id="0">Select Level of Detail</option>
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
@@ -98,7 +113,12 @@
 <br>
 <select id = "selectEmission" class = "selectEmission" name = "selectEmission">
 	<option disabled= "disabled" selected= "selected">Select a comparative</option>
-	<option> . </option> 
+	<option value="RevenueorSales" id="RevenueorSales"> Revenue or Sales </option> 
+	<option value="CustomersorGuests" id="CustomersorGuests"> Customers or Guests </option> 
+	<option value="EmployeesFTEs" id="EmployeesFTEs"> Employees (FTEs) </option> 
+	<option value="SquareFootage" id="SquareFootage"> Square Footage (Ft) </option> 
+
+
 </select>
 <a href="#"><img src="img/help.png" class="image" style="width:2.2%"></a>
 <br>
@@ -109,9 +129,9 @@
 	<h4><u>GHG Report</u></h4>
 	Year
 	<select> 
-		<option> 2014 </option>
-		<option> 2013 </option>
-		<option> 2012 </option>
+		<option value="reportYear2015" id="reportYear2015"> 2015 </option>
+		<option value="reportYear2014" id="reportYear2014"> 2014 </option>
+		<option value="reportYear2013" id="reportYear2013"> 2013 </option>
 	</select>
 	<a href="#" class="btn btn-primary" role="button" style="margin-left:17.5%">Display</a>
 </div>
@@ -121,5 +141,6 @@
 
 
 $(document).ready(function () {
+
 }
 </script>

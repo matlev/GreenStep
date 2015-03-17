@@ -205,63 +205,65 @@
              //admin
              if(role[userIndex].charAt(0)=='1')
            {
-            $('#access-admin').prop('checked',true);
-            $('#access-admin').val('1');
+            $('#accessAdmin').prop('checked',true);
+            $('#accessAdmin').val('1');
            }
 
            else if(role[userIndex].charAt(0)=='0')
            {
-            $('#access-admin').prop('checked',false);
-            $('#access-admin').val('0');
+            $('#accessAdmin').prop('checked',false);
+            $('#accessAdmin').val('0');
            }
             //measure
              if(role[userIndex].charAt(1)=='1')
            {
-            $('#access-measure').prop('checked',true);
-            $('#access-measure').val('1');
+            $('#accessMeasure').prop('checked',true);
+            $('#accessMeasure').val('1');
            }
 
            else if(role[userIndex].charAt(1)=='0')
            {
-            $('#access-measure').prop('checked',false);
-            $('#access-measure').val('0');
+            $('#accessMeasure').prop('checked',false);
+            $('#accessMeasure').val('0');
            }
             //report
              if(role[userIndex].charAt(2)=='1')
            {
-            $('#access-report').prop('checked',true);
-            $('#access-report').val('1');
+            $('#accessReport').prop('checked',true);
+            $('#accessReport').val('1');
            }
 
            else if(role[userIndex].charAt(2)=='0')
            {
-            $('#access-report').prop('checked',false);
-            $('#access-report').val('0');
+            $('#accessReport').prop('checked',false);
+            $('#accessReport').val('0');
            }
             //reduce
              if(role[userIndex].charAt(3)=='1')
            {
-            $('#access-reduce').prop('checked',true);
-            $('#access-reduce').val('1');
+            $('#accessReduce').prop('checked',true);
+            $('#accessReduce').val('1');
            }
 
            else if(role[userIndex].charAt(3)=='0')
            {
-            $('#access-reduce').prop('checked',false);
-            $('#access-reduce').val('0');
+            $('#accessReduce').prop('checked',false);
+            $('#accessReduce').val('0');
            }
             //offset
              if(role[userIndex].charAt(4)=='1')
            {
-            $('#access-offset').prop('checked',true);
-            $('#access-offset').val('1');
+            $('#accessOffset').prop('checked',true);
+            $('#accessOffset').val('1');
            }
 
            else if(role[userIndex].charAt(4)=='0')
            {
-            $('#access-offset').prop('checked',false);
-            $('#access-offset').val('0');
+            $('#accessOffset').prop('checked',false);
+            $('#accessOffset').val('0');
            }
+
+
 
                         
                         $('#password').val(pass[userIndex]);                       
@@ -327,8 +329,23 @@
            		case "report":
            		 parseAction("report", "pull", null)
                         .success(function(data) {
-                            //console.log(data);
-                            load_gsCorp(data);
+                      console.log(data);
+
+                   var data = data.data;
+                   var org = data.org;
+                   var orgHTML;
+                   var length=org.length;
+
+                    orgHTML += "<option value = " + "all"+ ">" + "All" + "</option>";
+                                
+                   for(i = 0; i < length; i++){
+                             
+                                    orgHTML += "<option value = " + org[i] + ">" + org[i] + "</option>";
+                                
+                            }
+                    $('#selectOrg').empty().html(orgHTML);
+         
+
                         })
                         .fail(function(){
                             console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));

@@ -363,13 +363,15 @@ switch($page) {
 			$userID = $_POST['accessUser']; // The name of the user we're updating
 			$userN=$_POST['username']; // The possibly new username
 			$userP=$_POST['password']; // The possibly new password
-			$newRole= $_POST['access-admin']+$_POST['access-measure']+$_POST['access-report']+$_POST['access-reduce']+$_POST['access-offset'];
+		//	$newRole = "" . $_POST['accessAdmin'] . $_POST['accessMeasure'] . $_POST['accessReport'] . $_POST['accessReduce'] . $_POST['accessOffset'];
 
-			$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP', role ='$newRole' WHERE username = '$userID'  ";
+			$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP' WHERE username = '$userID'";
+			//, role ='$newRole'
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "Update was not";
 			} else {
 				$response['actionPerformed'] = "Update";
+				$response['debug_message'] = "SQL query: " .  $sql . ".\n  Updated role: " . $newRole;
 			}
 		} 
 
@@ -383,7 +385,7 @@ switch($page) {
 			$cID = db_query("SELECT id FROM gb_company WHERE name LIKE '$user'") -> fetch_assoc();
 			$companyID = $cID['id'];
 
-			$newRole= $_POST['access-admin']+$_POST['access-measure']+$_POST['access-report']+$_POST['access-reduce']+$_POST['access-offset'];
+			$newRole= $_POST['accessAdmin']+$_POST['accessMeasure']+$_POST['accessReport']+$_POST['accessReduce']+$_POST['accessOffset'];
 
 
 			$userN=sanitize($_POST['username']);
@@ -431,9 +433,29 @@ switch($page) {
 	case "report":
 
 	if($action == "pull") 
-	{
+{
+			// Pull data from the database
+			$divisionID;
+			// $sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
+			$sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE name = '$user')";
 
-	}
+			$info = db_query($sql);
+
+
+			$rowCounter = 0;
+			while($rslt = $info -> fetch_assoc())
+			{
+				if($rowCounter == 0)
+				{
+					$divisionID = $rslt['id'];
+				}
+				$data['org'][$rowCounter] = $rslt['name'];
+
+				$rowCounter++;
+			}
+
+			$response['data'] = $data;
+		}
 
 	break;
 }

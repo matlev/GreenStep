@@ -27,33 +27,33 @@
 			<h4 style="float:left"><u>Access Level</u></h4>
 			<table >
 				<tr>
-					<td><label for = "access-admin" style="visibility:hidden" >Admin</label></td>
+					<td><label for = "accessAdmin" style="visibility:hidden" >Admin</label></td>
 					<td>
-						<input type="checkbox" id = "access-admin" name = "access-admin" value="0" style="visibility:hidden" ></input>
+						<input type="checkbox" id = "accessAdmin" name = "accessAdmin" value="0" style="visibility:hidden" ></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-measure">Measure</label></td>
+					<td><label for = "accessMeasure">Measure</label></td>
 					<td>
-						<input type="checkbox" id = "access-measure" name = "access-measure" value="0"></input>
+						<input type="checkbox" id = "accessMeasure" name = "accessMeasure" value="0"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-report">Report</label></td>
+					<td><label for = "accessReport">Report</label></td>
 					<td>
-						<input type="checkbox" id = "access-report" value="0" name = "access-report"></input>
+						<input type="checkbox" id = "accessReport" value="0" name = "accessReport"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-reduce">Reduce</label></td>
+					<td><label for = "accessReduce">Reduce</label></td>
 					<td>
-						<input type="checkbox" id = "access-reduce" value="0" name = "access-reduce"></input>
+						<input type="checkbox" id = "accessReduce" value="0" name = "accessReduce"></input>
 					</td>
 				</tr>
 				<tr>
-					<td><label for = "access-offset">Offset</label></td>
+					<td><label for = "accessOffset">Offset</label></td>
 					<td>
-						<input type="checkbox" id = "access-offset" value="0"name = "access-offset"></input>
+						<input type="checkbox" id = "accessOffset" value="0"name = "accessOffset"></input>
 					</td>
 				</tr>
 				<tr>
@@ -83,15 +83,17 @@
 			
 			<div class = "form-controls left clearfix">
 				<div style="float:right; margin-right:20%">
-					<button type = "submit" class="btn btn-primary" style="width:100px">Save</button>
+					<button type = "submit" id="submit"class="btn btn-primary" >Save</button>
 				</div>
 				<div style="float:left; margin-left:57%">
-					<button type="delete" id="delete" class="btn btn-primary" style="width:100px">Delete</button>
+					<button type="delete" id="delete" class="btn btn-primary">Delete</button>
 				</div>
 			</div>
 			<!--END FORM-CONTROLS LEFT CLEARFIX CLASS-->		
 		</div>
 	</form>
+
+
 
 <!--END MIDDLE CLASS-->	
 
@@ -108,6 +110,7 @@ var newUser="false";
 		var data = "changeUnit=" + $(this).val();
 		var page = "access";
 		var action = "pull";
+
 
 		parseAction(page, action, data)
 		.success(function(result){
@@ -136,62 +139,62 @@ var newUser="false";
              //admin
              if(role[userIndex].charAt(0)=='1')
            {
-            $('#access-admin').prop('checked',true);
-            $('#access-admin').val('1');
+            $('#accessAdmin').prop('checked',true);
+            $('#accessAdmin').val('1');
            }
 
            else if(role[userIndex].charAt(0)=='0')
            {
-            $('#access-admin').prop('checked',false);
-            $('#access-admin').val('0');
+            $('#accessAdmin').prop('checked',false);
+            $('#accessAdmin').val('0');
            }
             //measure
              if(role[userIndex].charAt(1)=='1')
            {
-            $('#access-measure').prop('checked',true);
-            $('#access-measure').val('1');
+            $('#accessMeasure').prop('checked',true);
+            $('#accessMeasure').val('1');
            }
 
            else if(role[userIndex].charAt(1)=='0')
            {
-            $('#access-measure').prop('checked',false);
-            $('#access-measure').val('0');
+            $('#accessMeasure').prop('checked',false);
+            $('#accessMeasure').val('0');
            }
             //report
              if(role[userIndex].charAt(2)=='1')
            {
-            $('#access-report').prop('checked',true);
-            $('#access-report').val('1');
+            $('#accessReport').prop('checked',true);
+            $('#accessReport').val('1');
            }
 
            else if(role[userIndex].charAt(2)=='0')
            {
-            $('#access-report').prop('checked',false);
-            $('#access-report').val('0');
+            $('#accessReport').prop('checked',false);
+            $('#accessReport').val('0');
            }
             //reduce
              if(role[userIndex].charAt(3)=='1')
            {
-            $('#access-reduce').prop('checked',true);
-            $('#access-reduce').val('1');
+            $('#accessReduce').prop('checked',true);
+            $('#accessReduce').val('1');
            }
 
            else if(role[userIndex].charAt(3)=='0')
            {
-            $('#access-reduce').prop('checked',false);
-            $('#access-reduce').val('0');
+            $('#accessReduce').prop('checked',false);
+            $('#accessReduce').val('0');
            }
             //offset
              if(role[userIndex].charAt(4)=='1')
            {
-            $('#access-offset').prop('checked',true);
-            $('#access-offset').val('1');
+            $('#accessOffset').prop('checked',true);
+            $('#accessOffset').val('1');
            }
 
            else if(role[userIndex].charAt(4)=='0')
            {
-            $('#access-offset').prop('checked',false);
-            $('#access-offset').val('0');
+            $('#accessOffset').prop('checked',false);
+            $('#accessOffset').val('0');
            }
 
 
@@ -218,66 +221,67 @@ var newUser="false";
 			var  userIndex=$('#accessUser option:selected').index();
 
 
-           //admin
+             //admin
              if(role[userIndex].charAt(0)=='1')
            {
-            $('#access-admin').prop('checked',true);
-            $('#access-admin').val('1');
+            $('#accessAdmin').prop('checked',true);
+            $('#accessAdmin').val('1');
            }
 
            else if(role[userIndex].charAt(0)=='0')
            {
-            $('#access-admin').prop('checked',false);
-            $('#access-admin').val('0');
+            $('#accessAdmin').prop('checked',false);
+            $('#accessAdmin').val('0');
            }
             //measure
              if(role[userIndex].charAt(1)=='1')
            {
-            $('#access-measure').prop('checked',true);
-            $('#access-measure').val('1');
+            $('#accessMeasure').prop('checked',true);
+            $('#accessMeasure').val('1');
            }
 
            else if(role[userIndex].charAt(1)=='0')
            {
-            $('#access-measure').prop('checked',false);
-            $('#access-measure').val('0');
+            $('#accessMeasure').prop('checked',false);
+            $('#accessMeasure').val('0');
            }
             //report
              if(role[userIndex].charAt(2)=='1')
            {
-            $('#access-report').prop('checked',true);
-            $('#access-report').val('1');
+            $('#accessReport').prop('checked',true);
+            $('#accessReport').val('1');
            }
 
            else if(role[userIndex].charAt(2)=='0')
            {
-            $('#access-report').prop('checked',false);
-            $('#access-report').val('0');
+            $('#accessReport').prop('checked',false);
+            $('#accessReport').val('0');
            }
             //reduce
              if(role[userIndex].charAt(3)=='1')
            {
-            $('#access-reduce').prop('checked',true);
-            $('#access-reduce').val('1');
+            $('#accessReduce').prop('checked',true);
+            $('#accessReduce').val('1');
            }
 
            else if(role[userIndex].charAt(3)=='0')
            {
-            $('#access-reduce').prop('checked',false);
-            $('#access-reduce').val('0');
+            $('#accessReduce').prop('checked',false);
+            $('#accessReduce').val('0');
            }
             //offset
              if(role[userIndex].charAt(4)=='1')
            {
-            $('#access-offset').prop('checked',true);
-            $('#access-offset').val('1');
+            $('#accessOffset').prop('checked',true);
+            $('#accessOffset').val('1');
            }
 
            else if(role[userIndex].charAt(4)=='0')
            {
-            $('#access-offset').prop('checked',false);
-            $('#access-offset').val('0');
+            $('#accessOffset').prop('checked',false);
+            $('#accessOffset').val('0');
            }
+
 
 			$('#password').val(pass[userIndex]);                         
 			});
@@ -287,12 +291,14 @@ var newUser="false";
 		e.preventDefault();
 		if(newUser=="true")
 		{
+
 		var data = $(this).serializeObject(); // Sets data as a key: value object list of all the form elements
+		data.push({"accessUser" : $('#accessUser').val()});
 		var page = 'access';
 		var action = 'add';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed."); newUser = "false";$("#accessUnit").triggerHandler("change");})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.\n" + data.debug_message	); newUser = "false";$("#accessUnit").triggerHandler("change");})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}else
 		{
@@ -301,7 +307,8 @@ var newUser="false";
 		var action = 'update';
 
 		parseAction(page, action, data)
-			.success(function(data){console.log(data.actionPerformed + " successfully completed.");})
+			.success(function(data){console.log(data.actionPerformed + " successfully completed.\n" + data.debug_message	);})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}
 	});
@@ -314,6 +321,7 @@ var newUser="false";
 
 		parseAction(page, action, data)
 			.success(function(data){console.log(data.actionPerformed + " successfully completed.");$("#accessUnit").triggerHandler("change");$("#clearUser").triggerHandler("click");})
+			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		
 		
@@ -331,28 +339,29 @@ var newUser="false";
       
 	});
 
-	$('#access-measure').change(function()
+	$('#accessMeasure').change(function()
 	{
    
    		 $(this).val(this.checked ? 1 : 0);
     	 console.log($(this).val());
 	});
-	$('#access-report').change(function()
+	$('#accessReport').change(function()
 	{
     $(this).val(this.checked ? 1 : 0);
     	 console.log($(this).val());
 	});
-	$('#access-reduce').change(function()
+	$('#accessReduce').change(function()
 	{
     $(this).val(this.checked ? 1 : 0);
     	 console.log($(this).val());
 	});
-	$('#access-offset').change(function()
+	$('#accessOffset').change(function()
 	{
    $(this).val(this.checked ? 1 : 0);
     	 console.log($(this).val());
 	});
 
+		
 
 });	
 
