@@ -1,3 +1,13 @@
+<style>
+	.cMetricsTable td.editable:hover {
+		background: #D8FC98;
+	}
+
+	.cMetricsTable td.editable {
+		cursor: pointer;
+	}
+</style>
+
 <div class = "top-tooltip clearfix">    
     <div class = "third left" style="width:25%">
         <p> Set up the business units that will be part of your inventory</p>
@@ -281,24 +291,28 @@
 				</div>
 				<!--end of tooltip 7-->
 
-				<table class = "table table-bordered table-striped table-condensed" style= "height: 400px; overflow-y: auto">
+				<table class = "table table-bordered table-striped table-condensed cMetricsTable">
 					<thead>
-						<th style="font-weight:normal">Year</th>
-						<th style="font-weight:normal">Revenue or Sales ($)</th>
-						<th style="font-weight:normal">Customers or Guests</th>
-						<th style="font-weight:normal">Employees (FTEs)</th>
-						<th style="font-weight:normal">Floor Area (Sq Ft)</th>
-						<th style="font-weight:normal"><input type = "text" id = "metric1" /></th>
-						<th style="font-weight:normal"><input type = "text" id = "metric2" /></th>
-						<th style="font-weight:normal"><input type = "text" id = "metric3" /></th>
+						<tr>
+							<th style="font-weight:normal">Year</th>
+							<th style="font-weight:normal">Revenue or Sales ($)</th>
+							<th style="font-weight:normal">Customers or Guests</th>
+							<th style="font-weight:normal">Employees (FTEs)</th>
+							<th style="font-weight:normal">Floor Area (Sq Ft)</th>
+							<th style="font-weight:normal"><input type = "text" id = "metric1" /></th>
+							<th style="font-weight:normal"><input type = "text" id = "metric2" /></th>
+							<th style="font-weight:normal"><input type = "text" id = "metric3" /></th>
+						</tr>
 					</thead>
-					<?php
-						$html;
-						for($i = 2000; $i < 2026; $i++) {
-							echo "<tr class = \"$i\"><td>$i</td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td></tr>";
-						}
-						//echo $html;
-					?>
+					<tbody style= "height: 100px; overflow-y: auto">
+						<?php
+							$html;
+							for($i = 2000; $i < 2026; $i++) {
+								echo "<tr class = \"$i\"><td>$i</td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td><td class = \"editable\"></td></tr>";
+							}
+							//echo $html;
+						?>
+					</tbody>
 				</table>
 			</div>
 
