@@ -60,7 +60,7 @@
             </div>
 
             <div class="tab-pane" id="measure">
-                <?php include('Measure.html');?>
+                <?php include('Measure.php');?>
             </div>
 
             <div class="tab-pane" id="report">
@@ -352,6 +352,37 @@
                         });
 
            		break;
+
+                case "measure":
+                parseAction("measure", "pull", null)
+                .success(function(result){
+                    var data = result.data;
+                    var units = data.loadUnits;
+                    var loadUnitHTML;
+                    for(i=0; i < units.length; i++){
+                        if(i == 0){
+                            loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                        } else{
+                            loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                        }
+                    }
+                    $('#measureBusUnits').empty().html(loadUnitHTML);
+
+                //     var year = data.loadYear;
+                //     for(i=0; i < year.length; i++){
+                //         if(i == 0){
+                //             loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                //         } else{
+                //             loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                //         }
+                //     }
+                //     $('#measureYear').empty().html(loadUnitHTML);
+                // })
+                .fail(function(){
+                    console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                });
+
+                break;
             }
 
         });

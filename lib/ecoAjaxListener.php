@@ -458,6 +458,32 @@ switch($page) {
 		}
 
 	break;
+
+	case "measure":
+	if($action == "pull") {
+		// Pull business units from the database
+			$measureBU;
+			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql);
+
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$measureBU = $rslt['id'];
+				$data['loadUnits'][$rows] = $rslt['name'];
+
+				$rows++;
+			}
+
+			$response['data'] = $data;
+		
+		// // Pull year from the database
+		// $measureYear;
+		// $sql2 = "SELECT year FROM gb_coefficient2year WHERE countryId = ()"
+
+		}
+
+	break;
+
 }
 
 // Send response and exit gracefully
