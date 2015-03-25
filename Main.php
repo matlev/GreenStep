@@ -354,33 +354,38 @@
            		break;
 
                 case "measure":
-                parseAction("measure", "pull", null)
-                .success(function(result){
-                    var data = result.data;
-                    var units = data.loadUnits;
-                    var loadUnitHTML;
-                    for(i=0; i < units.length; i++){
-                        if(i == 0){
-                            loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
-                        } else{
-                            loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
-                        }
-                    }
-                    $('#measureBusUnits').empty().html(loadUnitHTML);
+                    parseAction("measure", "pull", null)
+                    .success(function(result){
 
-                //     var year = data.loadYear;
-                //     for(i=0; i < year.length; i++){
-                //         if(i == 0){
-                //             loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
-                //         } else{
-                //             loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
-                //         }
-                //     }
-                //     $('#measureYear').empty().html(loadUnitHTML);
-                // })
-                .fail(function(){
-                    console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
-                });
+                        var data = result.data;
+                        var units = data.loadUnits;
+                        var loadUnitHTML;
+                        for(i=0; i < units.length; i++){
+                            if(i == 0){
+                                loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else{
+                                loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        $('#measureBusUnits').empty().html(loadUnitHTML);
+
+                        var data = result.data;
+                        var scope = data.loadScope;
+                        var loadScopeHTML;
+                        for(i=0; i < scope.length; i++){
+                            if(i == 0){
+                                loadScopeHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else{
+                                loadScopeHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        $('#measureScope').empty().html(loadScopeHTML);
+
+
+                    })
+                    .fail(function(){
+                        console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                    });
 
                 break;
             }

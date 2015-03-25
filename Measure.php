@@ -13,11 +13,9 @@
  </div>
  <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
 
- <div id="A2" style="margin-left:5% ;float:left">
- 2. <select>
-     <option>Scope 1 Stationnary - Natural Gas</option>
-      <option>Scope 1 Stationnary - Natural Gas</option>
-      <option>Scope 1 Stationnary - Natural Gas</option>
+ <div id="measureSc" style="margin-left:5% ;float:left">
+ 2. <select id="measureScope" class="required mScope" name="measureScope">
+     <option value="0" selected="selected">N/A</option>
   </select>
 </div>
   <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">

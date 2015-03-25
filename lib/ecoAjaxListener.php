@@ -476,9 +476,18 @@ switch($page) {
 
 			$response['data'] = $data;
 		
-		// // Pull year from the database
-		// $measureYear;
-		// $sql2 = "SELECT year FROM gb_coefficient2year WHERE countryId = ()"
+		// Pull Scope from the database
+		$measureScope;
+		$sql2 = "SELECT * FROM gb_division2misc WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+		$info2 = db_query($sql2);
+
+		while($rslt2 = $info2 -> fetch_assoc()){
+			$measureScope = $rslt2['id'];
+			$data['loadScope'][$rows] = $rslt2['categoryName']
+			$rows++;
+		}
+
+		$response['data'] = $data;
 
 		}
 

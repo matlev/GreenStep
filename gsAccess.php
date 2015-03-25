@@ -308,7 +308,6 @@ var newUser="false";
 
 		parseAction(page, action, data)
 			.success(function(data){console.log(data.actionPerformed + " successfully completed.\n" + data.debug_message	);})
-			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		}
 	});
@@ -321,7 +320,6 @@ var newUser="false";
 
 		parseAction(page, action, data)
 			.success(function(data){console.log(data.actionPerformed + " successfully completed.");$("#accessUnit").triggerHandler("change");$("#clearUser").triggerHandler("click");})
-			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});})
 			.fail(function(){console.log($(this).attr('id') + " failed to submit to server.");});
 		
 		
@@ -363,7 +361,6 @@ var newUser="false";
 
 		
 
-});	
 
 
 
