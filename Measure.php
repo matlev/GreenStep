@@ -14,11 +14,11 @@
  <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
 
  <div id="measureSc" style="margin-left:5% ;float:left">
- 2. <select id="measureScope" class="required mScope" name="measureScope">
+ 2. <select id="measureScope" class="required scope" name="measureScope">
      <option value="0" selected="selected">N/A</option>
   </select>
 </div>
-  <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
+<img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
 
 <div id="measureYear" style="margin-left:5% ;float:left">
 3.<?php
@@ -29,6 +29,12 @@
     ?>
 </div>
 <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
+</div>
+<br>
+<div id="measureMt" style="margin-left:18.6%; margin-top: 5px; float:left"> 
+  <select id="measureMeter" class="required meter" name="measureMeter">
+    <option value="0" selected="selected">N/A</option>
+  </select>
 </div>
 
 <HR WIDTH="100%" height="1%">

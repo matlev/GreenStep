@@ -462,35 +462,53 @@ switch($page) {
 	case "measure":
 	if($action == "pull") {
 		// Pull business units from the database
-			$measureBU;
-			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
-			$info = db_query($sql);
+		$measureBU;
+		$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+		$info = db_query($sql);
 
-			$rows = 0;
-			while($rslt = $info -> fetch_assoc()){
+		$rows = 0;
+		while($rslt = $info -> fetch_assoc()){
+			if($measureBU == null) {
 				$measureBU = $rslt['id'];
-				$data['loadUnits'][$rows] = $rslt['name'];
-
-				$rows++;
 			}
+			$data['loadUnits'][$rows] = $rslt['name'];
 
-			$response['data'] = $data;
+			$rows++;
+		}
 		
-		// Pull Scope from the database
-		$measureScope;
-		$sql2 = "SELECT * FROM gb_division2misc WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
-		$info2 = db_query($sql2);
+		// //Pull scope from user input on 'user defined' from the database
+		$sql = "SELECT * FROM gb_division2misc WHERE divisionId = '$measureBU' AND companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+		$info = db_query($sql);
 
-		while($rslt2 = $info2 -> fetch_assoc()){
-			$measureScope = $rslt2['id'];
-			$data['loadScope'][$rows] = $rslt2['categoryName']
+		$rows = 0;
+		while($rslt = $info -> fetch_assoc()){
+			$data['loadScopePersonal'][$rows] = $rslt['categoryName'];
+
 			$rows++;
 		}
 
+		// Pull scope from checked scope from emission
+		// $sql = "SELECT name FROM gb_category WHERE code LIKE (
+		//SELECT categoryCode FROM gb_division2category WHERE companyId = 4 AND divisionId = 7 AND id = 151)";
+		$sql = "SELECT name 
+				FROM gb_category AS A, gb_division2category AS B 
+				WHERE B.companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')
+					AND B.divisionId = '$measureBU' 
+					AND B.categoryCode = A.code 
+					AND (B.checked = 1 OR B.checked = 2)";
+		$info = db_query($sql);
+
+		$rows = 0;
+		while($rslt = $info -> fetch_assoc()){
+			$data['loadScope'][$rows] = $rslt['name'];
+
+			$rows++;
+		}
 		$response['data'] = $data;
 
+		//end bracket
 		}
-
+	
 	break;
 
 }

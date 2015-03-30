@@ -356,7 +356,7 @@
                 case "measure":
                     parseAction("measure", "pull", null)
                     .success(function(result){
-
+                        // Pull business units from the database
                         var data = result.data;
                         var units = data.loadUnits;
                         var loadUnitHTML;
@@ -369,18 +369,30 @@
                         }
                         $('#measureBusUnits').empty().html(loadUnitHTML);
 
-                        var data = result.data;
+                        // Pull scope from gb_category from the database
                         var scope = data.loadScope;
                         var loadScopeHTML;
-                        for(i=0; i < scope.length; i++){
-                            if(i == 0){
-                                loadScopeHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
-                            } else{
-                                loadScopeHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                        for(j=0; j < scope.length; j++){
+                            if(scope[j] != "") {
+                                if(j == 0){
+                                    loadScopeHTML += "<option value = " + scope[j] + " selected = 'selected'>" + scope[j] + "</option>";
+                                } else{
+                                    loadScopeHTML += "<option value = " + scope[j] + ">" + scope[j] + "</option>";
+                                }
                             }
                         }
+                        // Pull scope from gb_division2misc (user input from 'defined')
+                        var scopePersonal = data.loadScopePersonal;
+                        for(k=0; k < scopePersonal.length; k++){
+                            if(scopePersonal[k] != ""){
+                                if(k == 0){
+                                    loadScopeHTML += "<option value = " + scopePersonal[k] + " selected = 'selected'>" + scopePersonal[k] + "</option>";
+                                } else{
+                                    loadScopeHTML += "<option value = " + scopePersonal[k] + ">" + scopePersonal[k] + "</option>";
+                                }
+                            }   
+                        }
                         $('#measureScope').empty().html(loadScopeHTML);
-
 
                     })
                     .fail(function(){
