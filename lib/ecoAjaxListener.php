@@ -461,6 +461,24 @@ switch($page) {
 
 	case "measure":
 	if($action == "pull") {
+
+
+			if(isset($_POST['bUnit&scope&date']))
+			{
+				$bUnit = $_POST['bUnit'];
+				$scope = $_POST['scope'];
+				$date = $_POST['date'];
+
+				$sql = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId LIKE (
+						SELECT id FROM gb_scope_entry WHERE year LIKE $date AND category2meterId LIKE (
+						SELECT id FROM gb_category2meter WHERE division2categoryId LIKE (
+						SELECT id FROM gb_division2category WHERE divisionId LIKE (SELECT id FROM gb_division WHERE name LIKE $bUnit)
+						AND categoryCode LIKE (SELECT code FROM category WHERE name LIKE $scope))))"
+				$info = db_query($sql) -> fetch_assoc();
+
+				$divisionID = $info['id'];
+			}
+
 		// Pull business units from the database
 		$measureBU;
 		$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
@@ -504,30 +522,14 @@ switch($page) {
 
 			$rows++;
 		}
+
+
+
 		$response['data'] = $data;
 
-<<<<<<< HEAD
 		//end bracket
 		}
 	
-=======
-		if(isset($_POST['bUnit&scope&date']))
-			{
-				$bUnit = $_POST['bUnit'];
-				$scope = $_POST['scope'];
-				$date = $_POST['date'];
-
-				$sql = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId LIKE (
-						SELECT id FROM gb_scope_entry WHERE year LIKE $date AND category2meterId LIKE (
-						SELECT id FROM gb_category2meter WHERE division2categoryId LIKE (
-						SELECT id FROM gb_division2category WHERE divisionId LIKE (SELECT id FROM gb_division WHERE name LIKE $bUnit)
-						AND categoryCode LIKE (SELECT code FROM category WHERE name LIKE $scope))))"
-				$info = db_query($sql) -> fetch_assoc();
-
-				$divisionID = $info['id'];
-			}
-
->>>>>>> f9b6d9c30526efca7c26938c1d10d2a22148478c
 	break;
 
 }
