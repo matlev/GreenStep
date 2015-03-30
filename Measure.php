@@ -57,7 +57,7 @@
 	   	<th style="background:#E6E6E6">CO2e Emmission<br>(kgs)</th>
 	   	</tr>
 	   		</thread>
-	   	 <tbody>
+	   	 <tbody id="tablebody">
 	        <tr>
 	            <td><div contenteditable></div></td>
 	            <td><div contenteditable></div></td>
@@ -96,4 +96,50 @@
               <button type="button" id="MeasureImport" class="btn btn-primary" style="width:100px; margin-right:0%"> Import </button>
               <button type="button" id="MeasureDelete" class="btn btn-primary" style="width:100px; margin-right:0%"> Delete </button>
               <button type="button" id="MeasureRecalculate" class="btn btn-primary" style="width:100px; margin-right:0%"> Recalculate </button>
-      </div>
+    </div>
+
+<script>
+    $(document).ready(function () 
+    {
+
+		$('#measureYear').on('change', function()
+		{
+			if ($('#mScope').selected().text().startWith("Scope 1"))
+			{
+
+				var data ="bUnit="+$('#measureBU').val() + "&scope="+$('#mScope').val() + "&date="+$('#measureYear').val(); // Sets data as a key: value object list of all the form elements
+				var page = 'measure';
+				var action = 'pull';
+
+				parseAction(page, action, data)
+				.success(function(result){
+					//var unit = result.data.unit;
+					var date = result.data.date;
+					var description = result.data.desciption;
+					var consumption = result.data.consumption;
+					var cost = result.data.cost;
+					var energy = result.data.energy;
+					var emmission result.data.emmission;
+					var measureHTML;
+
+					var length = date.length;
+					for(i = 0; i < length; i++)
+					{
+
+							measureHTML+=  "<tr id=measureRow"+i+">
+									            <td id='measureDate'"+i+"><div contenteditable>"+date[i]+"</div></td>"+
+									           "<td id='measureDiscrition'"+i+"><div contenteditable>"+description[i]+"</div></td>"+
+									           "<td id='measureConsumption'"+i+"><div contenteditable>"+consumption[i]+"</div></td>"+
+									           "<td id='measureCost'"+i+"><div contenteditable>"+cost[i]+"</div></td>"+
+											   "<td id='measureEnergy' tyle='background:#D3D3D3'"+i+"><div contenteditable>"+energy[i]+"</div></td>"+
+									           "<td id='measureEmmission' tyle='background:#D3D3D3'"+i+"><div contenteditable>"+emmission[i]+"</div></td>
+									        </tr>";
+							
+							
+					}
+					$('#tablebody').empty().html(measureHTML);
+			}
+		});
+	
+	}
+</script>
