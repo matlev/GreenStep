@@ -9,15 +9,15 @@
             <img src="img/help.png" style="width:2.7%">
       	</div>
 
-      	<div id ="esScope" style="float:left; width: 25%">
+      	<div id ="esScope" style="float:left; width: 27%">
       		2.<select id ="scope" name="scope" style="margin-left:0.5%">
       		<option value="1">Scope 1 Stationary - Direct Emission</option>
       		<option value="2">Scope 2 Mobile - Indirect Emission</option>
       		<option value="3">Scope 3 Mobile - Indirect Emission</option>
       		</select>
-      		<img src="img/help.png" style="width:5.3%">
+      		<img src="img/help.png" style="width:5%">
       	</div><br>
-            <font color="#AFD464" style="margin-left:11px"> track for each business unit</font>
+            <br><font color="#AFD464" style="margin-left:11px"> track for each business unit</font>
 </div>
 
 <form method="POST" id="es-form1" class="clearfix">

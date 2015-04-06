@@ -17,15 +17,18 @@
  2. <select id="measureScope" class="required scope" name="measureScope">
      <option value="0" selected="selected">N/A</option>
   </select>
-</div>
+</div>	
 <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
 
-<div id="measureYear" style="margin-left:5% ;float:left">
+<div id="measureSelectYear" style="margin-left:5% ;float:left">
 3.<?php
-    echo "<select>";
-    for($i=2000; $i<=2025; $i=$i+1)
-      echo "<option value=". $i .">" . $i . "</option>";
-    echo "</select>"; 
+    $html = "<select id='measureYear'>";
+    for($i=2000; $i<=2014; $i=$i+1) {
+      $html .= "<option value=". $i .">" . $i . "</option>";
+    }
+    $html .= "<option value=2015 selected='selected'>" . 2015 . "</option>";
+    $html .= "</select>"; 
+    echo $html;
     ?>
 </div>
 <img src="img/help.png" style="width:1.3%;float:left;margin-top:0.3%; cursor: pointer;" title = "Select a unit you wish to measure">
@@ -58,30 +61,7 @@
 	   	</tr>
 	   		</thread>
 	   	 <tbody id="tablebody">
-	        <tr>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	           <td style="background:#D3D3D3"><div></div></td>
-	            <td style="background:#D3D3D3"><div></div></td>
-	        </tr>
-	        <tr>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	      		 <td style="background:#D3D3D3"><div></div></td>
-	            <td style="background:#D3D3D3"><div></div></td>
-	        </tr>
-	        <tr>
-	             <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	            <td><div contenteditable></div></td>
-	          <td style="background:#D3D3D3"><div></div></td>
-	            <td style="background:#D3D3D3"><div></div></td>
-	        </tr>
+	       
 	
 	    </tbody>
 	   
@@ -104,42 +84,44 @@
 
 		$('#measureYear').on('change', function()
 		{
-			if ($('#mScope').selected().text().startWith("Scope 1"))
-			{
+			
+                        var data ="bUnit="+$('#measureBusUnits').val() + "&scope="+$('#measureScope').val() + "&date="+$('#measureYear').val(); // Sets data as a key: value object list of all the form elements
+                        var page = 'measure';
+                        var action = 'pull';
+                   
 
-				var data ="bUnit="+$('#measureBU').val() + "&scope="+$('#mScope').val() + "&date="+$('#measureYear').val(); // Sets data as a key: value object list of all the form elements
-				var page = 'measure';
-				var action = 'pull';
+                        parseAction(page, action, data)
+                        .success(function(result)
+                        {
+                        	console.log(result);
+                            //var unit = result.data.unit;
+                            var date = result.data.date;
+                            var description = result.data.desciption;
+                            var consumption = result.data.consumption;
+                            var cost = result.data.cost;
+                            var energy = result.data.energy;
+                            var emmission = result.data.emmission;
+                            var measureHTML;
 
-				parseAction(page, action, data)
-				.success(function(result){
-					//var unit = result.data.unit;
-					var date = result.data.date;
-					var description = result.data.desciption;
-					var consumption = result.data.consumption;
-					var cost = result.data.cost;
-					var energy = result.data.energy;
-					var emmission result.data.emmission;
-					var measureHTML;
+                            var length = date.length;
+                            for(i = 0; i < length; i++)
+                            {
 
-					var length = date.length;
-					for(i = 0; i < length; i++)
-					{
-
-							measureHTML+=  "<tr id=measureRow"+i+">
-									            <td id='measureDate'"+i+"><div contenteditable>"+date[i]+"</div></td>"+
-									           "<td id='measureDiscrition'"+i+"><div contenteditable>"+description[i]+"</div></td>"+
-									           "<td id='measureConsumption'"+i+"><div contenteditable>"+consumption[i]+"</div></td>"+
-									           "<td id='measureCost'"+i+"><div contenteditable>"+cost[i]+"</div></td>"+
-											   "<td id='measureEnergy' tyle='background:#D3D3D3'"+i+"><div contenteditable>"+energy[i]+"</div></td>"+
-									           "<td id='measureEmmission' tyle='background:#D3D3D3'"+i+"><div contenteditable>"+emmission[i]+"</div></td>
-									        </tr>";
-							
-							
-					}
-					$('#tablebody').empty().html(measureHTML);
-			}
+                                measureHTML+=  "<tr id='measureRow"+i+"'>"+
+                                                   "<td id='measureDate"+i+"'><div contenteditable>"+date[i]+"</div></td>"+
+                                                   "<td id='measureDiscrition"+i+"'><div contenteditable>"+description[i]+"</div></td>"+
+                                                   "<td id='measureConsumption"+i+"'><div contenteditable>"+consumption[i]+"</div></td>"+
+                                                   "<td id='measureCost"+i+"'><div contenteditable>"+cost[i]+"</div></td>"+
+                                                   "<td id='measureEnergy"+i+"' style='background:#D3D3D3'><div contenteditable>"+energy[i]+"</div></td>"+
+                                                   "<td id='measureEmmission"+i+"' style='background:#D3D3D3'><div contenteditable>"+emmission[i]+"</div></td>"+
+                                                   "</tr>";
+                                    
+                                    
+                            }
+                            $('#tablebody').empty().html(measureHTML);
+        
+                        });
 		});
 	
-	}
+	});
 </script>

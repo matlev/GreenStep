@@ -347,9 +347,10 @@ switch($page) {
 			$rowCounter = 0;
 			while($rslt = $info -> fetch_assoc())
 			{
+				$data['employeeId'][$rowCounter] = $rslt['id'];
 				$data['accUsers'][$rowCounter] = $rslt['username'];
 				$data['userPassword'][$rowCounter] = $rslt['password'];
-				$data['userRole'][$rowCounter] = $rslt['role'];
+			
 
 
 				$rowCounter++;
@@ -360,18 +361,17 @@ switch($page) {
 
 		if($action == "update") {
 			// Update an existing row in the database
-			$userID = $_POST['accessUser']; // The name of the user we're updating
+			$id = $_POST['employeeId']; // The name of the user we're updating
 			$userN=$_POST['username']; // The possibly new username
 			$userP=$_POST['password']; // The possibly new password
-		//	$newRole = "" . $_POST['accessAdmin'] . $_POST['accessMeasure'] . $_POST['accessReport'] . $_POST['accessReduce'] . $_POST['accessOffset'];
-
-			$sql = "UPDATE gb_employee SET username ='$userN', password =  '$userP' WHERE username = '$userID'";
-			//, role ='$newRole'
+		
+			$sql = "UPDATE gb_employee SET username ='$userN', password ='$userP' WHERE id = '$id'";
+			
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "Update was not";
 			} else {
 				$response['actionPerformed'] = "Update";
-				$response['debug_message'] = "SQL query: " .  $sql . ".\n  Updated role: " . $newRole;
+				
 			}
 		} 
 
@@ -385,12 +385,10 @@ switch($page) {
 			$cID = db_query("SELECT id FROM gb_company WHERE name LIKE '$user'") -> fetch_assoc();
 			$companyID = $cID['id'];
 
-			$newRole= $_POST['accessAdmin']+$_POST['accessMeasure']+$_POST['accessReport']+$_POST['accessReduce']+$_POST['accessOffset'];
-
-
+			
 			$userN=sanitize($_POST['username']);
 			$userP=sanitize($_POST['password']);
-			$sql = "INSERT INTO gb_employee (username, password, divisionId, companyId, insertDate,role) VALUES ('$userN', '$userP', '$divisionID', '$companyID', NOW()),'$newRole'";
+			$sql = "INSERT INTO gb_employee (username, password, divisionId, companyId, insertDate) VALUES ('$userN', '$userP', '$divisionID', '$companyID', NOW())";
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "ADD was not";
 			} else {
@@ -399,8 +397,8 @@ switch($page) {
 		}
 
 		if($action == "delete") {
-			$userID = $_POST['accessUser']; // The name of the user we're deleting
-			$sql = "DELETE FROM gb_employee WHERE username = '$userID' ";
+			$id = $_POST['employeeId']; // The name of the user we're deleting
+			$sql = "DELETE FROM gb_employee WHERE id = '$id' ";
 
 			if(!db_query($sql)) {
 				$response['actionPerformed'] = "delete was not";
@@ -433,7 +431,7 @@ switch($page) {
 	case "report":
 
 	if($action == "pull") 
-{
+		{
 			// Pull data from the database
 			$divisionID;
 			// $sql = "SELECT * FROM gb_division WHERE companyId =(SELECT id FROM gb_company WHERE id = (SELECT companyId FROM gb_employee WHERE username LIKE '$user'))";
@@ -460,24 +458,45 @@ switch($page) {
 	break;
 
 	case "measure":
+
 	if($action == "pull") {
 
+		if(isset($_POST['bUnit'])&&isset($_POST['scope'])&&isset($_POST['date']))
+		{
+			$bUnit = $_POST['bUnit'];
+			$scope = $_POST['scope'];
+			$date = $_POST['date'];
 
-			if(isset($_POST['bUnit&scope&date']))
-			{
-				$bUnit = $_POST['bUnit'];
-				$scope = $_POST['scope'];
-				$date = $_POST['date'];
+			$sql1 = "SELECT `code` FROM gb_category WHERE name LIKE '$scope'";
+			$code = fetch_assoc(db_query($sql));
 
-				$sql = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId LIKE (
-						SELECT id FROM gb_scope_entry WHERE year LIKE $date AND category2meterId LIKE (
-						SELECT id FROM gb_category2meter WHERE division2categoryId LIKE (
-						SELECT id FROM gb_division2category WHERE divisionId LIKE (SELECT id FROM gb_division WHERE name LIKE $bUnit)
-						AND categoryCode LIKE (SELECT code FROM category WHERE name LIKE $scope))))"
-				$info = db_query($sql) -> fetch_assoc();
+			$sq2 = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId = (
+					SELECT id FROM gb_scope_entry WHERE year = '$date' AND category2meterId = (	
+					SELECT id FROM gb_category2meter WHERE division2categoryId = (
+					SELECT id FROM gb_division2category WHERE divisionId = (SELECT id FROM gb_division WHERE name LIKE '$bUnit')
+					AND categoryCode LIKE ('$code')
+					AND companyId LIKE 4)
+					AND meterOrder LIKE 1))";
+			$info = db_query($sql2);
 
-				$divisionID = $info['id'];
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$data['date'][$rows] = $rslt['invoiceDate'];
+				$data['description'][$rows] = $code;
+				$data['consumption'][$rows] = $rslt['volume'];
+				$data['cost'][$rows] = $rslt['cost'];
+				$data['energy'][$rows] = $rslt['volume'];
+				$data['emmission'][$rows] = $rslt['co2'];
+				$rows++;
 			}
+			
+
+
+
+
+			$response['data'] = $data;
+			break;
+		}
 
 		// Pull business units from the database
 		$measureBU;
@@ -522,8 +541,6 @@ switch($page) {
 
 			$rows++;
 		}
-
-
 
 		$response['data'] = $data;
 

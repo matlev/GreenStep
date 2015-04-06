@@ -26,7 +26,7 @@
                 <li class="nav-tab-main"><a href="#report">Report</a></li>
                 <li class="nav-tab-main"><a href="#reduce">Reduce</a></li>
                 <li class="nav-tab-main"><a href="#offset">Offset</a></li>
-                <h4 style="float:right; color:red" >Beta V 0.5</h4><a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
+                <h4 style="float:right; color:red" >Beta V 0.7</h4><a href="Main"><img src="img/logo.gif"style="margin-top: 1.2%; float:right; width: 7%"></a>
             </ul>
 
             <div class="tab-content">
@@ -176,18 +176,18 @@
                         
                         var users = data.accUsers // an array of names of access units in the database
                         var pass = data.userPassword;
-                        var role = data.userRole;
+                        var employeeId=data.employeeId;
                         var accUserHTML;
                         var length = users.length;
                         
                         for(i = 0; i < length; i++){
                             if(i == 0){
-                                accUserHTML += "<option value = " + users[i] + " selected = 'selected' >" + users[i] + "</option>";
+                                accUserHTML += "<option value = " + employeeId[i] + " selected = 'selected' >" + users[i] + "</option>";
 
 
 
                             } else {
-                                accUserHTML += "<option value = " + users[i] +">" + users[i] + "</option>";
+                                accUserHTML += "<option value = " + employeeId[i] +">" + users[i] + "</option>";
 
 
                             }
@@ -200,71 +200,6 @@
                         $('#username').val($('#accessUser option:selected').text());
 
                         var  userIndex=$('#accessUser option:selected').index();
-
-
-             //admin
-             if(role[userIndex].charAt(0)=='1')
-           {
-            $('#accessAdmin').prop('checked',true);
-            $('#accessAdmin').val('1');
-           }
-
-           else if(role[userIndex].charAt(0)=='0')
-           {
-            $('#accessAdmin').prop('checked',false);
-            $('#accessAdmin').val('0');
-           }
-            //measure
-             if(role[userIndex].charAt(1)=='1')
-           {
-            $('#accessMeasure').prop('checked',true);
-            $('#accessMeasure').val('1');
-           }
-
-           else if(role[userIndex].charAt(1)=='0')
-           {
-            $('#accessMeasure').prop('checked',false);
-            $('#accessMeasure').val('0');
-           }
-            //report
-             if(role[userIndex].charAt(2)=='1')
-           {
-            $('#accessReport').prop('checked',true);
-            $('#accessReport').val('1');
-           }
-
-           else if(role[userIndex].charAt(2)=='0')
-           {
-            $('#accessReport').prop('checked',false);
-            $('#accessReport').val('0');
-           }
-            //reduce
-             if(role[userIndex].charAt(3)=='1')
-           {
-            $('#accessReduce').prop('checked',true);
-            $('#accessReduce').val('1');
-           }
-
-           else if(role[userIndex].charAt(3)=='0')
-           {
-            $('#accessReduce').prop('checked',false);
-            $('#accessReduce').val('0');
-           }
-            //offset
-             if(role[userIndex].charAt(4)=='1')
-           {
-            $('#accessOffset').prop('checked',true);
-            $('#accessOffset').val('1');
-           }
-
-           else if(role[userIndex].charAt(4)=='0')
-           {
-            $('#accessOffset').prop('checked',false);
-            $('#accessOffset').val('0');
-           }
-
-
-
                         
                         $('#password').val(pass[userIndex]);                       
                     })
@@ -375,9 +310,9 @@
                         for(j=0; j < scope.length; j++){
                             if(scope[j] != "") {
                                 if(j == 0){
-                                    loadScopeHTML += "<option value = " + scope[j] + " selected = 'selected'>" + scope[j] + "</option>";
+                                    loadScopeHTML += "<option value = '" + scope[j] + "' selected = 'selected'>" + scope[j] + "</option>";
                                 } else{
-                                    loadScopeHTML += "<option value = " + scope[j] + ">" + scope[j] + "</option>";
+                                    loadScopeHTML += "<option value = '" + scope[j] + "'>" + scope[j] + "</option>";
                                 }
                             }
                         }
@@ -386,18 +321,60 @@
                         for(k=0; k < scopePersonal.length; k++){
                             if(scopePersonal[k] != ""){
                                 if(k == 0){
-                                    loadScopeHTML += "<option value = " + scopePersonal[k] + " selected = 'selected'>" + scopePersonal[k] + "</option>";
+                                    loadScopeHTML += "<option value = '" + scopePersonal[k] + "' selected = 'selected'>" + scopePersonal[k] + "</option>";
                                 } else{
-                                    loadScopeHTML += "<option value = " + scopePersonal[k] + ">" + scopePersonal[k] + "</option>";
+                                    loadScopeHTML += "<option value = '" + scopePersonal[k] + "'>" + scopePersonal[k] + "</option>";
                                 }
                             }   
                         }
                         $('#measureScope').empty().html(loadScopeHTML);
+                      
+                        var data ="bUnit="+$('#measureBusUnits').val() + "&scope="+$('#measureScope').val() + "&date="+$('#measureYear').val(); // Sets data as a key: value object list of all the form elements
+                        var page = 'measure';
+                        var action = 'pull';
 
-                    })
-                    .fail(function(){
-                        console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        parseAction(page, action, data)
+                        .success(function(result)
+                        {
+                            //var unit = result.data.unit;
+                            var date = result.data.date;
+                            var description = result.data.desciption;
+                            var consumption = result.data.consumption;
+                            var cost = result.data.cost;
+                            var energy = result.data.energy;
+                            var emmission = result.data.emmission;
+                            var measureHTML;
+
+                            var length = date.length;
+                            for(i = 0; i < length; i++)
+                            {
+
+                                measureHTML+=  "<tr id='measureRow"+i+"'>"+
+                                                   "<td id='measureDate"+i+"'><div contenteditable>"+date[i]+"</div></td>"+
+                                                   "<td id='measureDiscrition"+i+"'><div contenteditable>"+description[i]+"</div></td>"+
+                                                   "<td id='measureConsumption"+i+"'><div contenteditable>"+consumption[i]+"</div></td>"+
+                                                   "<td id='measureCost"+i+"'><div contenteditable>"+cost[i]+"</div></td>"+
+                                                   "<td id='measureEnergy"+i+"' style='background:#D3D3D3'><div contenteditable>"+energy[i]+"</div></td>"+
+                                                   "<td id='measureEmmission"+i+"' style='background:#D3D3D3'><div contenteditable>"+emmission[i]+"</div></td>"+
+                                                   "</tr>";
+                                    
+                                    
+                            }
+                            $('#tablebody').empty().html(measureHTML);
+        
+                        });
                     });
+
+
+                       // if ($('#mScope').selected().text().startWith("Scope 1"))
+                       //        {
+
+
+                                    
+                            
+                              // }
+                           
+                  
 
                 break;
             }
