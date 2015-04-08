@@ -468,19 +468,20 @@ switch($page) {
 			$date = $_POST['date'];
 
 			$sql1 = "SELECT `code` FROM gb_category WHERE name LIKE '$scope'";
-			$code = fetch_assoc(db_query($sql));
+			$code = db_query($sql1)->fetch_assoc();
+			$code = $code['code'];
 
-			$sq2 = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId = (
+			$sql2 = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId = (
 					SELECT id FROM gb_scope_entry WHERE year = '$date' AND category2meterId = (	
 					SELECT id FROM gb_category2meter WHERE division2categoryId = (
 					SELECT id FROM gb_division2category WHERE divisionId = (SELECT id FROM gb_division WHERE name LIKE '$bUnit')
 					AND categoryCode LIKE ('$code')
 					AND companyId LIKE 4)
 					AND meterOrder LIKE 1))";
-			$info = db_query($sql2);
+			$info2 = db_query($sql2);
 
 			$rows = 0;
-			while($rslt = $info -> fetch_assoc()){
+			while($rslt = $info2 -> fetch_assoc()){
 				$data['date'][$rows] = $rslt['invoiceDate'];
 				$data['description'][$rows] = $code;
 				$data['consumption'][$rows] = $rslt['volume'];
