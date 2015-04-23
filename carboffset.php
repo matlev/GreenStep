@@ -5,15 +5,12 @@
             <img src="img/help.png" style="width:3.8%"></font>
             1. <select style="margin-left:0.5%" id="offsetorg">
             <option>Select organization level</option>
-            <option>All</option>
-            <option>Seattle</option>
-            <option>Vancouver</option>
             </select>
             <img src="img/help.png" style="width:3.8%">
         </div>
 
         <div id ="calc2" style="margin-left:9.3%;float:left; width: 10%">
-           3.  <select id= "getYear" onchange="changeYr()">
+           3.  <select id= "getYear" onchange="changeYr();calcEmission();">
                 <option>Year</option>
             <?php
             for($i=2000; $i<=2015; $i=$i+1)
@@ -26,20 +23,20 @@
         <div id="calctable" style="width:90%">
         <table style="width:30%; float:right">
             <tr>
-                <td><center>Calculated emissions</center></td>
-                <td><center>Cost to Offset</center></td>
+                <td>Calculated emissions</td>
+                <td>Cost to Offset</td>
             </tr>
             <tr>
-                <td style="color:#00B8E6"><b><center>0.0 Tonnes</center></b></td>
-                <td style="color:#00B8E6"><b><center>$0</center></b></td>
+                <td id="CalcEm" style="color:#00B8E6" text-align="center">0.00 GJ</td> <!-- <b><center>0.0 Tonnes</center></b> -->
+                <td id= "CostOff" style="color:#00B8E6; bold" text-align="center" font-weight: bold;>$ 0.00</td><!--$0-->
         </table>
         </div>
 <br>
 <br>
         <div id ="calc3" style="margin-left:1%;float:left; width:43%">
         <font color="#AFD464" style="margin-right:15px">purchasing carbon offsets</font>
-            2. <select style="margin-left:0.5%" class="dd3" id="offsource" onchange="getScope()">
-            <option value="0">All Sources</option>
+            2. <select style="margin-left:0.5%" class="dd3" id="offsource" onchange="getScope();calcEmission();">
+          <!--   <option value="0">All Sources</option>
             <option value="1">Scope 1 Mobile - Gasoline</option>
             <option value="2">Scope 1 Mobile - Propane</option>
             <option value="3">Scope 1 Mobile - Ethanol</option>
@@ -50,14 +47,14 @@
             <option value="8">Scope 3 - Air Business Trips</option>
             <option value="9">Scope 3 - Ground Business Trips</option>
             <option value="10">Scope 3 - Employee commuting</option>
-            <option value="11">Scope 3 - Contractor Commuting</option>
+            <option value="11">Scope 3 - Contractor Commuting</option> -->
 
             </select>
             <img src="img/help.png" class="image" style="width:3.8%">    
         </div>
 
         <div id ="calc4" style="float:left; width: 20%">
-            4. <select id= "getCost" onchange="changeCost()">
+            4. <select id= "getCost" onchange="changeCost();calcEmission();">
             <option>Select a carbon cost</option>
             4. <?php
             for($i=5; $i<=50; $i=$i+1)
@@ -66,7 +63,9 @@
             </select>
             <img src="img/help.png" class="image" style="width:8%">
         </div>
-        <input type = "text" id = "offtest" class = ""/>
+
+<!-- Testing box -->
+       <input type = "text" id = "offtest" class = ""/>
 
 </p>
     <hr style="margin-top:3%">
@@ -75,10 +74,10 @@
     
  <script>
     //change selected value on dropdown
-    var getYr;
-    var getCt;
-    var getSp;
-    var getNme;
+    var getYr= null;
+    var getCt= null;
+    var getScope= null;
+    var getNme= null;
 //Get year to match database year
     function changeYr(){
             getYr= document.getElementById("getYear").value;
@@ -95,19 +94,137 @@
         $('#getCost').val(getCt);
         $('#getCost2').val(getCt);
         $('#offtest').val(getCt); 
+        $('#CalcEm').val(getCt);
     }
 
 //Get scope 
-    function getScope(){
+    function calcEmission(){
+        var data ="bUnit="+$('#offsetorg').val() + "&scope="+$('#offsource').val() + "&date="+$('#getYear').val(); // Sets data as a key: value object list of all the form elements
+                        var page = 'measure';
+                        var action = 'pull';
 
+            parseAction(page, action, data)
+            .success(function(result)
+                {
+                    console.log(result);
+                    var description = result.data.description;
+                    var consumption = result.data.consumption;
+                    var length = Object.keys(result.data.description).length;
+                    var total= 0;
+
+                for (i =0; i < length; i++)
+                {
+                    //summing emission total
+                    total += parseInt(consumption[i]);
+                }
+                
+                //pull total emissions
+                $('#CalcEm').html(total+ " GJ");
+                //calculate cost
+               getCt= document.getElementById("getCost").value;
+                var EstCost= total*getCt;
+                $('#offtest').val(EstCost);
+                $('#CostOff').html("$ "+EstCost);
+                })
+             .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
     }
 
-    //get name
-    function getName(){
-        getNme= document.getElementById("offsetorg").value;
-        document.getElementById("offsetorg").selectedIndex= getNme;
-        $('#offsetorg').val(getNme);
-        $('#offsetorg2').val(getNme);
-        $('#offtest').val(getNme);
-    }
+//pull Business units to drop down #1
+// $(document).ready(function()
+// {
+//     $('#offsetorg').on('change', function(){
+//         var data= "changeUnit= " + $(this).val();
+//         var page= "offset";
+//         var action= "pull";
+//     parseAction(page, action, data)
+//     .success(function(result){
+
+//     var users = result.data.units;
+
+//     var accUserHTML;
+
+//     var length= Object.keys(result.data.units).length;
+
+//             for (i =0; i< length; i++)
+//             {
+//                 if(i==0)
+//                    accUserHTML += "<option value = " + i + " selected = 'selected'>" + users[i] + "</option>";
+//                 else
+//                     accUserHTML += "<option value= " + i + ">" + users[i] + "</option>";
+//             }
+//             var getName= document.getElementById("offsetorg").value;
+            
+//             $('#offtest').val(getName);
+//         })
+//     .fail(function(){});
+//     });
+
+// //Scope dropdown menu
+//     $('#offsource').on('change', function(){
+//         var data= null;
+//         var page= "measure";
+//         var action= "pull";
+
+// //pull Total CO2 Emission
+//         parseAction(page, action, data)
+//         .success(function(result)
+//         {
+//                 var data = result.data;
+//                   var scope = data.loadScope;
+//                         var loadScopeHTML;
+//                         for(j=0; j < scope.length; j++){
+//                             if(scope[j] != "") {
+//                                 if(j == 0){
+//                                     loadScopeHTML += "<option value = '" + scope[j] + "' selected = 'selected'>" + scope[j] + "</option>";
+//                                 } else{
+//                                     loadScopeHTML += "<option value = '" + scope[j] + "'>" + scope[j] + "</option>";
+//                                 }
+//                             }
+//                         }
+//                         // Pull scope from gb_division2misc (user input from 'defined')
+//                         var scopePersonal = data.loadScopePersonal;
+//                         for(k=0; k < scopePersonal.length; k++){
+//                             if(scopePersonal[k] != ""){
+//                                 if(k == 0){
+//                                     loadScopeHTML += "<option value = '" + scopePersonal[k] + "' selected = 'selected'>" + scopePersonal[k] + "</option>";
+//                                 } else{
+//                                     loadScopeHTML += "<option value = '" + scopePersonal[k] + "'>" + scopePersonal[k] + "</option>";
+//                                 }
+//                             }   
+//                         }
+//                        // $('#offsource').html(loadScopeHTML);
+//                         var getScope= document.getElementById("offsource").value;
+
+//                         $('#offtest').val(getScope);
+//         })
+//     .fail(function(){});
+//     });
+
+//     // IF all data is collected
+//    if (getScope != null && getYr !=null && getName != null && getCost != null)
+//    {
+//     var data= "bUnit="+ $('#offsetorg').val() +"&scope="+$('#offsource').val() +"&year="+ $('#getYear').val();
+//         var page= "offset";
+//         var action= "pull"; 
+//         parseAction(page, action, data).success(function(result)
+//         {
+//             var data= result.data;
+//             var emission= result.data.emmission;
+          
+//             var totalCost= emission*getCost;
+//             $('CalcEm').val(totalCost);
+//         })
+//     }
+// //                         // Pull scope from gb_category from the database                     
+//  });
+
+//TODO: Working on Ecoajax isset 
+//Ecoajax sql queries
+//get value, ask Salim
+
+
+//code ends for business unit drop down
+
 </script>

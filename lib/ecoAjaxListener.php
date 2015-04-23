@@ -410,8 +410,43 @@ switch($page) {
 	
 	case "offset":
 			// Only need to pull information here
-		if($action == "pull") 
-		{
+			if($action == "pull") 
+			{
+					if(isset($_POST['bUnit'])&&isset($_POST['scope'])&&isset($_POST['date']))
+				{
+					$bUnit = $_POST['bUnit'];
+					$scope = $_POST['scope'];
+					$date = $_POST['date'];
+
+					$sql1 = "SELECT `code` FROM gb_category WHERE name LIKE '$scope'";
+					$code = db_query($sql1)->fetch_assoc();
+					$code = $code['code'];
+
+					$sql2 = "SELECT * FROM gb_scope_scratchpad WHERE scopeEntryId = (
+							SELECT id FROM gb_scope_entry WHERE year = '$date' AND category2meterId = (	
+							SELECT id FROM gb_category2meter WHERE division2categoryId = (
+							SELECT id FROM gb_division2category WHERE divisionId = (SELECT id FROM gb_division WHERE name LIKE '$bUnit')
+							AND categoryCode LIKE ('$code')
+							AND companyId LIKE 4)
+							AND meterOrder LIKE 1))";
+					$info2 = db_query($sql2);
+
+					$rows = 0;
+					while($rslt = $info2 -> fetch_assoc()){
+						$data['date'][$rows] = $rslt['invoiceDate'];
+						$data['description'][$rows] = $code;
+						$data['consumption'][$rows] = $rslt['volume'];
+						$data['cost'][$rows] = $rslt['cost'];
+						$data['energy'][$rows] = $rslt['volume'];
+						$data['emmission'][$rows] = $rslt['co2'];
+						$rows++;
+					}
+
+
+					$response['data'] = $data;
+					break;
+				}
+				
 			$offID;
 			$sql = "SELECT * FROM gb_division WHERE companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
 			$info = db_query($sql);
@@ -424,8 +459,37 @@ switch($page) {
 				$data['year'][$rowCounter]= $rslt['year'];
 				$rowCounter++;
 			}
-			$response['data'] = $data;
-		}
+					// //Pull scope from user input on 'user defined' from the database
+			$sql = "SELECT * FROM gb_division2misc WHERE divisionId = '$offID' AND companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')";
+			$info = db_query($sql);
+
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$data['loadScopePersonal'][$rows] = $rslt['categoryName'];
+
+				$rows++;
+			}
+
+			// Pull scope from checked scope from emission
+			// $sql = "SELECT name FROM gb_category WHERE code LIKE (
+			//SELECT categoryCode FROM gb_division2category WHERE companyId = 4 AND divisionId = 7 AND id = 151)";
+			$sql = "SELECT name 
+					FROM gb_category AS A, gb_division2category AS B 
+					WHERE B.companyId = (SELECT companyId FROM gb_employee WHERE username LIKE '$user')
+						AND B.divisionId = '$offID' 
+						AND B.categoryCode = A.code 
+						AND (B.checked = 1 OR B.checked = 2)";
+			$info = db_query($sql);
+
+			$rows = 0;
+			while($rslt = $info -> fetch_assoc()){
+				$data['loadScope'][$rows] = $rslt['name'];
+
+				$rows++;
+			}
+
+				$response['data'] = $data;
+			}
 	break;
 
 	case "report":
@@ -490,9 +554,6 @@ switch($page) {
 				$data['emmission'][$rows] = $rslt['co2'];
 				$rows++;
 			}
-			
-
-
 
 
 			$response['data'] = $data;

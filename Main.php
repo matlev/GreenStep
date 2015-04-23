@@ -235,32 +235,57 @@
                     break;
                     
                     case "offset":
-                       parseAction("offset", "pull", null)
-                                
-                            .success(function(data) {
-                                console.log(data);
-                            var data = data.data;
-                            var units = data.units; // an array of names of access units in the database
-                            var accUnitHTML;
 
-                            var length = units.length;
-                            for(i = 0; i < length; i++){
-                                if(i == 0){
-                                    accUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
-                                } else {
-                                    accUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                     var data= "bUnit="+ $('#offsetorg').val();
+                     var page= "offset";
+                     var action= "pull";
+                       parseAction("measure", "pull", null)
+                            .success(function(result) {
+
+                              var data = result.data;
+                        var units = data.loadUnits;
+                        var loadUnitHTML;
+                        for(i=0; i < units.length; i++){
+                            if(i == 0){
+                                loadUnitHTML += "<option value = " + units[i] + " selected = 'selected'>" + units[i] + "</option>";
+                            } else{
+                                loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
+                            }
+                        }
+                        $('#offsetorg').empty().html(loadUnitHTML);
+
+                        // Pull scope from gb_category from the database
+                        var scope = data.loadScope;
+                        var loadScopeHTML;
+                        for(j=0; j < scope.length; j++){
+                            if(scope[j] != "") {
+                                if(j == 0){
+                                    loadScopeHTML += "<option value = '" + scope[j] + "' selected = 'selected'>" + scope[j] + "</option>";
+                                } else{
+                                    loadScopeHTML += "<option value = '" + scope[j] + "'>" + scope[j] + "</option>";
                                 }
                             }
+                        }
+                        // Pull scope from gb_division2misc (user input from 'defined')
+                        var scopePersonal = data.loadScopePersonal;
+                        for(k=0; k < scopePersonal.length; k++){
+                            if(scopePersonal[k] != ""){
+                                if(k == 0){
+                                    loadScopeHTML += "<option value = '" + scopePersonal[k] + "' selected = 'selected'>" + scopePersonal[k] + "</option>";
+                                } else{
+                                    loadScopeHTML += "<option value = '" + scopePersonal[k] + "'>" + scopePersonal[k] + "</option>";
+                                }
+                            }   
+                        }
+                        $('#offsource').empty().html(loadScopeHTML);
+                      
+                     //        .fail(function(){
+                     //                  console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                           });
 
-                            $('#offsetorg').empty().html(accUnitHTML);
-                            $('#offsetorg2').empty().html(accUnitHTML);
-                                load_offset(data);
-                            })
 
-                            .fail(function(){
-                                      console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
-                            });
                     break;
+
            		case "report":
            		 parseAction("report", "pull", null)
                         .success(function(data) {
