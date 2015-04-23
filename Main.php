@@ -252,7 +252,8 @@
                                 loadUnitHTML += "<option value = " + units[i] + ">" + units[i] + "</option>";
                             }
                         }
-                        $('#offsetorg').empty().html(loadUnitHTML);
+                        $('#offsetorg').html(loadUnitHTML);
+                        $('#offsetorg2').html(loadUnitHTML);
 
                         // Pull scope from gb_category from the database
                         var scope = data.loadScope;
@@ -277,8 +278,9 @@
                                 }
                             }   
                         }
-                        $('#offsource').empty().html(loadScopeHTML);
-                      
+                        $('#offsource').html(loadScopeHTML);
+                        $('#offsource2').html(loadScopeHTML);
+                       
                      //        .fail(function(){
                      //                  console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
                            });
@@ -506,16 +508,73 @@
             $('#metric3').val(data.custom3Name);
 
         }
-        function load_offset(result)
-        {
-            var data= result;
-            $('#offtest').val(data.units[0]);
-        }
-        /*
-        function load_gsEmissionSources(result) {
-            var data = result.data;
+  /////////////////////////////////////////////////////
+  ////carboffset.php Javascript
+  /////////////////////////////////////////////////////
 
-        }*/
+   //change selected value on dropdown
+    var getYr= null;
+    var getCt= null;
+    var getScope= null;
+    var getNme= null;
+//Get year to match database year
+    function changeYr(){
+            getYr= document.getElementById("getYear").value;
+        document.getElementById("getYear").selectedIndex= getYr;
+        $('#getYear').val(getYr);
+        $('#getYear2').val(getYr);
+        $('#offtest').val(getYr); 
+    }
+
+//Get cost estimatin from dropdown
+    function changeCost(){
+        getCt= document.getElementById("getCost").value;
+        document.getElementById("getCost").selectedIndex= getCt;
+        $('#getCost').val(getCt);
+        $('#getCost2').val(getCt);
+        $('#offtest').val(getCt); 
+        $('#CalcEm').val(getCt);
+    }
+
+//Get scope 
+    function calcEmission(){
+        var data ="bUnit="+$('#offsetorg').val() + "&scope="+$('#offsource').val() + "&date="+$('#getYear').val(); // Sets data as a key: value object list of all the form elements
+                        var page = 'measure';
+                        var action = 'pull';
+
+            parseAction(page, action, data)
+            .success(function(result)
+                {
+                    console.log(result);
+                    var description = result.data.description;
+                    var consumption = result.data.consumption;
+                    var length = Object.keys(result.data.description).length;
+                    var total= 0;
+
+                for (i =0; i < length; i++)
+                {
+                    //summing emission total
+                    total += parseInt(consumption[i]);
+                }
+                
+                //pull total emissions
+                $('#CalcEm').html(total+ " Tonnes");
+                $('#CalcEm2').html(total+ " Tonnes");
+                //calculate cost
+               getCt= document.getElementById("getCost").value;
+                var EstCost= total*getCt;
+                $('#offtest').val(EstCost);
+                $('#CostOff').html("$ "+EstCost);
+                $('#CostOff2').html("$ "+EstCost);
+                })
+             .fail(function(){
+                            console.log("Error handling request 'pull' in tab '" + tabID + "'' called by element " + $(this).attr('id'));
+                        });
+    }
+
+      /////////////////////////////////////////////////////
+  ////carboffset.php Javascript
+  /////////////////////////////////////////////////////
     </script>
 </body>
 </html>
